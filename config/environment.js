@@ -6,6 +6,16 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      'default-src' : "'none'",
+      'script-src'  : "'self' 'unsafe-inline' 'unsafe-eval' https://notify.bugsnag.com",
+      'font-src'    : "'self' fonts.googleapis.com fonts.gstatic.com maxcdn.bootstrapcdn.com",
+      'img-src'     : "'self' data:",
+      'style-src'   : "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com fonts.googleapis.com",
+      'media-src'   : "'self' https://notify.bugsnag.com",
+      'connect-src' : "'self' https://apem.local:44300 wss://ws.pusherapp.com https://notify.bugsnag.com"
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -14,41 +24,25 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiUrl:'http://apem.local:8000'
       // Here you can pass flags/options to your application instance
       // when it is created
+      usingCors: false,
+      apiUrl: null,
     }
   };
 
-  //Remark Ralica M. Jul 12 2016:
-  // Ember Paper uses fonts from Google Fonts, so the URL to them has to be
-  //white listed. You can set this by adding to the Content Security Policy defined
-  ENV.contentSecurityPolicy = {
-    // Deny everything by default "It wasn't me!"
-    'default-src': "'none'",
-    // Allow data (ajax/websocket) from sself, http://localhost:8000 and other
-    'connect-src': ["'self'", "localhost:8000", "http://apem.local"],
-    'default-src': "'none'",
-    'script-src': "'self'",
-    // Allow fonts to be loaded from http://fonts.gstatic.com
-    'font-src': "'self' http://fonts.gstatic.com",
-    // Allow images from the origin itself (i.e. current domain)
-    'img-src': "'self' data:",
-    'media-src': "'self'"
+  var devContentSecurityPolicy = {
+    'default-src': "'self' *",
+    'script-src': "'unsafe-inline' 'unsafe-eval' 'self' https://notify.bugsnag.com *",
+    'font-src': "'self' *",
+    'connect-src': "'self' *",
+    'img-src': "'self' data: *",
+    'style-src': "'unsafe-inline' 'self' *",
+    'media-src': "'self' *"
   };
 
-  //Ralica M. Jul 12 2016:
-  //ENV.apiBaseUrl = 'http://apem.local:8000';
-
-
-
   if (environment === 'development') {
-    ENV.APP.usingCors = true;
-    ENV.APP.LOG_RESOLVER = true;
-    ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.contentSecurityPolicy = devContentSecurityPolicy;
   }
 
   if (environment === 'test') {
