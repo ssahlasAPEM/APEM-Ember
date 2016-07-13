@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('home', { path: '/', resetNamespace: true }, function () {
 
-    /* Users  Routes */
+    /* Users & Invites Routes */
     this.route('users', { resetNamespace: true }, function () {
       this.route('user', { path: ':id' }, function () {
         this.route('detail', { path: 'detail' });
@@ -18,5 +18,7 @@ Router.map(function() {
 
   });
 });
+
+Ember.Router.reopen({ rootURL: '/' });
 
 export default Router;

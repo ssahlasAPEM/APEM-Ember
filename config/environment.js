@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'apem',
     environment: environment,
     baseURL: '/',
+    podModulePrefix : 'apem/pods',
     locationType: 'auto',
     contentSecurityPolicy: {
       'default-src' : "'none'",
@@ -42,6 +43,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.APP.apiUrl = 'http://apem.local:8000';
     ENV.contentSecurityPolicy = devContentSecurityPolicy;
   }
 

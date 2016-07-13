@@ -1,12 +1,7 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-// import attr from 'ember-data/attr';
-// import { belongsTo, hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 
-export default Model.extend({
-  created_at: attr('string'),
-  last_updated_by: attr('string'),
-  updated_at: attr('string'),
-  owner_id: attr('number', { defaultValue: null }),
-  username: attr('string')
+export default DS.Model.extend({
+  created_at : DS.attr('string', { defaultValue: null }),
+  updated_at: DS.attr('string', { defaultValue: null }),
+  username: DS.attr('string')
 });
