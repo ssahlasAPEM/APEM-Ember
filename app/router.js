@@ -6,6 +6,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('home', { path: '/', resetNamespace: true }, function () {
+
+    /* Users  Routes */
+    this.route('users');
+  });
 });
 
 export default Router;
