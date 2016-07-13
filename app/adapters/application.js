@@ -10,13 +10,15 @@ export default JSONAPIAdapter.extend({
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
     'ContentType':'dnd.api+json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept'
   },
 
   ajax(url, method, hash) {
     if (config.APP.usingCors) {
-      if (hash === undefined) { hash = {}; }
 
+      if (hash === undefined) { hash = {}; }
+debugger;
       hash.crossDomain = true;
       hash.xhrFields = { withCredentials: true };
     }

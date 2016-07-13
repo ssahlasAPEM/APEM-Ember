@@ -24,10 +24,15 @@ module.exports = function(environment) {
   // Ember Paper uses fonts from Google Fonts, so the URL to them has to be
   //white listed. You can set this by adding to the Content Security Policy defined
   ENV.contentSecurityPolicy = {
-    'connect-src': "'self' http://localhost:8000",//was "'self'",
+    // Deny everything by default "It wasn't me!"
+    'default-src': "'none'",
+    // Allow data (ajax/websocket) from sself, http://localhost:8000 and other
+    'connect-src': ["'self'", "localhost:8000", "http://apem.local"],
     'default-src': "'none'",
     'script-src': "'self'",
+    // Allow fonts to be loaded from http://fonts.gstatic.com
     'font-src': "'self' http://fonts.gstatic.com",
+    // Allow images from the origin itself (i.e. current domain)
     'img-src': "'self' data:",
     'media-src': "'self'"
   };
@@ -38,6 +43,7 @@ module.exports = function(environment) {
 
 
   if (environment === 'development') {
+    ENV.APP.usingCors = true;
     ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
