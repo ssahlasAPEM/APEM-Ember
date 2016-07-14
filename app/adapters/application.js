@@ -6,6 +6,7 @@ export default DS.JSONAPIAdapter.extend({
   host: config.APP.apiUrl,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
+    'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
   },
   ajax(url, method, hash) {
     if (config.APP.usingCors) {
