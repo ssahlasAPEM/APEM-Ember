@@ -12,5 +12,11 @@ export default Ember.Route.extend(RouteMixin, {
     // todo is your model name
     // returns a PagedRemoteArray
     return this.findPaged('opportunity',params);
+  },
+
+  setupController(controller, model) {
+    this._super(...arguments);
+    controller.set('filteredModel', model);
   }
+
 });

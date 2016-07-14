@@ -1,6 +1,21 @@
-
-{{#each opportunities as |item|}}
-      {{#nav-link-to 'opportunities.opportunity' item.id classNames="list-group-item"}} {{item.id}} {{/nav-link-to}}
-{{/each}}
-
 {{outlet}}
+
+<table id="opportunity-list">
+
+  <tr>
+    <td> NAO # </td>
+    <td> Sales Person </td>
+    <td> Revenue </td>
+    <td> Prod Type </td>
+  </tr>
+
+  {{#each filteredModel as |item|}}
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.apemSalesPerson}}</td>
+      <td>{{item.potentialAnnualRev}}</td>
+      <td>{{item.productType}}</td>
+    </tr>
+  {{/each}}
+  
+</table>
