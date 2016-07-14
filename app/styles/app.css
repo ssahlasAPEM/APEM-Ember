@@ -12,3 +12,29 @@
   display:block;
   margin:20px auto;
 }
+.ui.grid {
+  margin: 0 auto;
+}
+.ui.grid .ui-content {
+  padding: 1rem;
+}
+
+.ui.attached.menu {
+  height: 100px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: calc(100% - 260px);
+}
+.ui.attached.menu .ui.container {
+  width: 100%;
+  margin: 0 auto;
+}
+.ui.attached.menu .item {
+  height: 100px;
+}
+
+.ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
+  border-left: 0px solid #ffffff;
+  padding-left: 5%;
+  padding-right: 5%;
+}

@@ -1,17 +1,16 @@
-{{#ui-sidebar class="vertical menu visible home-sidebar"}}
-  <img src="assets/images/corp-logo.png" class="apem-logo"/>
-  <div class="spacer spacer-lg"></div>
-  <a class="item">Home</a>
-  <a class="item">Currency Rate</a>
-  <a class="item">Manage Password</a>
+<!-- Side Bar Navigation -->
+{{outlet 'nav-sidebar'}}
 
-  <div class="spacer spacer-lg"></div>
-  <a class="item">Admin Functions</a>
-  <a class="item">User Management</a>
-  <a class="item">Form Management</a>
-{{/ui-sidebar}}
+<!-- Main Section -->
+<div class="ui-main ui grid pusher">
+  <!-- Application Header -->
+  {{outlet 'nav-header'}}
 
-<div class="ui grid pusher">
-  test
-  {{outlet}}
+  <div class="ui-content">
+    <!-- Main Application Content -->
+    {{outlet}}
+
+    <!-- Modal -->
+    {{outlet 'modal'}}
+  </div>
 </div>
