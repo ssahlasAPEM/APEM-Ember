@@ -1,0 +1,44 @@
+{{#ui-content}}
+
+    {{#ui-content/panel-heading}}
+        {{#nav-link-to 'users.user.detail' model.id isPulledLeft=true}}<i
+                class="revegy-icon icon-detail"></i> {{/nav-link-to}}
+        <!--<li><a href="#"><i class="revegy-icon icon-contacts-heavy"></i> </a></li>-->
+        <li class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle icon-btn" data-toggle="dropdown">
+                <span class="revegy-icon icon-more icon-btn-lg"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <!--<li>
+                    <a {{action 'showCustomize'}} href="#">
+                        Customize
+                    </a>
+                </li>
+                <li class="divider"></li>-->
+                <li>
+                    <a {{action 'deleteUser'}} href="#">
+                        Delete
+                    </a>
+                </li>
+            </ul>
+        </li>
+    {{/ui-content/panel-heading}}
+
+    {{outlet}}
+
+{{/ui-content}}
+
+{{#core-object-customize-panel
+  heading                  = "Customize User"
+  showPanel                = showCustomize
+  serverErrors             = serverErrors
+  customMetas              = customMetas
+  newCustomField           = (action 'newCustomField')
+  saveCustomFields         = (action 'saveCustomFields')
+  profile                  = profile
+  class                    = "core-object-customization" }}
+
+    <h3>User</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis dictum erat, non porta magna feugiat quis. Maecenas ac lacinia mi. Sed viverra a nibh et imperdiet. </p>
+
+{{/core-object-customize-panel}}

@@ -1,0 +1,6 @@
+
+{{#each opportunities as |item|}}
+      {{#nav-link-to 'opportunities.opportunity' item.id classNames="list-group-item"}} {{item.id}} {{/nav-link-to}}
+{{/each}}
+
+{{outlet}}
