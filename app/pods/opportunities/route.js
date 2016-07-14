@@ -5,8 +5,9 @@ export default Ember.Route.extend({
   breadCrumb: null,
 
   totalPagesParam: "meta.total-pages",
+  perPage:25,
 
-  model() {
-    return this.store.findAll('opportunity');
+  model(params) {
+    return this.store.findAll('opportunity', params);
   }
 });
