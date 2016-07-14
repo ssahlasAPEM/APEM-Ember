@@ -1,13 +1,16 @@
 import Ember from 'ember';
+import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(RouteMixin, {
 
   breadCrumb: null,
 
   totalPagesParam: "meta.total-pages",
   perPage:25,
 
-  model(params) {
-    return this.store.findAll('opportunity', params);
+  model: function(params) {
+    // todo is your model name
+    // returns a PagedRemoteArray
+    return this.findPaged('opportunity',params);
   }
 });
