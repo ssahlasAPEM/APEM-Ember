@@ -10,7 +10,7 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'default-src' : "'none'",
       'script-src'  : "'self' 'unsafe-inline' 'unsafe-eval' https://notify.bugsnag.com",
-      'font-src'    : "'self' fonts.googleapis.com fonts.gstatic.com maxcdn.bootstrapcdn.com",
+      'font-src'    : "'self' fonts.googleapis.com fonts.gstatic.com maxcdn.bootstrapcdn.com font-src data:;",
       'img-src'     : "'self' data:",
       'style-src'   : "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com fonts.googleapis.com",
       'media-src'   : "'self' https://notify.bugsnag.com",
@@ -35,7 +35,7 @@ module.exports = function(environment) {
   var devContentSecurityPolicy = {
     'default-src': "'self' *",
     'script-src': "'unsafe-inline' 'unsafe-eval' 'self' https://notify.bugsnag.com *",
-    'font-src': "'self' *",
+    'font-src': "'self' * data:;",
     'connect-src': "'self' *",
     'img-src': "'self' data: *",
     'style-src': "'unsafe-inline' 'self' *",
