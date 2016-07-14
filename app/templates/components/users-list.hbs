@@ -1,0 +1,8 @@
+<h2 id="title">Users:</h2>
+{{#each user in users}}
+  {{ user.username }}<br>
+{{else}}
+  <p>No items</p>
+{{/each}}
+
+{{yield}}
