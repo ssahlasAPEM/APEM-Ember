@@ -1,0 +1,14 @@
+.spacer-lg{
+  min-height:50px;
+}
+.home-sidebar{
+  padding:20px 30px;
+}
+/* Target all children of home-sidebar*/
+.home-sidebar *{
+
+}
+.home-sidebar img{
+  display:block;
+  margin:20px auto;
+}
