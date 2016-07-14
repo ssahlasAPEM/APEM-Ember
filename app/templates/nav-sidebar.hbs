@@ -1,10 +1,15 @@
-{{#ui-sidebar compact=true}}
-    <ul class="nav" id="side-menu">
-        <li><a><i class="revegy-icon icon-magnify-outline"></i> <span class="nav-label">Start</span></a></li>
-        <li><a><i class="revegy-icon icon-magnify-outline"></i> <span class="nav-label">Binary choice</span></a></li>
-        <li><a><i class="revegy-icon icon-magnify-outline"></i> <span class="nav-label">Multiple choice</span></a></li>
-        <li><a><i class="revegy-icon icon-magnify-outline"></i> <span class="nav-label">End</span></a></li>
-        <li><a><i class="revegy-icon icon-magnify-outline"></i> <span class="nav-label">Trigger</span></a></li>
-        <li><a><i class="revegy-icon icon-magnify-outline"></i> <span class="nav-label">Delete</span></a></li>
-    </ul>
+{{#ui-sidebar closeSidebar=(action 'sidebarToggle') isClosed=sidebarClosed}}
+    <img src="assets/images/corp-logo.png" class="apem-logo"/>
+    <li class="spacer visible-lg"></li>
+    {{#ui-content-scroll hasCalculatedHeight=true calculatedHeightOffset="87px"}}
+        <ul class="nav ui-fh" id="side-menu">
+            {{#nav-link-to 'dashboards'}}<i class="revegy-icon icon-meter"></i> <span class="nav-label">Home</span>{{/nav-link-to}}
+            {{#nav-link-to 'notifications'}}<i class="revegy-icon icon-notify"></i> <span class="nav-label">Currency Rate</span>{{/nav-link-to}}
+            {{#nav-link-to 'accounts'}}<i class="revegy-icon icon-portfolio"></i> <span class="nav-label">Manage Password</span>{{/nav-link-to}}
+            <li class="spacer visible-lg"></li>
+            {{#nav-link-to 'contacts'}}<i class="revegy-icon icon-contact"></i> <span class="nav-label">Admin Functions</span>{{/nav-link-to}}
+            {{#nav-link-to 'opportunities'}}<i class="revegy-icon icon-money"></i> <span class="nav-label">User Management</span>{{/nav-link-to}}
+            {{#nav-link-to 'opportunities'}}<i class="revegy-icon icon-money"></i> <span class="nav-label">Form Management</span>{{/nav-link-to}}
+        </ul>
+    {{/ui-content-scroll}}
 {{/ui-sidebar}}

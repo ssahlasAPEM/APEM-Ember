@@ -34,6 +34,7 @@
     "hammer-time": "1.0.0",
     "matchMedia": "0.2.0",
     "pretender": "~0.10.1",
-    "Faker": "~3.0.0"
+    "Faker": "~3.0.0",
+    "semantic-ui": "^2.2.2"
   }
 }
