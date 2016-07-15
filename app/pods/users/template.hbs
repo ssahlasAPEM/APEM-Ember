@@ -1,7 +1,3 @@
-{{#each user in users}}
-  {{ user.username }}<br>
-{{else}}
-  <p>No items</p>
-{{/each}}
-
 {{outlet}}
+
+{{ember-light-table model=model type='user'}}
