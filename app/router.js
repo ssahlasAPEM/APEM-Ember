@@ -25,6 +25,7 @@ Router.map(function() {
     });
 
   });
+  this.route('fields');
 });
 
 Ember.Router.reopen({ rootURL: '/' });
