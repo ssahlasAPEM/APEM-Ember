@@ -44,7 +44,7 @@ export default Ember.Component.extend({
         sortable: true
       }, {
         label: 'Opportunities',
-        valuePath: 'opportunities',
+        valuePath: 'numOpportunities',
         width: '150px',
         sortable: true
       }, {
