@@ -1,12 +1,12 @@
 <div class="vertical menu visible home-sidebar ember-view ui sidebar left">
   <img src="assets/images/corp-logo.png" class="apem-logo"/>
   <div class="spacer spacer-lg"></div>
-  <a class="item">Home</a>
-  <a class="item">Currency Rate</a>
-  <a class="item">Manage Password</a>
+  <li>{{#link-to "home" class="item"}}Home{{/link-to}}</li>
+  <li>{{#link-to "#" class="item"}}Currency Rate{{/link-to}}</li>
+  <li>{{#link-to "#" class="item"}}Manage Password{{/link-to}}</li>
 
   <div class="spacer spacer-lg"></div>
   <a class="item">Admin Functions</a>
-  <a class="item">User Management</a>
+  <li>{{#link-to "#" class="item"}}User Management{{/link-to}}</li>
   <a class="item">Form Management</a>
 </div>
