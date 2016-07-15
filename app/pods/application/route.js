@@ -19,8 +19,6 @@ export default Ember.Route.extend({
 
   renderTemplate() {
     this._super(...arguments);
-    this.render('nav-sidebar', { into: 'application', outlet: 'nav-sidebar' });
-    this.render('nav-header', { into: 'application', outlet: 'nav-header' });
   },
 
   actions: {
