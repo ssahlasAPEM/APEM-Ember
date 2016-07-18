@@ -1,3 +1,10 @@
 {{outlet}}
 
-{{users/usr-table model=model}}
+{{users/usr-table model=model type='user'}}
+
+<button class="right floated" id="remove-selected" {{action "clearSelected"}}>
+  Delete User(s)
+</button>
+<button class="right floated" id="create-user" {{action "createUser"}}>
+  New User
+</button>
