@@ -1,0 +1,19 @@
+{{#if isMultiline}}
+    {{textarea
+    required=isRequired
+    maxlength=allowedLength
+    value=value
+    rows=numberOfLines
+    focusIn=(action 'inputGotFocus')
+    focusOut=(action 'inputLostFocus')
+    classNames=inputClassNames}}
+{{else}}
+    {{input
+    required=isRequired
+    maxlength=allowedLength
+    value=value
+    type="text"
+    focusIn=(action 'inputGotFocus')
+    focusOut=(action 'inputLostFocus')
+    classNames=inputClassNames}}
+{{/if}}

@@ -13,7 +13,7 @@ export default Ember.Component.extend({
       valuePath: 'id',
       width: '60px',
       sortable: false,
-      cellComponent: 'ui-form/ui-checkbox'
+      cellComponent: 'users/edit-checkbox'
     }, {
       label: 'Username',
       valuePath: 'username',
@@ -33,7 +33,8 @@ export default Ember.Component.extend({
       label: 'Active',
       valuePath: 'active',
       width: '150px',
-      sortable: true
+      sortable: true,
+      cellComponent: 'users/active-checkbox'
     }];
   }),
 
