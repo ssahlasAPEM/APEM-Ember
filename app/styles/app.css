@@ -45,3 +45,11 @@
   padding-left: 5%;
   padding-right: 5%;
 }
+
+.breadcrumbs {
+  padding-left: 0px;
+}
+.breadcrumbs .breadcrumb-item {
+  padding-left: 0px;
+  list-style-type: none;
+}
