@@ -17,6 +17,12 @@ export default Ember.Route.extend({
     this._super(...arguments);
   },
 
+  afterModel: function(model, transition){
+    if (transition.targetName === "home.index"){
+      this.transitionTo('opportunities');
+    }
+  },
+
   actions: {
     loading(transition) {
       Ember.run.scheduleOnce('afterRender', this, () => {

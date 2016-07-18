@@ -53,6 +53,23 @@ export default Ember.Component.extend({
         width: '150px',
         sortable: true
       }];
+    } else if(this.get('type') === 'field') {
+      return [{
+        label: 'Field Name',
+        valuePath: 'label',
+        width: '150px',
+        sortable: true
+      }, {
+        label: 'Type',
+        valuePath: 'type',
+        width: '150px',
+        sortable: true
+      }, {
+        label: 'Required',
+        valuePath: 'required',
+        width: '150px',
+        sortable: true
+      }];
     }
 
   }),

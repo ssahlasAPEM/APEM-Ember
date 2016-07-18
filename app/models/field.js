@@ -1,14 +1,12 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-// import { belongsTo, hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 
-export default Model.extend({
-  created_at: attr('string'),
-  updated_at: attr('string'),
-  label: attr('string'),
-  type: attr('string'),
-  value: attr('string', { defaultValue: null }),
-  options: attr('string', { defaultValue: null }),
-  reuired: attr('boolean', { defaultValue: true }),
-  visible: attr('boolean', { defaultValue: true })
+export default DS.Model.extend({
+  created_at: DS.attr('string'),
+  updated_at: DS.attr('string'),
+  label: DS.attr('string'),
+  type: DS.attr('string'),
+  value: DS.attr('string', { defaultValue: null }),
+  options: DS.attr('string', { defaultValue: null }),
+  required: DS.attr('boolean', { defaultValue: true }),
+  visible: DS.attr('boolean', { defaultValue: true })
 });

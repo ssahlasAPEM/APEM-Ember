@@ -6,7 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     podModulePrefix : 'apem/pods',
-    locationType: 'auto',
+    locationType: 'history',
     contentSecurityPolicy: {
       'default-src' : "'none'",
       'script-src'  : "'self' 'unsafe-inline' 'unsafe-eval' https://notify.bugsnag.com",
@@ -28,7 +28,7 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       usingCors: false,
-      apiUrl: null,
+      apiUrl: null
     }
   };
 
