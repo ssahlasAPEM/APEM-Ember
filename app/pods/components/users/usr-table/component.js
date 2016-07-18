@@ -13,8 +13,7 @@ export default Ember.Component.extend({
       valuePath: 'id',
       width: '60px',
       sortable: false,
-      cellType:'base',
-      // cellComponent: 'checkbox-cell'
+      cellComponent: 'ui-form/ui-checkbox'
     }, {
       label: 'Username',
       valuePath: 'username',
