@@ -1,22 +1,25 @@
-{{#light-table table as |t|}}
-  {{t.head}}
+<table class="ui table ui-table">
 
-  {{#t.body as |body|}}
-    {{#body.expanded-row as |row|}}
-    {{/body.expanded-row}}
+  <thead>
+    <tr>
+      <th>NAO #</th>
+      <th>Sales Person</th>
+      <th>Revenue</th>
+      <th>Prod Type</th>
+    </tr>
+  </thead>
 
-    {{#if isLoading}}
-      {{#body.loader}}
-        Loading...
-      {{/body.loader}}
-    {{/if}}
+  <tbody>
 
-    {{#if table.isEmpty}}
-      {{#body.no-data}}
-        No opportunities found.
-      {{/body.no-data}}
-    {{/if}}
-  {{/t.body}}
+    {{#each model as |opp|}}
+      <tr>
+        <td>{{opp.id}}</td>
+        <td>{{opp.apemSalesPerson}}</td>
+        <td>{{opp.potentialAnnualRev}}</td>
+        <td>{{opp.productType}}</td>
+      </tr>
+    {{/each}}
 
-  {{t.foot}}
-{{/light-table}}
+  </tbody>
+
+</table>

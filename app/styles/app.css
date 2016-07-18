@@ -19,11 +19,18 @@
   padding: 1rem;
 }
 
+.ui-main {
+  width: calc(100% - 260px);
+}
+
+.ui-main .ui-content {
+  padding: 20px;
+}
+
 .ui.attached.menu {
   height: 100px;
   padding-left: 0px;
   padding-right: 0px;
-  width: calc(100% - 260px);
 }
 .ui.attached.menu .ui.container {
   width: 100%;

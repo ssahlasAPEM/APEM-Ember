@@ -1,22 +1,31 @@
-{{#light-table table as |t|}}
-  {{t.head}}
+<table class="ui table ui-table">
 
-  {{#t.body as |body|}}
-    {{#body.expanded-row as |row|}}
-    {{/body.expanded-row}}
+  <thead>
+    <tr>
+      <th></th>
+      <th>Username</th>
+      <th>Type</th>
+      <th>Opportunities</th>
+      <th>Active</th>
+    </tr>
+  </thead>
 
-    {{#if isLoading}}
-      {{#body.loader}}
-        Loading...
-      {{/body.loader}}
-    {{/if}}
+  <tbody>
 
-    {{#if table.isEmpty}}
-      {{#body.no-data}}
-        No opportunities found.
-      {{/body.no-data}}
-    {{/if}}
-  {{/t.body}}
+    {{#each model as |usr|}}
+      <tr>
+        <td>
+          {{input type="checkbox" class="" checked=false disabled=false}}
+        </td>
+        <td>{{usr.username}}</td>
+        <td>{{usr.type}}</td>
+        <td>{{usr.numOpportunities}}</td>
+        <td>
+          {{input type="checkbox" class="" checked=usr.active disabled=true}}
+        </td>
+      </tr>
+    {{/each}}
 
-  {{t.foot}}
-{{/light-table}}
+  </tbody>
+
+</table>

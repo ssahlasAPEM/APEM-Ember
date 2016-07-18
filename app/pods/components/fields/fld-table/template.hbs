@@ -1,22 +1,25 @@
-{{#light-table table as |t|}}
-  {{t.head}}
+<table class="ui table ui-table">
 
-  {{#t.body as |body|}}
-    {{#body.expanded-row as |row|}}
-    {{/body.expanded-row}}
+  <thead>
+    <tr>
+      <th>Field Name</th>
+      <th>Type</th>
+      <th>Required</th>
+    </tr>
+  </thead>
 
-    {{#if isLoading}}
-      {{#body.loader}}
-        Loading...
-      {{/body.loader}}
-    {{/if}}
+  <tbody>
 
-    {{#if table.isEmpty}}
-      {{#body.no-data}}
-        No opportunities found.
-      {{/body.no-data}}
-    {{/if}}
-  {{/t.body}}
+    {{#each model as |fld|}}
+      <tr>
+        <td>{{fld.label}}</td>
+        <td>{{fld.type}}</td>
+        <td>
+          {{input type="checkbox" class="" checked=fld.required disabled=true}}
+        </td>
+      </tr>
+    {{/each}}
 
-  {{t.foot}}
-{{/light-table}}
+  </tbody>
+
+</table>
