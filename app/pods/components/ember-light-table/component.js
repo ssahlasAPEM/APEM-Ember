@@ -10,7 +10,9 @@ export default Ember.Component.extend({
   columns: computed(function() {
     var modelType = this.get('type');
     switch (modelType) {
+
       case 'opportunity':
+
         return [{
           label: 'NAO #',
           valuePath: 'id',
@@ -33,36 +35,56 @@ export default Ember.Component.extend({
           sortable: true
         }];
 
-        case 'user':
-          return [
-            {
-              valuePath: 'id',
-              width: '60px',
-              sortable: false,
-              cellType:'base',
-              // cellComponent: 'checkbox-cell'
-            },
-            {
-              label: 'Username',
-              valuePath: 'username',
-              width: '60px',
-              sortable: true
-            }, {
-              label: 'Type',
-              valuePath: 'type',
-              width: '150px',
-              sortable: true
-            }, {
-              label: 'Opportunities',
-              valuePath: 'numOpportunities',
-              width: '150px',
-              sortable: true
-            }, {
-              label: 'Active',
-              valuePath: 'active',
-              width: '150px',
-              sortable: true
-            }];
+      case 'user':
+
+        return [{
+          valuePath: 'id',
+          width: '60px',
+          sortable: false,
+          cellType:'base',
+          // cellComponent: 'checkbox-cell'
+        },
+        {
+          label: 'Username',
+          valuePath: 'username',
+          width: '60px',
+          sortable: true
+        }, {
+          label: 'Type',
+          valuePath: 'type',
+          width: '150px',
+          sortable: true
+        }, {
+          label: 'Opportunities',
+          valuePath: 'numOpportunities',
+          width: '150px',
+          sortable: true
+        }, {
+          label: 'Active',
+          valuePath: 'active',
+          width: '150px',
+          sortable: true
+        }];
+
+      case 'field':
+
+        return [{
+          label: 'Field Name',
+          valuePath: 'label',
+          width: '150px',
+          sortable: true
+        }, {
+          label: 'Type',
+          valuePath: 'type',
+          width: '150px',
+          sortable: true
+        }, {
+          label: 'Required',
+          valuePath: 'required',
+          width: '150px',
+          sortable: true
+        }];
+
     }
   }),
 
