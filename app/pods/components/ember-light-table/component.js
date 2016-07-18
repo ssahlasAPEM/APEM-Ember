@@ -38,11 +38,9 @@ export default Ember.Component.extend({
       case 'user':
 
         return [{
-          valuePath: 'id',
           width: '60px',
           sortable: false,
-          cellType:'base',
-          // cellComponent: 'checkbox-cell'
+          cellComponent: 'checkbox-cell'
         },
         {
           label: 'Username',
