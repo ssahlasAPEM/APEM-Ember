@@ -7,8 +7,7 @@ export default DS.Model.extend({
   updatedAt: DS.attr('string', { defaultValue: null }),
   username: DS.attr('string', { defaultValue: null }),
   type: DS.attr('string', { defaultValue: null }),
-  active: DS.attr('string', { defaultValue: true }),
-  password: DS.attr('string', { defaultValue: null }),
-  passwordVerify: DS.attr('string', { defaultValue: null }),
-  numOpportunities: DS.attr('string', { defaultValue: 0 })
+  active: DS.attr('string', { defaultValue: null }),
+  numOpportunities: DS.attr('string', { defaultValue: null }),
+  selected:DS.attr('boolean', { defaultValue: false }),
 });

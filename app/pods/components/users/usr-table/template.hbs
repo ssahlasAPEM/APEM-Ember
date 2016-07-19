@@ -15,7 +15,7 @@
     {{#each model as |usr|}}
       <tr>
         <td>
-          {{input type="checkbox" class="checkbox" checked=false disabled=false change=(action 'onSelection')}}
+          {{input type="checkbox" checkedBinding="selected" class="checkbox" disabled=false change=(action 'onSelection' usr) checked=usr.selected}}
         </td>
         <td>{{usr.username}}</td>
         <td>{{usr.type}}</td>
@@ -36,16 +36,14 @@
           New User
         {{/link-to}}
 
-        <div class="ui right floated small button" {{action 'launchConfirmDialog'}} disabled={{disableDelete}}>
-          Delete User
-        </div>
+        {{input type="button" value="Delete User" class="ui right floated small button" click=(action "launchConfirmDialog") disabled=disableDelete}}
       </th>
     </tr>
   </tfoot>
 
 </table>
 {{#if confirmShown}}
-  <div class="confirm-dialog">
+  <div class="confirm-dialog" modal>
     The selected users will be deleted. Continue?
     <div class="ui right floated small button" {{action "submitConfirm"}}>OK</div>
     <div class="ui right floated small button" {{action "cancelConfirm"}}>Cancel</div>
