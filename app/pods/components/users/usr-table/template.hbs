@@ -32,11 +32,11 @@
     <tr>
       <th></th>
       <th colspan="4">
-        <div class="ui right floated small button"  {{action 'createUser'}}>
+        {{#link-to 'users.new' tagName='div' class="ui right floated small button"}}
           New User
-        </div>
+        {{/link-to}}
         <div class="ui right floated small button disabled" {{action 'deleteUser'}}>
-          Delete User
+          Delete User(s)
         </div>
       </th>
     </tr>

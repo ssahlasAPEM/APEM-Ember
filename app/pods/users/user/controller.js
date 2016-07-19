@@ -1,10 +1,6 @@
 import Ember from 'ember';
-import CoreObjectCustomization from 'emberapp/mixins/core-object/customization';
 
-export default Ember.Controller.extend(CoreObjectCustomization, {
-
-    coreObjectName: 'user',
-
+export default Ember.Controller.extend({
     actions: {
         deleteUser() {
             this.get('model').deleteRecord();
