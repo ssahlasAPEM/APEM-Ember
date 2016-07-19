@@ -1,11 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    redirect() {
-        let newUser = this.store.createRecord('user');
+  model: function() {
+    return this.store.createRecord('user');
+  },
 
-        newUser.save().then((savedUser) => {
+  actions: {
+    createUser() {
+      // Create the user
+      let user = this.controller.get('model');
+
+      if (user.get('hasDirtyAttributes')) {
+        user.save().then((savedUser) => {
             this.transitionTo('users.user.detail', savedUser);
         });
+      }
     }
+  }
 });

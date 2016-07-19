@@ -53,3 +53,7 @@
   padding-left: 0px;
   list-style-type: none;
 }
+
+.ui.dropdown {
+  min-width: 176px;
+}

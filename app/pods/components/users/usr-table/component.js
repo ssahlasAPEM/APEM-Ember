@@ -10,7 +10,6 @@ export default Ember.Component.extend({
 
   actions: {
     deleteUser() {
-        debugger;
     }
   }
 });

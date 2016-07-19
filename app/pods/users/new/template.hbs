@@ -1,5 +1,5 @@
 <div class="ui content">
-  <h3 class="subtitle">Edit User</h3>
+  <h3 class="subtitle">New User</h3>
   <br>
   <div class="details">
 
@@ -30,11 +30,8 @@
     {{/power-select}}
     <br/><br/>
 
-    {{#link-to 'users' tagName='div' class="ui small button" activeClass=""}}
-      Cancel
-    {{/link-to}}
-    <div class="ui small button" {{action 'updateUser'}}>
-      Edit User
+    <div class="ui small button" {{action 'createUser'}}>
+      Create User
     </div>
 
   </div>

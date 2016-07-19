@@ -1,0 +1,11 @@
+{{#if useTextarea}}
+    {{textarea value=fieldValue rows=linesOfText id=inputId classNames="form-control" focusIn=(action 'fieldFocusedIn') autofocus=autofocus}}
+{{else}}
+    {{input value=fieldValue id=inputId classNames="form-control" type=type focusIn=(action 'fieldFocusedIn') autofocus=autofocus}}
+{{/if}}
+
+{{#if (v-get model property 'isInvalid')}}
+  <div class="error">
+    {{v-get model property 'message'}}
+  </div>
+{{/if}}
