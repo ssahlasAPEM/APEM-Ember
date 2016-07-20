@@ -13,17 +13,21 @@
   <tbody>
 
     {{#each model as |usr|}}
-      <tr>
-        <td>
-          {{input type="checkbox" checkedBinding="selected" class="checkbox" disabled=false change=(action 'onSelection' usr) checked=usr.selected}}
-        </td>
-        <td>{{usr.username}}</td>
-        <td>{{usr.type}}</td>
-        <td>{{usr.numOpportunities}}</td>
-        <td>
-          {{input type="checkbox" class="checkbox" checked=usr.active disabled=true}}
-        </td>
-      </tr>
+
+        <tr>
+          <td>
+            {{input type="checkbox" checkedBinding="selected" class="checkbox"
+            disabled=false change=(action 'onSelection' usr) checked=usr.selected}}
+          </td>
+          {{!-- Replace with link to --}}
+            <td>{{#link-to "users.user.detail" usr clss="row-link"}}{{usr.username}}{{/link-to}}</td>
+            <td>{{#link-to "users.user.detail" usr clss="row-link"}}{{usr.type}}{{/link-to}}</td>
+            <td>{{#link-to "users.user.detail" usr clss="row-link"}}{{usr.numOpportunities}}{{/link-to}}</td>
+            <td>
+              {{input type="checkbox" class="checkbox" checked=usr.active disabled=true}}
+            </td>
+        </tr>
+
     {{/each}}
 
   </tbody>

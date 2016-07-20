@@ -26,7 +26,6 @@ export default Ember.Component.extend({
           user.destroyRecord(); // => DELETE to /posts/2
         });
       }
-      debugger;
     },
 
     cancelConfirm(){
