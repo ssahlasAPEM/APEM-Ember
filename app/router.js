@@ -39,6 +39,9 @@ Router.map(function() {
       this.route('new', {});
     });
 
+    /* User Settings Routes */
+    this.route('profile', { resetNamespace: true });
+
   });
 });
 

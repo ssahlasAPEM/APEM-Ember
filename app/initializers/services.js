@@ -6,6 +6,7 @@ export function initialize(application) {
   // Route info
   application.inject('service:route-info', 'router', 'router:main');
   application.inject('service:route-info', 'app', 'controller:application');
+  application.inject('service:profile', 'store', 'service:store');
 
   if (ENV.APP.usingCors === true) {
     (function($){

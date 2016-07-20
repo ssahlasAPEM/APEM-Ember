@@ -5,10 +5,10 @@
     </div>
 
     <div class="right item">
-      Welcome Username
+      Welcome, {{identity.profile.username}}
     </div>
     <div class="right item">
-      Last Login Info
+      Last Logged In: {{moment-format identity.profile.lastLogin 'MMMM Do, YYYY'}}
     </div>
     <div class="ui simple dropdown right item">
       More

@@ -21,18 +21,5 @@ export default Ember.Route.extend({
     if (transition.targetName === "home.index"){
       this.transitionTo('opportunities');
     }
-  },
-
-  actions: {
-    loading(transition) {
-      Ember.run.scheduleOnce('afterRender', this, () => {
-        Ember.$('#application-loader').addClass('fade-show').removeClass('fade-hide');
-      });
-      transition.promise.finally(() => {
-        Ember.run.scheduleOnce('afterRender', this, () => {
-          Ember.$('#application-loader').addClass('fade-hide').removeClass('fade-show');
-        });
-      });
-    }
   }
 });

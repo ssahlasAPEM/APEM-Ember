@@ -49,6 +49,6 @@ export default DS.Model.extend({
   lostToWhom : DS.attr('string', { defaultValue: null }),
   reasonForLoss : DS.attr('string', { defaultValue: null }),
   commentField : DS.attr('string', { defaultValue: null }),
-  created_at : DS.attr('string', { defaultValue: null }),
-  updated_at : DS.attr('string', { defaultValue: null })
+  createdAt : DS.attr('string', { defaultValue: null }),
+  updatedAt : DS.attr('string', { defaultValue: null })
 });

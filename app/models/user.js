@@ -11,5 +11,6 @@ export default DS.Model.extend({
   type: DS.attr('string', { defaultValue: null }),
   active: DS.attr('string', { defaultValue: true }),
   numOpportunities: DS.attr('string', { defaultValue: 0 }),
+  lastLogin: DS.attr('string', { defaultValue: null }),
   selected:DS.attr('boolean', { defaultValue: false }),
 });
