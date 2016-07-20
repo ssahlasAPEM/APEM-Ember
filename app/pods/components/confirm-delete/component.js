@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   users:Ember.inject.service(),
 
   //attributeBindings - the component properties which are bound to data from parent
-  attributeBindings: ['isDisabled'],
+  attributeBindings: ['isDisabled', 'selectedUsers'],
 
   actions:{
 
@@ -18,7 +18,14 @@ export default Ember.Component.extend({
         .modal('show');
     },
 
-    approveDelete(){
+    approveDelete:function(){
+      var deletable = this.get('selectedUsers'),
+      store = deletable[0].store;
+      for(var i=0, dLen = deletable.length; i<dLen; i++){
+        store.findRecord('user', deletable[i].id).then(function(user) {
+          user.destroyRecord(); // => DELETE to /posts/2
+        });
+      }
       debugger;
     },
 
