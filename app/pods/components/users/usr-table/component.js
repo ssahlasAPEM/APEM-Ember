@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['usr-table'],
   model: null,
-  
+
   init() {
     this._super(...arguments);
     //a place to hold all selecter records for this table
@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 
   //observing the table's selectedItems to manage the delete button's disabled property
   disableDelete: function() {
-    return !(this.get('selectedItems').length > 0)? true:false;
+    return (this.get('selectedItems').length > 0)? false:true;
   }.property('selectedItems.length'),
 
   actions: {

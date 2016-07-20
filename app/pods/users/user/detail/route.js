@@ -3,23 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   breadCrumb: null,
 
-  actions: {
-    willTransition(/* transition */) {
-      // Make sure current account is saved
-      let user = this.controller.get('model');
-
-      if (user.get('hasDirtyAttributes')) {
-        // transition.abort();
-        user.save();
-        /* .then(() => {
-         transition.retry();
-         }, (error) => {
-         alert(`${error}`);
-         });*/
-      }
-    }
-  },
-
   setupController() {
     this._super(...arguments);
 
@@ -35,9 +18,24 @@ export default Ember.Route.extend({
       let user = this.controller.get('model');
 
       if (user.get('hasDirtyAttributes')) {
+        console.log('user needs update');
         user.save().then((savedUser) => {
             this.transitionTo('users.user.detail', savedUser);
         });
+      }
+    },
+    willTransition(/* transition */) {
+      // Make sure current account is saved
+      let user = this.controller.get('model');
+
+      if (user.get('hasDirtyAttributes')) {
+        // transition.abort();
+        user.save();
+        /* .then(() => {
+         transition.retry();
+         }, (error) => {
+         alert(`${error}`);
+         });*/
       }
     }
   }
