@@ -43,6 +43,10 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    }
+    ENV.APP.usingCors = true;
     ENV.APP.apiUrl = 'http://apem.local:8000';
     ENV.contentSecurityPolicy = devContentSecurityPolicy;
   }

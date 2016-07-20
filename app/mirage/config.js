@@ -7,109 +7,45 @@ export default function() {
 
     Note: these only affect routes defined *after* them!
   */
+
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = 'api/v1';
-  // this.timing = 400;
+  this.namespace = 'api/v1';    // make this `api`, for example, if your API is namespaced
+  this.timing = 2000;      // delay for each request, automatically set to 0 during testing
 
   /*
-    Route shorthand cheatsheet
-  */
-  /*
-    GET shorthands
+    Shorthand cheatsheet:
 
-    // Collections
-    this.get('/contacts');
-    this.get('/contacts', 'users');
-    this.get('/contacts', ['contacts', 'addresses']);
+    this.get('/posts');
+    this.post('/posts');
+    this.get('/posts/:id');
+    this.put('/posts/:id'); // or this.patch
+    this.del('/posts/:id');
 
-    // Single objects
-    this.get('/contacts/:id');
-    this.get('/contacts/:id', 'user');
-    this.get('/contacts/:id', ['contact', 'addresses']);
+    http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
 
-  /*
-    POST shorthands
-
-    this.post('/contacts');
-    this.post('/contacts', 'user'); // specify the type of resource to be created
-  */
-
-  /*
-    PUT shorthands
-
-    this.put('/contacts/:id');
-    this.put('/contacts/:id', 'user'); // specify the type of resource to be updated
-  */
-
-  /*
-    DELETE shorthands
-
-    this.del('/contacts/:id');
-    this.del('/contacts/:id', 'user'); // specify the type of resource to be deleted
-
-    // Single object + related resources. Make sure parent resource is first.
-    this.del('/contacts/:id', ['contact', 'addresses']);
-  */
-
-  /*
-    Function fallback. Manipulate data in the db via
-
-      - db.{collection}
-      - db.{collection}.find(id)
-      - db.{collection}.where(query)
-      - db.{collection}.update(target, attrs)
-      - db.{collection}.remove(target)
-
-    // Example: return a single object with related models
-    this.get('/contacts/:id', function(db, request) {
-      var contactId = +request.params.id;
-
-      return {
-        contact: db.contacts.find(contactId),
-        addresses: db.addresses.where({contact_id: contactId})
-      };
-    });
-
-  */
-
-
-}
-
-
-// You can optionally export a config that is only loaded during tests
-export function testConfig() {
-
-  /*this.namespace = 'api/v1';
-  this.timing = 400;
-  this.passthrough('/write-blanket-coverage');
-
-  // user profile
-  // added here because fixtures are acting weird in testing
-  this.get('/profile', () => {
-    const response = {
-      'data': {
-        'type': 'profile',
-        'id': 6,
-        'attributes': {
-          'user-id': 6,
-          'client-id': 1,
-          'user-name': 'Andrew Engstrom',
-          'user-email': 'apengstrom@gmail.com',
-          'user-image': 'http://www2.curiousm.com/wp-content/themes/curiousHome/images/curiousmLogoWhite.png',
-          'user-integration': 'SALESFORCE'
-        }
-      }
-    };
-    return response;
+  //get all users
+  this.get('/users',(schema)=>{
+    return schema.users.all();
   });
 
-  this.get('/users', (db) => {
-    const response = {
-      data: db.users.map((attrs) => (
-        { type: 'users', id: attrs.id, attributes: attrs }
-      ))
-    };
-    return response;
-  });*/
+  //get a single user
+  this.get('/users/:id',(schema,request)=>{
+    var id = request.params.id;
+
+    return schema.users.find(id);
+  });
+
+  //get all opportunities
+  this.get('/opportunities',(schema)=>{
+    return schema.opportunities.all();
+  });
+
+  //get a single opportunity
+  this.get('/opportunities/:id',(schema,request)=>{
+    var id = request.params.id;
+
+    return schema.opportunities.find(id);
+  });
+
 }

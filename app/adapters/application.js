@@ -1,15 +1,15 @@
-import DS from 'ember-data';
-import config from '../config/environment';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import ENV from '../config/environment';
 
-export default DS.JSONAPIAdapter.extend({
+export default JSONAPIAdapter.extend({
   namespace: 'api/v1',
-  host: config.APP.apiUrl,
+  host: ENV.APP.apiUrl,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type':'application/vnd.api+json'
   },
   ajax(url, method, hash) {
-    if (config.APP.usingCors) {
+    if (ENV.APP.usingCors) {
       if (hash === undefined) { hash = {}; }
 
       hash.crossDomain = true;
