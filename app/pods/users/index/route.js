@@ -3,7 +3,7 @@ import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
 
 export default Ember.Route.extend(RouteMixin, {
   totalPagesParam: "meta.total-pages",
-  perPage:25,
+  perPage: 25,
   breadCrumb: { title: 'User Management' },
 
   model: function(params) {

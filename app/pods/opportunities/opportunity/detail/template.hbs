@@ -1,36 +1,46 @@
-{{#ui-content/panel-body owner=""}}
+<div class="ui content">
+  <h3 class="subtitle">View/Edit Opportunity</h3>
+  <br>
 
-    <h3 class="title-with-icon subtitle"><i class="revegy-icon icon-detail"></i> <div>{{hover-edit-field value=model.listTitle}}</div></h3>
-    <br>
-    <div class="details">
+  <div class="validation-errors">
+      {{error-message errors=serverErrors}}
+  </div>
 
-        <dl>
-            <dt>Description</dt>
-            <dd>{{hover-edit-field linesOfText=3 value=model.description}}</dd>
-        </dl>
-        <dl>
-            <dt>Stage</dt>
-            <dd>{{hover-edit-field value=model.stage}}</dd>
-        </dl>
-        <dl>
-            <dt>Size</dt>
-            <dd>{{hover-edit-field value=model.size}}</dd>
-        </dl>
-        <dl>
-            <dt>Start Date</dt>
-            <dd>{{hover-edit-field value=model.startDate}}</dd>
-        </dl>
-        <dl>
-            <dt>Calc. Close Date</dt>
-            <dd>{{hover-edit-field value=model.calcCloseDate}}</dd>
-        </dl>
-        <dl>
-            <dt>Estimated Close Date</dt>
-            <dd>{{hover-edit-field value=model.estCloseDate}}</dd>
-        </dl>
+  <div class="details">
+
+    <!--<label for="username">Username:</label><br/>
+    <div class="ui input">
+      {{input value=model.username}}
     </div>
-{{/ui-content/panel-body}}
 
-{{#ui-content/panel-footer}}
-    {{ui-timestamps object=model}}
-{{/ui-content/panel-footer}}
+    <br/><br/>
+
+    <label for="password">Password:</label><br/>
+    <div class="ui input">
+      {{input type="password" value=model.password}}
+    </div>
+
+    <br/><br/>
+
+    <label for="verify_password">Verify Password:</label><br/>
+    <div class="ui input">
+      {{input type="password" value=model.passwordVerify}}
+    </div>
+
+    <br/><br/>
+
+    <label for="user_type">User Type:</label><br/>
+    {{#power-select class="ui dropdown input" onchange=(action 'selectUserType') selected=model.type placeholder="Select User Type" options=userTypes as |userType|}}
+        {{userType}}
+    {{/power-select}}
+    <br/><br/>-->
+
+    {{#link-to 'opportunities' tagName='div' class="ui small button" activeClass=""}}
+      Cancel
+    {{/link-to}}
+    <div class="ui small button" {{action 'updateOpportunity'}}>
+      Edit Opportunity
+    </div>
+
+  </div>
+</div>

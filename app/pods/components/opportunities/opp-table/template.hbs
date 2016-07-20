@@ -13,10 +13,26 @@
 
     {{#each model as |opp|}}
       <tr>
-        <td>{{opp.id}}</td>
-        <td>{{opp.apemSalesPerson}}</td>
-        <td>{{currency-format opp.potentialAnnualRev}}</td>
-        <td>{{opp.productType}}</td>
+        <td>
+          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+            {{opp.id}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+            {{opp.apemSalesPerson}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+            {{currency-format opp.potentialAnnualRev}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+            {{opp.productType}}
+          {{/link-to}}
+        </td>
       </tr>
     {{/each}}
 

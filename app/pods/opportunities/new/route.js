@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    redirect() {
-        let newUser = this.store.createRecord('user');
+  redirect() {
+    let newOpportunity = this.store.createRecord('opportunity');
 
-        newUser.save().then((savedUser) => {
-            this.transitionTo('users.user.detail', savedUser);
-        });
-    }
+    newOpportunity.save().then((savedOpportunity) => {
+      this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
+    });
+  }
 });
