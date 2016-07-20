@@ -4,8 +4,9 @@ export default Ember.Component.extend({
 
   users:Ember.inject.service(),
 
+  //attributeBindings - the component properties which are bound to data from parent
   attributeBindings: ['isDisabled'],
-  
+
   actions:{
 
     openInviteForm:function(){
@@ -18,6 +19,7 @@ export default Ember.Component.extend({
     },
 
     approveDelete(){
+      debugger;
     },
 
     cancelConfirm(){
