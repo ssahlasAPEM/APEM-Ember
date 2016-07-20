@@ -18,12 +18,13 @@ export default Ember.Route.extend({
       let user = this.controller.get('model');
 
       if (user.get('hasDirtyAttributes')) {
-        console.log('user needs update');
+        console.log('user needs update!');
         user.save().then((savedUser) => {
             this.transitionTo('users.user.detail', savedUser);
         });
       }
     },
+
     willTransition(/* transition */) {
       // Make sure current account is saved
       let user = this.controller.get('model');
