@@ -7,5 +7,5 @@
   */
   "disableAnalytics": true,
   "usePods": true,
-  "output-path": "../../laravel-projects/Code/APEM/public/dist"
+  "output-path": "../../Documents/vagrant_boxes/Projects/APEM/public/dist"
 }
