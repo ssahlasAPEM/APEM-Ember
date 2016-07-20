@@ -1,0 +1,15 @@
+{{#if errors}}
+  <div class="alert alert-danger" role="alert">
+    <!--<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+    {{#each errors as |serverError|}}
+    <!--<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <strong>{{serverError.message}}</strong>-->
+    <ul>
+      {{#each serverError.errors as |error|}}
+        <li>{{error.title}}: {{{error.detail}}}</li>
+      {{/each}}
+    </ul>
+    {{/each}}
+  </div>
+{{/if}}

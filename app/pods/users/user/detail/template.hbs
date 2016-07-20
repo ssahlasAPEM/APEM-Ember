@@ -1,6 +1,11 @@
 <div class="ui content">
   <h3 class="subtitle">Edit User</h3>
   <br>
+
+  <div class="validation-errors">
+      {{error-message errors=serverErrors}}
+  </div>
+
   <div class="details">
 
     <label for="username">Username:</label><br/>
