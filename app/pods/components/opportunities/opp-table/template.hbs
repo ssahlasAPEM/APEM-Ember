@@ -15,7 +15,7 @@
       <tr>
         <td>{{opp.id}}</td>
         <td>{{opp.apemSalesPerson}}</td>
-        <td>{{opp.potentialAnnualRev}}</td>
+        <td>{{currency-format opp.potentialAnnualRev}}</td>
         <td>{{opp.productType}}</td>
       </tr>
     {{/each}}
