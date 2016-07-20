@@ -57,3 +57,7 @@
 .ui.dropdown {
   min-width: 176px;
 }
+
+.modal{
+  padding:12px;
+}

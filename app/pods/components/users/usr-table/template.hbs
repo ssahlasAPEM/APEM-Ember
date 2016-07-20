@@ -36,16 +36,13 @@
           New User
         {{/link-to}}
 
-        {{input type="button" value="Delete User" class="ui right floated small button" click=(action "launchConfirmDialog") disabled=disableDelete}}
+        {{confirm-delete isDisabled=disableDelete}}
+        <!-- {{input type="button"
+          value="Delete User"
+          class="ui right floated small button"
+          click=(action "openInviteForm")
+          disabled=disableDelete}} -->
       </th>
     </tr>
   </tfoot>
-
 </table>
-{{#if confirmShown}}
-  <div class="confirm-dialog" modal>
-    The selected users will be deleted. Continue?
-    <div class="ui right floated small button" {{action "submitConfirm"}}>OK</div>
-    <div class="ui right floated small button" {{action "cancelConfirm"}}>Cancel</div>
-  </div>
-{{/if}}
