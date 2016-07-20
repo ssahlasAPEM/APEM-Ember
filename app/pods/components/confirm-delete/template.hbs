@@ -3,15 +3,14 @@
   class="ui right floated small button"
   click=(action "openInviteForm") disabled=isDisabled}}
 
-{{#ui-modal name="user-invite-form" class="modal" }}
+{{#ui-modal name="user-invite-form" class="modal" onApprove=(action 'approveDelete') onDeny=(action 'cancelConfirm')  }}
   <div class="header">Delete Confirmation</div>
   <div class="content">
     <p>The selected users will be deleted. Continue?</p>
+    <div class="actions right">
+      <div class="ui cancel button" >Cancel</div>
+      <div class="ui approve button positive">Ok</div>
+    </div>
   </div>
-  <div class="actions right">
-    <div class="ui cancel button" {{action 'approveDelete'}}>Cancel</div>
-    <div class="ui approve button positive" {{action 'approveDelete'}}>Ok</div>
-  </div>
-
 {{/ui-modal}}
 {{yield}}
