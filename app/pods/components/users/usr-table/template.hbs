@@ -53,7 +53,10 @@
           New User
         {{/link-to}}
 
-        {{confirm-delete isDisabled=disableDelete selectedUsers=selectedItems}}
+        {{confirm-delete isDisabled=disableDelete deletableRecords=selectedItems
+          title='Confirm Delete'
+          recordType='user'
+          message='The selected users will be deleted. Continue?'}}
       </th>
     </tr>
   </tfoot>

@@ -72,3 +72,10 @@
   font-size: 12px;
   line-height: 20px;
 }
+
+.field-settings-box{
+  border:1px solid gray;
+  width:100%;
+  min-height:40px;
+  padding:12px;
+}

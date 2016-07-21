@@ -5,11 +5,11 @@ export default Ember.Component.extend({
   users:Ember.inject.service(),
 
   //attributeBindings - the component properties which are bound to data from parent
-  attributeBindings: ['isDisabled', 'selectedUsers'],
+  attributeBindings: ['isDisabled', 'deletableRecords', 'recordType', 'message', 'title'],
 
   actions:{
 
-    openInviteForm:function(){
+    openConfirmation:function(){
         Ember.$('.ui.modal')
         .modal({
           blurring: true
@@ -19,11 +19,12 @@ export default Ember.Component.extend({
     },
 
     approveDelete:function(){
-      var deletable = this.get('selectedUsers'),
+      console.log('deleting records ...');
+      var deletable = this.get('deletableRecords'),
       store = deletable[0].store;
       for(var i=0, dLen = deletable.length; i<dLen; i++){
-        store.findRecord('user', deletable[i].id).then(function(user) {
-          user.destroyRecord(); // => DELETE to /posts/2
+        store.findRecord(this.recordType, deletable[i].id).then(function(foundRecord) {
+          foundRecord.destroyRecord(); // => DELETE to /posts/2
         });
       }
     },

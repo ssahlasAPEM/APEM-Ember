@@ -20,8 +20,12 @@
     </div><label for="password">Required:</label>
 
     <br/><br/>
+    <h3>Form Value Management</h3>
+    <div class="ui input field-settings-box" >
+      {{fields/fld-settings model=model}}
+    </div>
 
-
+    <br/><br/>
     {{#link-to 'fields' tagName='div' class="ui small button" activeClass=""}}
       Cancel
     {{/link-to}}
