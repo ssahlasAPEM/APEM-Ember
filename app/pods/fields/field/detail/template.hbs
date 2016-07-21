@@ -1,0 +1,34 @@
+<div class="ui content">
+  <h3 class="subtitle">Edit Field</h3>
+  <br>
+
+  <div class="validation-errors">
+      {{error-message errors=serverErrors}}
+  </div>
+
+  <div class="details">
+
+    <label for="username">Field Label:</label><br/>
+    <div class="ui input">
+      {{input value=model.name}}
+    </div>
+
+    <br/><br/>
+
+    <label for="password">Required:</label><br/>
+    <div class="ui input">
+      {{input type="checkbox" value=model.required}}
+    </div>
+
+    <br/><br/>
+
+
+    {{#link-to 'fields' tagName='div' class="ui small button" activeClass=""}}
+      Cancel
+    {{/link-to}}
+    <div class="ui small button" {{action 'updateField'}}>
+      Update Field
+    </div>
+
+  </div>
+</div>

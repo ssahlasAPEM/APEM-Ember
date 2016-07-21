@@ -35,12 +35,14 @@
           {{/link-to}}
         </td>
         <td>
-          {{input type="checkbox" class="checkbox" checked=usr.active disabled=true}}
+          {{#link-to "users.user.detail" usr clss="row-link"}}
+            {{input type="checkbox" class="checkbox" checked=usr.active disabled=true}}
+          {{/link-to}}
         </td>
       </tr>
 
     {{/each}}
-    
+
   </tbody>
 
   <tfoot class="full-width">

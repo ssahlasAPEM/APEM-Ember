@@ -12,10 +12,16 @@
 
     {{#each model as |fld|}}
       <tr>
-        <td>{{fld.label}}</td>
-        <td>{{fld.type}}</td>
+        <td>{{#link-to "fields" fld clss="row-link"}}
+          {{fld.label}}
+        {{/link-to}}</td>
+        <td>{{#link-to "fields" fld clss="row-link"}}
+          {{fld.type}}
+        {{/link-to}}</td>
         <td>
-          {{input type="checkbox" class="" checked=fld.required disabled=true}}
+          {{#link-to "fields" fld clss="row-link"}}
+            {{input type="checkbox" class="" checked=fld.required disabled=true}}
+          {{/link-to}}
         </td>
       </tr>
     {{/each}}
