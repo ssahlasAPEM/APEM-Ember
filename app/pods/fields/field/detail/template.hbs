@@ -9,16 +9,15 @@
   <div class="details">
 
     <label for="username">Field Label:</label><br/>
-    <div class="ui input">
-      {{input value=model.name}}
+    <div class="ui input ">
+      {{input value=model.label}}
     </div>
 
     <br/><br/>
 
-    <label for="password">Required:</label><br/>
     <div class="ui input">
-      {{input type="checkbox" value=model.required}}
-    </div>
+      {{input type="checkbox" checked=model.required}}
+    </div><label for="password">Required:</label>
 
     <br/><br/>
 
