@@ -8,10 +8,8 @@
 
   <div class="details">
 
-    <label for="username">Field Label:</label><br/>
-    <div class="ui input ">
-      {{input value=model.label}}
-    </div>
+    <label for="username"><strong>Field Label:</strong></label>
+    <div class="ui input ">{{model.label}}</div>
 
     <br/><br/>
 
@@ -21,8 +19,8 @@
 
     <br/><br/>
     <h3>Form Value Management</h3>
-    <div class="ui input field-settings-box" >
-      {{fields/fld-settings model=model}}
+    <div class="field-settings-box">
+      {{model.options}}
     </div>
 
     <br/><br/>

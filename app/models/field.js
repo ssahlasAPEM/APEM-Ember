@@ -6,7 +6,7 @@ export default DS.Model.extend({
   label: DS.attr('string'),
   type: DS.attr('string'),
   value: DS.attr('string', { defaultValue: null }),
-  options: DS.attr('string', { defaultValue: null }),
+  options: DS.attr(),
   required: DS.attr('boolean', { defaultValue: true }),
   visible: DS.attr('boolean', { defaultValue: true })
 });
