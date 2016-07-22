@@ -7,7 +7,13 @@ export default Ember.Route.extend(RouteMixin, {
   breadCrumb: { title: 'Manage Opportunities' },
 
   model: function(params) {
-    // returns a PagedRemoteArray
-    return this.findPaged('opportunity',params);
+    return Ember.RSVP.hash({
+      fields: this.store.findAll('field'),
+      opportunities: this.findPaged('opportunity',params)
+    });
+  },
+  setupController(controller, models) {
+    controller.set('fields', models.fields);
+    controller.set('opportunities', models.opportunities);
   }
 });

@@ -1,5 +1,14 @@
-<form class="ui form">
 
+{{#if fields}}
+  <h3>Field information</h3>
+  {{#each fields as |field|}}
+    <h4 class="ui dividing header">Shipping Information</h4>
+    {{field.group}}
+  {{/each}}
+{{else}}
+  <span>Loading Fields...</span>
+{{/if}}
+<form class="ui form">
   <ul>
     {{#each-in attributes as |key value|}}
     <div class="field">

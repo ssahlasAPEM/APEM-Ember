@@ -1,3 +1,4 @@
+Field count: {{fields.length}}
 <table class="ui table ui-table">
 
   <thead>
@@ -10,26 +11,25 @@
   </thead>
 
   <tbody>
-
     {{#each model as |opp|}}
       <tr>
         <td>
-          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+          {{#link-to "opportunities.opportunity.detail" opp fields=fields class="row-link"}}
             {{opp.id}}
           {{/link-to}}
         </td>
         <td>
-          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+          {{#link-to "opportunities.opportunity.detail" opp fields=fields class="row-link"}}
             {{opp.apemSalesPerson}}
           {{/link-to}}
         </td>
         <td>
-          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+          {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
             {{currency-format opp.potentialAnnualRev}}
           {{/link-to}}
         </td>
         <td>
-          {{#link-to "opportunities.opportunity.detail" opp clss="row-link"}}
+          {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
             {{opp.productType}}
           {{/link-to}}
         </td>
