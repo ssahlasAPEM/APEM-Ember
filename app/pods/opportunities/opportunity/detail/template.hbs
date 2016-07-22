@@ -8,39 +8,6 @@
 
   <div class="details">
 
-    <!--<label for="username">Username:</label><br/>
-    <div class="ui input">
-      {{input value=model.username}}
-    </div>
-
-    <br/><br/>
-
-    <label for="password">Password:</label><br/>
-    <div class="ui input">
-      {{input type="password" value=model.password}}
-    </div>
-
-    <br/><br/>
-
-    <label for="verify_password">Verify Password:</label><br/>
-    <div class="ui input">
-      {{input type="password" value=model.passwordVerify}}
-    </div>
-
-    <br/><br/>
-
-    <label for="user_type">User Type:</label><br/>
-    {{#power-select class="ui dropdown input" onchange=(action 'selectUserType') selected=model.type placeholder="Select User Type" options=userTypes as |userType|}}
-        {{userType}}
-    {{/power-select}}
-    <br/><br/>-->
-
-    {{#link-to 'opportunities' tagName='div' class="ui small button" activeClass=""}}
-      Cancel
-    {{/link-to}}
-    <div class="ui small button" {{action 'updateOpportunity'}}>
-      Edit Opportunity
-    </div>
-
+    {{opportunities/opt-form model=model}}
   </div>
 </div>

@@ -1,0 +1,19 @@
+<form class="ui form">
+
+  <ul>
+    {{#each-in attributes as |key value|}}
+    <div class="field">
+      <label>{{key}}</label>
+      {{input type="text" name=key value=value}}
+    </div>
+    {{/each-in}}
+  </ul>
+
+  <div class="actions right">
+    {{#link-to 'opportunities' tagName='div' class="ui small button" activeClass=""}}
+      Cancel
+    {{/link-to}}
+    <div class="ui small button " {{action 'updateOpportunity'}}>Edit Opportunity</div>
+  </div>
+</form>
+{{yield}}
