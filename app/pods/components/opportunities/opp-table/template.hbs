@@ -14,12 +14,12 @@ Field count: {{fields.length}}
     {{#each model as |opp|}}
       <tr>
         <td>
-          {{#link-to "opportunities.opportunity.detail" opp fields=fields class="row-link"}}
+          {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
             {{opp.id}}
           {{/link-to}}
         </td>
         <td>
-          {{#link-to "opportunities.opportunity.detail" opp fields=fields class="row-link"}}
+          {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
             {{opp.apemSalesPerson}}
           {{/link-to}}
         </td>

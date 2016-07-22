@@ -1,14 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
-  attributeBindings: ['fields'],
-  fields:Ember.inject.service(),
+  classNames: ['opp-table'],
+  model: null,
+  fields: null,
 
   /** This method helps us pull the model attributes because each-in only works with JSON structured objects*/
   attributes: Ember.computed(function() {
     var attrNames = [];
-    var opt = this.model;
+    var opt = this.get('model');
+
     // Get attributes
     opt.eachAttribute((name) => attrNames.push(name));
 
