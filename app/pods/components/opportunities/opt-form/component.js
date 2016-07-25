@@ -15,5 +15,23 @@ export default Ember.Component.extend({
 
     var attrs = Ember.getProperties(opt, attrNames);
     return attrs;
-  })
+  }),
+
+  actions: {
+    updateOpportunity() {
+      // Update the opportunity
+      let opt = this.get('model');
+      this.set('serverErrors',[]);
+      let errs = this.get('serverErrors');
+      debugger;
+      if (opt.get('hasDirtyAttributes')) {
+        console.log('Updated Opportunity...');
+        opt.save().then(() => {
+          this.transitionToRoute('opportunities');
+        }, (error) => {
+          errs.addObject(error);
+        });
+      }
+    }
+  }
 });
