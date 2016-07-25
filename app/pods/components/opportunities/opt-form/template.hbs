@@ -1,22 +1,27 @@
-
-{{#if fields}}
-  <h3>Field information</h3>
-  {{#each fields as |field|}}
-    <h4 class="ui dividing header">Shipping Information</h4>
-    {{field.group}}
-  {{/each}}
-{{else}}
-  <span>Loading Fields...</span>
-{{/if}}
 <form class="ui form">
-  <ul>
+  {{#if fields}}
+    {{#each fields as |group|}}
+      <h3 class="ui dividing header">{{group.value}}</h3>
+      <ul>
+        {{#each group.items as |field|}}
+          <div class="field">
+            <label>{{field.label}}</label>
+            <input type="text" name={{field.label}} value={{attribute-finder field.label attributes}}>
+          </div>
+        {{/each}}
+      </ul>
+    {{/each}}
+  {{else}}
+    <span>Loading Fields...</span>
+  {{/if}}
+  <!-- <ul>
     {{#each-in attributes as |key value|}}
     <div class="field">
       <label>{{key}}</label>
       {{input type="text" name=key value=value}}
     </div>
     {{/each-in}}
-  </ul>
+  </ul> -->
 
   <div class="actions right">
     {{#link-to 'opportunities' tagName='div' class="ui small button" activeClass=""}}
