@@ -6,7 +6,7 @@
         {{#each group.items as |field|}}
           <div class="field">
             <label>{{field.label}}</label>
-            <input type="text" name={{attribute-finder field.name model}} value={{attribute-finder field.name model}}>
+            <input type="text" name={{field.name}} value={{get model field.name}}>
           </div>
         {{/each}}
       </ul>

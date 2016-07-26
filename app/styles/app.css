@@ -1,16 +1,22 @@
 .spacer-lg{
   min-height:50px;
 }
-.home-sidebar{
-  padding:20px 30px;
-}
+
 /* Target all children of home-sidebar*/
 .home-sidebar *{
 
 }
+.home-sidebar{
+  background-color: #e4ebf1 !important;
+}
 .home-sidebar img{
   display:block;
-  margin:20px auto;
+  margin:0;
+  width: 100%;
+}
+.side-nav-item .active.item{
+  background: rgba(0, 0, 0, 0);
+  border:none;
 }
 .ui.grid {
   margin: 0 auto;
