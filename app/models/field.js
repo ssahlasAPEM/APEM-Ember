@@ -10,6 +10,5 @@ export default DS.Model.extend({
   options: DS.attr(),
   required: DS.attr('boolean', { defaultValue: true }),
   visible: DS.attr('boolean', { defaultValue: true }),
-  group: DS.attr('string'),
-  name: DS.attr('string')
+  group: DS.attr('string')
 });

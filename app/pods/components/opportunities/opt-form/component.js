@@ -23,7 +23,7 @@ export default Ember.Component.extend({
       let opt = this.get('model');
       this.set('serverErrors',[]);
       let errs = this.get('serverErrors');
-      debugger;
+      
       if (opt.get('hasDirtyAttributes')) {
         console.log('Updated Opportunity...');
         opt.save().then(() => {
