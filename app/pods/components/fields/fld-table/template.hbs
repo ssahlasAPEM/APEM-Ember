@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>Field Name</th>
-      <th>Type</th>
+      <th>Visible</th>
       <th>Required</th>
     </tr>
   </thead>
@@ -12,16 +12,14 @@
 
     {{#each model as |fld|}}
       <tr>
-        <td>{{#link-to "fields.field" fld clss="row-link"}}
-          {{fld.label}}
-        {{/link-to}}</td>
-        <td>{{#link-to "fields.field" fld clss="row-link"}}
-          {{fld.type}}
-        {{/link-to}}</td>
         <td>
-          {{#link-to "fields.field" fld clss="row-link"}}
-            {{input type="checkbox" class="" checked=fld.required disabled=true}}
-          {{/link-to}}
+          {{fld.label}}
+        </td>
+        <td>
+          {{input type="checkbox" class="" checked=fld.visible change=(action 'onVisibleChange')}}
+        </td>
+        <td>
+          {{input type="checkbox" class="" checked=fld.required change=(action 'onRequiredChange')}}
         </td>
       </tr>
     {{/each}}

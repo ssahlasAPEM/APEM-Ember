@@ -19,6 +19,12 @@
 .full-width{
     width: 100%;
 }
+
+.loading-indicator{
+  min-height: 200px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 /* Target all children of home-sidebar*/
 .home-sidebar *{
 
