@@ -1,4 +1,23 @@
-{{adv-search}}
-{{opportunities/opp-table model=opportunities fields=fields}}
+<div clss="three column row">
+  <div class="ui buttons column">
+    <button class="ui labeled icon button white-button {{if (is-equal defaultView 'grid') 'active'}}" {{action 'showGridView'}}>
+      <i class="block layout icon"></i>Grid
+    </button>
+    <button class="ui labeled icon button white-button {{if (is-equal defaultView 'list') 'active'}}" {{action 'showListView'}}>
+      <i class="list layout icon"></i>List
+    </button>
+  </div>
+
+  {{adv-search class="column inline-block "}}
+
+</div>
+
+{{#if (is-equal defaultView 'list')}}
+  {{opportunities/opp-table model=opportunities fields=fields}}
+{{/if}}
+
+{{#if (is-equal defaultView 'grid')}}
+ Grid mockup
+{{/if}}
 
 {{outlet}}

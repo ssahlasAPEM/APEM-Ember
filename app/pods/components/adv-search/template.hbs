@@ -1,27 +1,41 @@
-<div class="ui floating dropdown labeled search icon button">
-  <i class="world icon"></i>
-  <span class="text">Select Language</span>
-  <select class="menu">
-    <div class="item">Arabic</div>
-    <div class="item">Chinese</div>
-    <div class="item">Danish</div>
-    <div class="item">Dutch</div>
-    <div class="item">English</div>
-    <div class="item">French</div>
-    <div class="item">German</div>
-    <div class="item">Greek</div>
-    <div class="item">Hungarian</div>
-    <div class="item">Italian</div>
-    <div class="item">Japanese</div>
-    <div class="item">Korean</div>
-    <div class="item">Lithuanian</div>
-    <div class="item">Persian</div>
-    <div class="item">Polish</div>
-    <div class="item">Portuguese</div>
-    <div class="item">Russian</div>
-    <div class="item">Spanish</div>
-    <div class="item">Swedish</div>
-    <div class="item">Turkish</div>
-    <div class="item">Vietnamese</div>
-  </select>
-</div>
+{{#ui-search class="advanced-search-component" }}
+
+  <div class="ui icon input adv-search-input">
+    <i class="search icon adv-search-icon-left"></i>
+    <input class="prompt search advanced-search" type="text" >
+  </div>
+
+  {{input type="button" value="Search" class="ui button adv-search-btn" click=(action "onSearchClick")}}
+
+  {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown"}}
+
+    <i class="dropdown icon"></i>
+    <div class="menu adv-search-menu">
+
+      {{ui-checkbox label="New (last 30 days)" checked=true onChange=(action (mut checked))}}
+      <div class="item fake-item"></div>
+      <br/><br/>
+      <span class="menu-label gap1" >Date Entered</span>
+      {{custom-date-picker btnLabel=''}}
+      <br/>
+      <span class="menu-label gap1">Date Range</span><br/>
+      {{custom-date-picker btnLabel='Start'}}
+      {{custom-date-picker btnLabel='End' class='gap1'}}
+
+      <div class="divider gap1"></div>
+
+      <div class="ui buttons gap1">
+        <button class="ui button">Won</button>
+        <button class="ui button">Lost</button>
+        <button class="ui button">Backburner</button>
+      </div>
+      <br/>
+      <div class="ui buttons fluid gap1">
+        <button class="ui button">Open</button>
+        <button class="ui button">Closed</button>
+      </div>
+
+    </div>
+
+  {{/ui-dropdown}}
+{{/ui-search}}

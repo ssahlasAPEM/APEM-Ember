@@ -1,7 +1,24 @@
 .spacer-lg{
   min-height:50px;
 }
-
+.fake-item{
+  display:none !important;
+}
+.inline-block{
+  display: inline-block;
+}
+.menu-label{
+  line-height: 21px;
+}
+.no-margin{
+  margin:0 !important;
+}
+.gap1{
+  margin-top: 10px !important;
+}
+.full-width{
+    width: 100%;
+}
 /* Target all children of home-sidebar*/
 .home-sidebar *{
 
@@ -19,6 +36,11 @@
   background: rgba(0, 0, 0, 0);
   border:none;
   font-weight: bold;
+}
+.side-nav-item:before{
+  background: none;
+  background-color: transparent;
+  height: 0px !important;
 }
 .ui.grid {
   margin: 0 auto;
@@ -62,9 +84,9 @@
   list-style-type: none;
 }
 
-.ui.dropdown {
+/*.ui.dropdown {
   min-width: 176px;
-}
+}*/
 
 .modal{
   padding:12px;
@@ -86,4 +108,80 @@
   width:100%;
   min-height:40px;
   padding:12px;
+}
+/*  Advanced search styles  */
+.advanced-search-component{
+  width:300px;
+  margin:12px;
+  white-space: nowrap;
+}
+.advanced-search{
+  padding-left: 30px !important;
+  border-radius: 6px !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  margin: 0 !important;
+}
+.adv-search-dropdown{
+  height: 37px;
+  margin-left: -8px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+}
+.adv-search-menu{
+  white-space: normal;
+  padding: 10px 14px !important;
+}
+.adv-search-input{
+  vertical-align: top;
+}
+.adv-search-icon-left{
+  left:0;
+}
+.adv-search-btn{
+  height: 37px;
+  vertical-align: top;
+  border-radius: 0px !important;
+  margin-left: -4px !important;
+}
+.date-picker-btn{
+  padding: 0.7em;
+  width: 100%;
+  content: '';
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  height: 34px;
+  vertical-align: top;
+}
+.date-icn-btn{
+  vertical-align: top !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  margin-left: -4px !important;
+}
+.custom-date-picker{
+  display: inline-block;
+}
+.date-picker__wrapper{
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+}
+.right-icon-calendar{
+  margin:0;
+}
+.white-button{
+  /*color:#908f8f !important;*/
+  border: 1px solid rgba(222,222,222,1) !important;
+  background-color: white !important;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(222,222,222,1) !important;
+  -moz-box-shadow: 0px 3px 5px 0px rgba(222,222,222,1) !important;
+  box-shadow: 0px 3px 5px 0px rgba(222,222,222,1) !important;
+}
+/*.white-button:active{
+  color:red !important;
+}*/
+.white-button i{
+  background-color: white !important;
 }
