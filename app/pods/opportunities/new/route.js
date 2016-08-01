@@ -5,12 +5,11 @@ export default Ember.Route.extend({
 
   redirect() {
     let newOpportunity = this.store.createRecord('opportunity');
-    //let profile = this.get('identity');
-    let theUser = this.get('identity').get('profile');
-    //console.log( JSON.stringify(identity.profile.username) );
-    //newOpportunity.user = identity;
-    console.log(theUser);
 
+    let theUser = this.get('identity').get('profile');
+
+    newOpportunity.set('user', theUser);
+    
     newOpportunity.save().then((savedOpportunity) => {
       this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
     });
