@@ -4,12 +4,16 @@
       {{bread-crumbs tagName="ul" outputStyle="foundation" linkable=false crumbClass="breadcrumb-item"}}
     </div>
 
+    <div class="center item">
+      {{#link-to "opportunities.new" class="ui button green"}}<i class="plus icon"></i>New NAO{{/link-to}}
+    </div>
+
     <div class="right item">
       Welcome, {{identity.profile.username}}
     </div>
-    <div class="right item">
+    <!-- <div class="right item">
       Last Logged In: {{moment-format identity.profile.lastLogin 'MMMM Do, YYYY'}}
-    </div>
+    </div> -->
     <div class="ui simple dropdown right item">
       More
       <i class="dropdown icon"></i>
