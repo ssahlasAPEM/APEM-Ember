@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   actions:{
 
     openConfirmation:function(){
-        Ember.$('.ui.modal')
+        Ember.$('.confirm-delete-modal')
         .modal({
           blurring: true
         })

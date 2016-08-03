@@ -1,4 +1,63 @@
 <form class="ui form">
+  <!-- HEADER -->
+  <div class="field">
+    <h3>NAO #{{model.id}}
+      {{#if (is-equal userType 'Admin')}}
+        {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}}
+      {{/if}}
+
+      {{input type="button" value="Save as Draft" class="ui button right floated" click=(action "updateOpportunity")}}
+      {{input type="button" value="Save" class="ui button right floated" click=(action "updateOpportunity")}}
+
+      {{#link-to 'opportunities' tagName='div' class="ui button right floated" activeClass="" click=(action 'onCancelOptClick')}}
+        Cancel
+      {{/link-to}}
+    </h3>
+  </div>
+
+  <!-- STEPS FIELD -->
+  <div class="field">
+    <label>Stage</label>
+    <div class="ui four top attached steps">
+      <div class="step">
+        <i class="green check icon"></i>
+        <div class="content">
+          <div class="title">Quote</div>
+          <!-- <div class="description">Choose your shipping options</div> -->
+        </div>
+      </div>
+      <div class="active step">
+        <!-- <i class="green check icon"></i> -->
+        <div class="content">
+          <div class="title">Sample</div>
+          <!-- <div class="description">Enter billing information</div> -->
+        </div>
+      </div>
+      <div class="disabled step">
+        <!-- <i class="green check icon"></i> -->
+        <div class="content">
+          <div class="title">Approval</div>
+        </div>
+      </div>
+      <div class="disabled step">
+        <!-- <i class="green check icon"></i> -->
+        <div class="content">
+          <div class="title">Production</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- STATUS FIELD -->
+  <div class="field">
+    <label>Status</label>
+    <div class="ui buttons">
+      {{input type="button" value="Backburner" class="ui button" }}
+      {{input type="button" value="Won" class="ui button" }}
+      {{input type="button" value="Lost" class="ui button" }}
+    </div>
+  </div>
+
   {{#if fields}}
     {{#each fields as |group|}}
       <h3 class="ui dividing header">{{group.value}}</h3>
@@ -22,12 +81,5 @@
     </div>
     {{/each-in}}
   </ul> -->
-
-  <div class="actions right">
-    {{#link-to 'opportunities' tagName='div' class="ui small button" activeClass=""}}
-      Cancel
-    {{/link-to}}
-    <div class="ui small button " {{action 'updateOpportunity'}}>Edit Opportunity</div>
-  </div>
 </form>
 {{yield}}

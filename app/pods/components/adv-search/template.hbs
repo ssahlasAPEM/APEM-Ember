@@ -11,28 +11,40 @@
 
     <i class="dropdown icon"></i>
     <div class="menu adv-search-menu">
-
-      {{ui-checkbox label="New (last 30 days)" checked=true onChange=(action (mut checked))}}
-      <div class="item fake-item"></div>
-      <br/><br/>
-      <span class="menu-label gap1" >Date Entered</span>
-      {{custom-date-picker btnLabel=''}}
-      <br/>
-      <span class="menu-label gap1">Date Range</span><br/>
-      {{custom-date-picker btnLabel='Start'}}
-      {{custom-date-picker btnLabel='End' class='gap1'}}
+      <div class="ui field">
+        {{ui-checkbox label="New (last 30 days)" checked=true onChange=(action (mut checked))}}
+        <div class="item fake-item"></div>
+        <br/><br/>
+      </div>
+      <div class="ui field gap1">
+        <span class="menu-label" >Date Entered</span>
+        {{custom-date-picker btnLabel=''}}
+      </div>
+      <div class="ui field gap1">
+        <span class="menu-label">Date Range</span><br/>
+        {{custom-date-picker btnLabel='Start'}}
+        {{custom-date-picker btnLabel='End' class='gap1'}}
+      </div>
+      <div class="ui field gap1">
+        <span class="menu-label ">Estimated Production Date</span><br/>
+        {{custom-date-picker btnLabel=''}}
+      </div>
 
       <div class="divider gap1"></div>
 
-      <div class="ui buttons gap1">
-        <button class="ui button">Won</button>
-        <button class="ui button">Lost</button>
-        <button class="ui button">Backburner</button>
+      <div class="ui field">
+        <div class="ui buttons gap1">
+          <button class="ui button">Won</button>
+          <button class="ui button">Lost</button>
+          <button class="ui button">Backburner</button>
+        </div>
       </div>
-      <br/>
-      <div class="ui buttons fluid gap1">
-        <button class="ui button">Open</button>
-        <button class="ui button">Closed</button>
+      <div class="ui field">
+        <br/>
+        <div class="ui buttons fluid gap1">
+          <button class="ui button">Open</button>
+          <button class="ui button">Closed</button>
+        </div>
       </div>
 
     </div>

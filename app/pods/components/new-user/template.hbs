@@ -1,0 +1,45 @@
+<button class="ui right floated small positive button sm-margin-btn" {{action 'openModal'}}>
+  <i class="plus icon"></i>New User
+</button>
+
+{{#ui-modal name="user-invite-form" class="modal new-user-pop" }}
+  <div class="header"><i class="user icon"></i>New User</div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>User Name</label>
+        {{input name=model.username value=model.username type="text"}}
+      </div>
+      <div class="field">
+        <label>Password</label>
+        {{input name=model.password value=model.password type="text"}}
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        {{input name=model.passConfirm value=model.passwordVerify type="text"}}
+      </div>
+      <div class="field">
+        <label for="user_type">User Type:</label>
+        {{#ui-dropdown class="search selection" allowAdditions=false selected=model.type onChange=(action (mut selectUserType)) as |execute mapper|}}
+          <div class="default text">Select User Type</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each userTypes as |type|}}
+              <div class="item" data-value={{type}}>
+                {{type}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </form>
+  </div>
+  <div class="validation-errors">
+      {{error-message errors=serverErrors}}
+  </div>
+  <div class="actions">
+    <div class="ui green right floated button" {{action 'createUser'}}><i class="check icon"></i>Save</div>
+    <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
+  </div>
+{{/ui-modal}}
+{{yield}}

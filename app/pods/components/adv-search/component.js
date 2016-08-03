@@ -8,3 +8,10 @@ export default Ember.Component.extend({
     }
   }
 });
+
+// import layout from '../templates/components/infinity-loader';
+// import infinityLoader from 'ember-infinity/components/infinity-loader';
+//
+// export default infinityLoader.extend({
+//   layout: layout
+// });
