@@ -42,12 +42,21 @@ module.exports = function(environment) {
     'media-src': "'self' *"
   };
 
-  if (environment === 'development') {
+  if (environment === 'local') {
     ENV['ember-cli-mirage'] = {
       enabled: false
     }
     ENV.APP.usingCors = true;
     ENV.APP.apiUrl = 'http://apem.local:8000';
+    ENV.contentSecurityPolicy = devContentSecurityPolicy;
+  }
+
+  if (environment === 'development') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    }
+    ENV.APP.usingCors = true;
+    ENV.APP.apiUrl = 'http://apem.herokuapp.com';
     ENV.contentSecurityPolicy = devContentSecurityPolicy;
   }
 

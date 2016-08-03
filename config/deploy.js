@@ -12,6 +12,10 @@ module.exports = function(deployTarget) {
   };
 
   if (deployTarget === 'local') {
+    ENV.build.environment = 'local';
+  };
+
+  if (deployTarget === 'develop') {
     ENV.build.environment = 'development';
   };
 
