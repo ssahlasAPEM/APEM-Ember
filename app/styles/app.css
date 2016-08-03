@@ -19,6 +19,15 @@
 .full-width{
     width: 100%;
 }
+
+.loading-indicator{
+  min-height: 200px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.sm-margin-btn{
+  margin-left: 8px !important;
+}
 /* Target all children of home-sidebar*/
 .home-sidebar *{
 
@@ -33,9 +42,19 @@
 }
 .home-sidebar.ui.vertical.menu .active.item, .home-sidebar.ui.vertical.menu .active.item:hover,
 .home-sidebar.ui.vertical.menu .item:hover{
-  background: rgba(0, 0, 0, 0);
+  /*background: rgba(0, 0, 0, 0);*/
   border:none;
-  font-weight: bold;
+  /*font-weight: bold;*/
+}
+.side-nav-section-header{
+  font-weight: 500;
+  font-size: 1.1em;
+  padding-left: 15px;
+  margin-bottom: 4px;
+}
+.side-nav-item{
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 .side-nav-item:before{
   background: none;
@@ -87,6 +106,9 @@
 /*.ui.dropdown {
   min-width: 176px;
 }*/
+.step{
+  padding:0px !important;
+}
 
 .modal{
   padding:12px;
@@ -159,9 +181,10 @@
   border-top-left-radius: 0px !important;
   margin-left: -4px !important;
 }
-.custom-date-picker{
+/*.custom-date-picker{
   display: inline-block;
-}
+  width: 200px;
+}*/
 .date-picker__wrapper{
   border-bottom-right-radius: 0px !important;
   border-top-right-radius: 0px !important;

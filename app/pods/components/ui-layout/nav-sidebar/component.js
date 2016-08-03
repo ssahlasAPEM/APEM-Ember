@@ -2,5 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['nav-sidebar'],
-  tagName: ''
+  tagName: '',
+  identity: Ember.inject.service()
 });

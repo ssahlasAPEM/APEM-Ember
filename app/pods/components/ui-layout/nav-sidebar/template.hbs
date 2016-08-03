@@ -1,12 +1,20 @@
 <div class="vertical menu visible home-sidebar ember-view ui sidebar left">
   <img src="assets/images/corp-logo.png" class="apem-logo"/>
   <div class="spacer spacer-lg"></div>
-  {{#link-to "opportunities" class="item side-nav-item"}}Home{{/link-to}}
-  <!-- <a class="item side-nav-item">Currency Rate</a>{{#link-to "home" class="item"}}Currency Rate{{/link-to}} -->
-  <a class="item side-nav-item">Manage Password</a><!-- {{#link-to "home" class="item"}}Manage Password{{/link-to}} -->
 
-  <div class="spacer spacer-lg"></div>
-  <a class="item side-nav-item">Admin</a>
-  {{#link-to "users" class="item side-nav-item"}}User Management{{/link-to}}
-  {{#link-to "fields" class="item side-nav-item"}}Form Management{{/link-to}}
+  <div class="header side-nav-section-header">Home</div>
+  <!-- {{#link-to "opportunities" class="item side-nav-item"}}Home{{/link-to}} -->
+  <!-- <a class="item side-nav-item">Currency Rate</a>{{#link-to "home" class="item"}}Currency Rate{{/link-to}} -->
+  <div class="menu">
+    <a class="item side-nav-item">Manage Password</a><!-- {{#link-to "home" class="item"}}Manage Password{{/link-to}} -->
+  </div>
+
+  {{#if (is-equal identity.profile.type 'Admin')}}
+    <div class="spacer spacer-lg"></div>
+    <div class="header side-nav-section-header">Admin</div>
+    <div class="menu">
+      {{#link-to "fields" class="item side-nav-item"}}Form Management{{/link-to}}
+      {{#link-to "users" class="item side-nav-item"}}User Management{{/link-to}}
+    </div>
+  {{/if}}
 </div>

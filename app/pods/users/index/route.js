@@ -9,5 +9,10 @@ export default Ember.Route.extend(RouteMixin, {
   model: function(params) {
     // returns a PagedRemoteArray
     return this.findPaged('user',params);
+  },
+  actions: {
+    refreshModel: function() {
+      this.refresh();
+    }
   }
 });

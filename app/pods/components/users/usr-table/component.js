@@ -16,6 +16,11 @@ export default Ember.Component.extend({
   }.property('selectedItems.length'),
 
   actions: {
+    didCreateUser(){
+      console.log('CREATE USER event reached user table...passing up to the parent next !!!');
+      this.get('didCreateUser')();
+    },
+
     onSelection(record, evt){
       var selected = evt.currentTarget.checked;
       if (selected) {

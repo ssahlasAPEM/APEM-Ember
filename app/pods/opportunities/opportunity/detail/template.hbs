@@ -1,12 +1,12 @@
 <div class="ui content">
-  <h3 class="subtitle">View/Edit Opportunity</h3>
-  <br>
+  <!-- <h3 class="subtitle">View/Edit Opportunity</h3>
+  <br> -->
 
   <div class="validation-errors">
       {{error-message errors=serverErrors}}
   </div>
 
   <div class="details">
-    {{opportunities/opt-form model=model fields=fieldsByGroup}}
+    {{opportunities/opt-form model=model fields=fieldsByGroup userType=identity.profile.type}}
   </div>
 </div>

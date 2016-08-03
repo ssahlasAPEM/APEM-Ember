@@ -1,4 +1,30 @@
 import DS from 'ember-data';
+import {
+  validator, buildValidations
+}
+from 'ember-cp-validations';
+const Validations = buildValidations({
+  username: [
+    validator('presence', true),
+    validator('length', {
+      min: 4
+    })
+  ],
+  password: [
+    validator('presence', true),
+    validator('length', {
+      min: 4
+    })
+  ],
+  passwordVerify:[
+    validator('presence', true),
+    validator('confirmation', {
+      on: 'password',
+      message: '{description} do not match',
+      description: 'Passwords'
+    })
+  ]
+});
 
 export default DS.Model.extend({
   opportunities: DS.hasMany('opportunity'),
