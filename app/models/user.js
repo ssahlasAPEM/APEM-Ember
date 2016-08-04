@@ -26,7 +26,7 @@ const Validations = buildValidations({
   ]
 });
 
-export default DS.Model.extend({
+export default DS.Model.extend( Validations, {
   opportunities: DS.hasMany('opportunity'),
 
   createdAt : DS.attr('string', { defaultValue: null }),
