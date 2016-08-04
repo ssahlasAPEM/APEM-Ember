@@ -19,7 +19,9 @@
 .full-width{
     width: 100%;
 }
-
+.hidden{
+  display:none !important;
+}
 .loading-indicator{
   min-height: 200px;
   margin-left: auto !important;
@@ -102,14 +104,14 @@
   padding-left: 0px;
   list-style-type: none;
 }
-
-/*.ui.dropdown {
-  min-width: 176px;
-}*/
 .step{
-  padding:0px !important;
+  cursor: pointer !important;
+  padding: 0px;
+  height:30px;
 }
-
+.ui.steps .step.active .title{
+  color:black;
+}
 .modal{
   padding:12px;
 }
