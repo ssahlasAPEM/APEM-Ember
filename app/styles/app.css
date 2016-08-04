@@ -106,8 +106,8 @@
 }
 .step{
   cursor: pointer !important;
-  padding: 0px;
-  height:30px;
+  /*padding: 0px;
+  height:30px;*/
 }
 .ui.steps .step.active .title{
   color:black;
@@ -245,6 +245,10 @@
     margin-top: -15px !important;
     width: 100%;
     display: none;
+  }
+  .ui-main.pusher{
+    width: 100%;
+    transform: translate3d(0, 0, 0) !important;
   }
 }
 /*END of Hamburger mobile menu*/
