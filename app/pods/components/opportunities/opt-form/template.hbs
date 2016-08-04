@@ -16,40 +16,10 @@
   </div>
 
   <!-- STEPS FIELD -->
-  <div class="field">
-    <label>Stage</label>
-    <div class="ui four top attached steps">
-      <div class="step">
-        <i class="green check icon"></i>
-        <div class="content">
-          <div class="title">Quote</div>
-          <!-- <div class="description">Choose your shipping options</div> -->
-        </div>
-      </div>
-      <div class="active step">
-        <!-- <i class="green check icon"></i> -->
-        <div class="content">
-          <div class="title">Sample</div>
-          <!-- <div class="description">Enter billing information</div> -->
-        </div>
-      </div>
-      <div class="disabled step">
-        <!-- <i class="green check icon"></i> -->
-        <div class="content">
-          <div class="title">Approval</div>
-        </div>
-      </div>
-      <div class="disabled step">
-        <!-- <i class="green check icon"></i> -->
-        <div class="content">
-          <div class="title">Production</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{opportunities/stage-step stageSteps=stages opt=model}}
 
 <!-- STATUS FIELD -->
-  <div class="field">
+  <div class="field gap1">
     <label>Status</label>
     <div class="ui buttons">
       {{input type="button" value="Backburner" class="ui button" }}

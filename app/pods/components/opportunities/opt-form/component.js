@@ -5,6 +5,13 @@ export default Ember.Component.extend({
   model: null,
   fields: null,
   userType:null,
+  //possible opportunity stages - an array used to controll and properly render the stage steps in the form
+  stages:[
+    {'label':'quote', 'id':1},
+    {'label':'sample', 'id':2},
+    {'label':'approval', 'id':3},
+    {'label':'production', 'id':4},
+  ],
 
   /** This method helps us pull the model attributes because each-in only works with JSON structured objects*/
   attributes: Ember.computed(function() {
