@@ -1,10 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  identity: Ember.inject.service(),
+  // routing: Ember.inject.service('-routing'),
+
   classNames: ['opp-table'],
   model: null,
   fields: null,
-  userType:null,
+
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
   stages:[
     {'label':'quote', 'id':1},
@@ -15,13 +18,13 @@ export default Ember.Component.extend({
 
   /** This method helps us pull the model attributes because each-in only works with JSON structured objects*/
   attributes: Ember.computed(function() {
-    var attrNames = [];
-    var opt = this.get('model');
+    let attrNames = [];
+    let opt = this.get('model');
 
     // Get attributes
     opt.eachAttribute((name) => attrNames.push(name));
 
-    var attrs = Ember.getProperties(opt, attrNames);
+    let attrs = Ember.getProperties(opt, attrNames);
     return attrs;
   }),
 
@@ -35,16 +38,22 @@ export default Ember.Component.extend({
       console.log('cancel opt method reached!');
     },
 
-    updateOpportunity() {
+    updateOpportunity:function() {
       // Update the opportunity
       let opt = this.get('model');
       this.set('serverErrors',[]);
-      let errs = this.get('serverErrors');
-
+      let errs = this.get('serverErrors'),
+      sessionUser = this.get('identity').get('profile');
+      // let myRouting = this.get('routing');
+      // debugger;
       if (opt.get('hasDirtyAttributes')) {
-        console.log('Updated Opportunity...');
+
+        opt.set('user', sessionUser);
+
+        console.log('Updating Opportunity...');
         opt.save().then(() => {
-          this.transitionToRoute('opportunities');
+          this.sendAction('onOptSave');
+          // myRouting.transitionToRoute('opportunities');
         }, (error) => {
           errs.addObject(error);
         });
