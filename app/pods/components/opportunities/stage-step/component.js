@@ -5,9 +5,13 @@ export default Ember.Component.extend({
   //current opportunity
   opt:null,
 
-  init(){
-    this._super(...arguments);
+  // init(){
+  //   this._super(...arguments);
+  // },
 
+  didRender(){
+    this._super(...arguments);
+    console.log('OPT DETAIL RENDER');
     this.markSteps();
   },
 
@@ -19,9 +23,11 @@ export default Ember.Component.extend({
   },
 
   markSteps:function(){
-    var selectedStepId = this.stageSteps.findBy('label',this.opt.get('stage')).id;
-
-    this.stageSteps.forEach(function(item){
+    let selectedStepId = this.stageSteps.findBy('label',this.opt.get('stage')).id;
+    let sSteps = this.stageSteps;
+    // debugger;
+    sSteps.forEach((item, index) => {
+      // console.log(`${item}`);
       if(item.id === selectedStepId){
         // show step as active
         Ember.$('.'+item.label+'.step').addClass('active');
