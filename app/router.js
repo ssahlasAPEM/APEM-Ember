@@ -27,6 +27,8 @@ Router.map(function() {
     this.route('opportunities', { resetNamespace: true }, function () {
       this.route('opportunity', { path: ':id' }, function () {
         this.route('detail', { path: 'detail' });
+        // 404 it is
+        this.route('page-not-found',{path:'/*wildcard'});
       });
       this.route('new', {});
     });
@@ -42,6 +44,8 @@ Router.map(function() {
     /* User Settings Routes */
     this.route('profile', { resetNamespace: true });
 
+    // 404 it is
+    this.route('page-not-found',{path:'/*wildcard'});
   });
 });
 
