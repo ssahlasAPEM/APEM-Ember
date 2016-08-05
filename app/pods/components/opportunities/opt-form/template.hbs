@@ -2,7 +2,7 @@
   <!-- HEADER -->
   <div class="field">
     <h3>NAO #{{model.id}}
-      {{#if (is-equal userType 'Admin')}}
+      {{#if (is-equal identity.profile.type 'Admin')}}
         {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}}
       {{/if}}
 
@@ -21,10 +21,10 @@
 <!-- STATUS FIELD -->
   <div class="field gap1">
     <label>Status</label>
-    <div class="ui buttons">
-      {{input type="button" value="Backburner" class="ui button" }}
-      {{input type="button" value="Won" class="ui button" }}
-      {{input type="button" value="Lost" class="ui button" }}
+    <div class="ui buttons status-group-btns">
+      {{input type="button" name="status" value="Backburner" class="ui button" click=(action (mut model.status) value="target.value") }}
+      {{input type="button" name="status" value="Won" class="ui button" click=(action (mut model.status) value="target.value") }}
+      {{input type="button" name="status" value="Lost" class="ui button" click=(action (mut model.status) value="target.value") }}
     </div>
   </div>
 
