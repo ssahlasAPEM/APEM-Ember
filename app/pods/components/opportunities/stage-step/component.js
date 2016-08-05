@@ -5,10 +5,6 @@ export default Ember.Component.extend({
   //current opportunity
   opt:null,
 
-  // init(){
-  //   this._super(...arguments);
-  // },
-
   didRender(){
     this._super(...arguments);
     console.log('OPT DETAIL RENDER');
