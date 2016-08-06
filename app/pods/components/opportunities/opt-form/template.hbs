@@ -28,8 +28,8 @@
     </div>
   </div>
 
-  {{#if fields}}
-    {{#each fields as |group|}}
+  {{#if fieldsByGroup}}
+    {{#each fieldsByGroup as |group|}}
       <h3 class="ui dividing header">{{group.value}}</h3>
       <ul>
         {{#each group.items as |field|}}

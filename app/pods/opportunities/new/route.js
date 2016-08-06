@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     let theUser = this.get('identity').get('profile');
 
     newOpportunity.set('user', theUser);
-    
+
     newOpportunity.save().then((savedOpportunity) => {
       this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
     });
