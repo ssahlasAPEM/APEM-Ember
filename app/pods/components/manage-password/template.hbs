@@ -1,0 +1,27 @@
+<button class="item seamless-button" {{action 'openModal'}}>
+  Manage Password
+</button>
+
+{{#ui-modal class="modal manage-password-pop" }}
+  <div class="header"><i class="user icon"></i>Manage Password</div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>New Password</label>
+        {{input name=model.password value=model.password type="text"}}
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        {{input name=model.passConfirm value=model.passwordVerify type="text"}}
+      </div>
+    </form>
+  </div>
+  <div class="validation-errors">
+      {{error-message errors=serverErrors}}
+  </div>
+  <div class="actions">
+    <div class="ui green right floated button" {{action 'editPassword'}}><i class="check icon"></i>Save</div>
+    <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
+  </div>
+{{/ui-modal}}
+{{yield}}

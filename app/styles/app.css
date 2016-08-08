@@ -246,6 +246,11 @@
 	padding: 40px !important;
 }
 
+.seamless-button, .seamless-button:active, .seamless-button:hover, .seamless-button:focus{
+  border:none;
+  outline-style: none;
+}
+
 @media (max-width: 769px) {
   .advanced-search-component{
     margin:12px 0;
