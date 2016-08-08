@@ -31,6 +31,8 @@ Router.map(function() {
         this.route('page-not-found',{path:'/*wildcard'});
       });
       this.route('new', {});
+      // 404 it is
+      this.route('page-not-found',{path:'/*wildcard'});
     });
 
     /* Fields Routes */
