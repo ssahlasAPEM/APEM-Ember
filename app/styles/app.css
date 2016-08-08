@@ -20,7 +20,7 @@
 .no-margin{
   margin:0 !important;
 }
-.gap1{
+.gap1 {
   margin-top: 10px !important;
 }
 .full-width{
@@ -150,7 +150,6 @@
 }
 /*  Advanced search styles  */
 .advanced-search-component{
-  width:300px;
   margin:12px;
   white-space: nowrap;
 }
@@ -247,7 +246,14 @@
 	padding: 40px !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
+  .advanced-search-component{
+    margin:12px 0;
+  }
+  .adv-search-input{
+    max-width: 160px;
+  }
+
   .ui.grid.main{
   	margin-top: 70px;
   }
@@ -279,8 +285,5 @@
     right: 0.6em;
     top: 0.6em;
   }
-  /*.ui.steps .step{
-    display: -webkit-box;
-  }*/
 }
 /*END of Hamburger mobile menu*/
