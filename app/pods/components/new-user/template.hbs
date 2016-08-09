@@ -8,19 +8,15 @@
     <form class="ui form">
       <div class="field">
         <label>User Name</label>
-        {{input value=value type=type class="form-control" name=valuePath}}
-        {{#if isValid}}
-          <span class="valid-input fa fa-check"></span>
-        {{/if}}
-
+        {{input name=model.username value=model.username type="text"}}
       </div>
       <div class="field">
         <label>Password</label>
-        {{input name=model.password value=model.password type="password" class="form-control"}}
+        {{input name=model.password value=model.password type="text"}}
       </div>
       <div class="field">
         <label>Confirm Password</label>
-        {{input name=model.passConfirm value=model.passwordVerify type="password" class="form-control"}}
+        {{input name=model.passConfirm value=model.passwordVerify type="text"}}
       </div>
       <div class="field">
         <label for="user_type">User Type:</label>
