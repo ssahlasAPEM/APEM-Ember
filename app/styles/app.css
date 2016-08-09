@@ -4,11 +4,9 @@
   background: white;
   padding-top: 32%;
 }
-/*DROPDOWN MENU CUT FIX*/
-/*.menu-cut-fix{
-  left: -90px !important;
-}*/
-/*END DROPDOWN CUTOFF FIX*/
+.top-z-index{
+  z-index: 9999 !important;
+}
 .full-width{
   width: 100%;
 }
@@ -67,6 +65,9 @@
   font-size: 1.1em;
   padding-left: 15px;
   margin-bottom: 4px;
+}
+.nav-header-menu{
+  border-radius: 0px !important;
 }
 .nav-header-menu .item:before{
   width: 0px !important;
