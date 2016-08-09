@@ -32,7 +32,7 @@ export default Ember.Component.extend({
 
       if (user.get('hasDirtyAttributes')) {
         let closeModal = this.closeModal;
-        this.get('model').save().then(() => {
+        user.save().then(() => {
           closeModal();
         }, (error) => {
           errs.addObject(error);
