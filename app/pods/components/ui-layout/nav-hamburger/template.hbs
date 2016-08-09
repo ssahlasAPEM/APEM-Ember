@@ -5,7 +5,9 @@
   <i class="big content icon mobile-right-menu"></i>
   <div class="ui fluid vertical navbar menu">
     <div class="header side-nav-section-header">Home</div>
-      <a class="item side-nav-item">Manage Password</a><!-- {{#link-to "home" class="item"}}Manage Password{{/link-to}} -->
+
+    {{manage-password}}
+
     {{#if (is-equal identity.profile.type 'Admin')}}
       <div class="header side-nav-section-header">Admin</div>
       {{#link-to "fields" class="item side-nav-item"}}Form Management{{/link-to}}

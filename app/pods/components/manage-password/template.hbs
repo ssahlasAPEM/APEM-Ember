@@ -3,16 +3,16 @@
 </button>
 
 {{#ui-modal class="modal manage-password-pop" }}
-  <div class="header"><i class="user icon"></i>Manage Password</div>
+  <div class="header"><i class="user icon"></i>Manage Password {{sessionUser.username}}</div>
   <div class="content">
     <form class="ui form">
       <div class="field">
         <label>New Password</label>
-        {{input name=model.password value=model.password type="text"}}
+        {{input name=sessionUser.password value=sessionUser.password type="text"}}
       </div>
       <div class="field">
         <label>Confirm Password</label>
-        {{input name=model.passConfirm value=model.passwordVerify type="text"}}
+        {{input name=sessionUser.passConfirm value=sessionUser.passwordVerify type="text"}}
       </div>
     </form>
   </div>

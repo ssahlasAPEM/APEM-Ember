@@ -3,17 +3,19 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   identity:Ember.inject.service(),
-  model:null,
+  sessionUser:null,
 
   actions:{
 
     openModal:function(){
       this.set('serverErrors',[]);
-
-      let thisUserId = this.get('identity').get('profile').get('id'),
-      thisUser = this.get('store').findRecord('user', thisUserId);
-      // debugger;
-      this.set('model',thisUser);
+      this.set('sessionUser', null);
+      
+      let thisUserId = this.get('identity').get('profile').get('id');
+      this.get('store').findRecord('user', thisUserId).then((data) => {
+          this.set('sessionUser',data);
+        }, (error) => {
+      });
 
       Ember.$('.manage-password-pop')
       .modal({
@@ -25,11 +27,9 @@ export default Ember.Component.extend({
 
 
     editPassword() {
-      // Create the user
-      let user = this.get('model');
+      let user = this.get('sessionUser');
       this.set('serverErrors',[]);
       let errs = this.get('serverErrors');
-
       if (user.get('hasDirtyAttributes')) {
         let closeModal = this.closeModal;
         user.save().then(() => {
