@@ -8,15 +8,19 @@
     <form class="ui form">
       <div class="field">
         <label>User Name</label>
-        {{input name=model.username value=model.username type="text"}}
+        {{input value=value type=type class="form-control" name=valuePath}}
+        {{#if isValid}}
+          <span class="valid-input fa fa-check"></span>
+        {{/if}}
+
       </div>
       <div class="field">
         <label>Password</label>
-        {{input name=model.password value=model.password type="text"}}
+        {{input name=model.password value=model.password type="password" class="form-control"}}
       </div>
       <div class="field">
         <label>Confirm Password</label>
-        {{input name=model.passConfirm value=model.passwordVerify type="text"}}
+        {{input name=model.passConfirm value=model.passwordVerify type="password" class="form-control"}}
       </div>
       <div class="field">
         <label for="user_type">User Type:</label>
@@ -34,9 +38,27 @@
       </div>
     </form>
   </div>
+
+  <!-- VALIDATION MSG -->
+  <div class="input-error">
+    {{#if showErrorMessage}}
+      <div class="error">
+        {{v-get model valuePath 'message'}}
+      </div>
+    {{/if}}
+
+    {{#if showWarningMessage}}
+      <div class="warning">
+        {{v-get model valuePath 'warningMessage'}}
+      </div>
+    {{/if}}
+  </div>
+
+  <!-- SERVER ERRORS -->
   <div class="validation-errors">
       {{error-message errors=serverErrors}}
   </div>
+
   <div class="actions">
     <div class="ui green right floated button" {{action 'createUser'}}><i class="check icon"></i>Save</div>
     <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
