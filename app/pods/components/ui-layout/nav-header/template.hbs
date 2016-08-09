@@ -1,33 +1,21 @@
-<div class="ui stackable menu">
+<div class="ui stackable menu nav-header-menu">
+  <div class="vertically fitted item">
+    {{bread-crumbs tagName="ul" outputStyle="foundation" linkable=false crumbClass="breadcrumb-item"}}
+  </div>
 
-    <div class="item">
-      {{bread-crumbs tagName="ul" outputStyle="foundation" linkable=false crumbClass="breadcrumb-item"}}
-    </div>
+  <div class="center item new-nao-btn">
+    {{#link-to "opportunities.new" class="ui button green"}}<i class="plus icon"></i>New NAO{{/link-to}}
+  </div>
 
-    <div class="center item new-nao-btn">
-      {{#link-to "opportunities.new" class="ui button green"}}<i class="plus icon"></i>New NAO{{/link-to}}
-    </div>
-
-    <div class="right fitted item">
-      Welcome, {{identity.profile.username}}
-      <div class="ui simple dropdown">
-        <i class="ellipsis large vertical icon"></i>
-        <div class="menu menu-cut-fix">
-          <a href="/dashboard" class="item"><i class="big home icon"></i> Home</a>
-          <a class="item"><i class="big info circle icon"></i> Help</a>
-          <a href="/logout" class="item"><i class="big fa-sign-out icon"></i> Logout</a>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="right item">
-      Last Logged In: {{moment-format identity.profile.lastLogin 'MMMM Do, YYYY'}}
-    </div> -->
-    <!-- <div class="ui simple dropdown item right fitted ">
+  <div class="right item">
+    Welcome, {{identity.profile.username}}
+    <div class="ui simple dropdown secondary-header-dropdown-item">
       <i class="ellipsis large vertical icon"></i>
-      <div class="menu">
+      <div class="menu menu-cut-fix">
         <a href="/dashboard" class="item"><i class="big home icon"></i> Home</a>
         <a class="item"><i class="big info circle icon"></i> Help</a>
         <a href="/logout" class="item"><i class="big fa-sign-out icon"></i> Logout</a>
       </div>
-    </div> -->
+    </div>
+  </div>
 </div>

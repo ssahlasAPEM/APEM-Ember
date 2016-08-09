@@ -8,6 +8,8 @@
 .menu-cut-fix{
   left: -90px !important;
 }
+/*END DROPDOWN CUTOFF FIX*/
+
 .spacer-lg{
   min-height:50px;
 }
@@ -64,6 +66,9 @@
   padding-left: 15px;
   margin-bottom: 4px;
 }
+.nav-header-menu .item:before{
+  width: 0px !important;
+}
 .side-nav-item{
   margin-top: 6px;
   margin-bottom: 6px;
@@ -73,6 +78,13 @@
   background-color: transparent;
   height: 0px !important;
 }
+/*.secondary-header-dropdown-item{
+  position: absolute !important;
+  right: 0px;
+  margin-left: 8px;
+  margin-top: 8px;
+}*/
+
 .ui.grid {
   margin: 0 auto;
 }
@@ -254,7 +266,8 @@
   outline-style: none;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
+
   .advanced-search-component{
     margin:12px 0;
   }
@@ -267,6 +280,7 @@
   }
 
   .ui.grid { margin: 0 !important; }
+
   .ui.vertical.menu.navbar{
   	margin-top: 0px !important;
   }
@@ -292,6 +306,12 @@
     position: absolute;
     right: 0.6em;
     top: 0.6em;
+  }
+}
+@media (max-width:400px) {
+  .secondary-header-dropdown-item{
+    position: absolute !important;
+    right: 0px;
   }
 }
 /*END of Hamburger mobile menu*/

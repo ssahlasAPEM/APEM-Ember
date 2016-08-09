@@ -1,21 +1,16 @@
-<!-- <div class="ui grid mobile only home-navbar"> -->
-  <!-- <div class="mobile only row"> -->
+{{#ui-dropdown class="ui fixed fluid navbar grid mobile tablet only row home-navbar"}}
+  <div class="logo-wrapper">
+    <img src="assets/images/corp-logo.png" class="brand apem-logo"/>
+  </div>
+  <i class="big content icon mobile-right-menu"></i>
+  <div class="ui fluid vertical navbar menu">
+    <div class="header side-nav-section-header">Home</div>
+      <a class="item side-nav-item">Manage Password</a><!-- {{#link-to "home" class="item"}}Manage Password{{/link-to}} -->
+    {{#if (is-equal identity.profile.type 'Admin')}}
+      <div class="header side-nav-section-header">Admin</div>
+      {{#link-to "fields" class="item side-nav-item"}}Form Management{{/link-to}}
+      {{#link-to "users" class="item side-nav-item"}}User Management{{/link-to}}
+    {{/if}}
+  </div>
 
-      {{#ui-dropdown class="ui fixed fluid navbar grid mobile only row home-navbar "}}
-        <div class="logo-wrapper">
-          <img src="assets/images/corp-logo.png" class="brand apem-logo"/>
-        </div>
-        <i class="big content icon mobile-right-menu"></i>
-        <div class="ui fluid vertical navbar menu">
-          <div class="header side-nav-section-header">Home</div>
-            <a class="item side-nav-item">Manage Password</a><!-- {{#link-to "home" class="item"}}Manage Password{{/link-to}} -->
-          {{#if (is-equal identity.profile.type 'Admin')}}
-            <div class="header side-nav-section-header">Admin</div>
-            {{#link-to "fields" class="item side-nav-item"}}Form Management{{/link-to}}
-            {{#link-to "users" class="item side-nav-item"}}User Management{{/link-to}}
-          {{/if}}
-        </div>
-
-      {{/ui-dropdown }}
-  <!-- </div> -->
-<!-- </div> -->
+{{/ui-dropdown }}
