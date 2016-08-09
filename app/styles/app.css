@@ -4,7 +4,10 @@
   background: white;
   padding-top: 32%;
 }
-
+/*DROPDOWN MENU CUT FIX*/
+.menu-cut-fix{
+  left: -90px !important;
+}
 .spacer-lg{
   min-height:50px;
 }
