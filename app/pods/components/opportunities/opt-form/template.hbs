@@ -35,7 +35,21 @@
         {{#each group.items as |field|}}
           <div class="field">
             <label>{{field.label}}</label>
-            {{input name=field.name value=(mut (get model field.name)) type="text"}}
+            {{#if (is-equal field.type 'dropdown')}}
+              {{#ui-dropdown class="fluid selection" selected=field.value onChange=(action (mut field.value))}}
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Value</div>
+                <div class="menu">
+                  {{#each field.options as |item|}}
+                    <div class="item" data-value="{{item}}">
+                      {{item}}
+                    </div>
+                  {{/each}}
+                </div>
+              {{/ui-dropdown}}
+            {{else}}
+              {{input name=field.name value=(mut (get model field.name)) type="text"}}
+            {{/if}}
           </div>
         {{/each}}
       </ul>
