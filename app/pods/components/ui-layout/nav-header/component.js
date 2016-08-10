@@ -16,9 +16,9 @@ export default Ember.Component.extend({
     let newNAObtn = Ember.$('.new-nao-btn');
     // console.log("Current route", router.get("currentRouteName"));
     if(router.get("currentRouteName") === 'opportunities.opportunity.detail'){
-      newNAObtn.addClass('hidden');
+      newNAObtn.addClass('hide-me');
     }else{
-      newNAObtn.removeClass('hidden');
+      newNAObtn.removeClass('hide-me');
     }
   }
 });

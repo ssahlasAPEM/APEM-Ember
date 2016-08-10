@@ -27,14 +27,14 @@ export default Ember.Component.extend({
       if(item.id === selectedStepId){
         // show step as active
         Ember.$('.'+item.label+'.step').addClass('active');
-        Ember.$('.'+item.label+'-step-icn').addClass('hidden');
+        Ember.$('.'+item.label+'-step-icn').addClass('hide-me');
       } else if(item.id < selectedStepId){
-        Ember.$('.'+item.label+'-step-icn').removeClass('hidden');
+        Ember.$('.'+item.label+'-step-icn').removeClass('hide-me');
         Ember.$('.'+item.label+'.step').removeClass('active');
         // show step as checked
         // Ember.$('.'+item.label+'-step')
       }else{
-        Ember.$('.'+item.label+'-step-icn').addClass('hidden');
+        Ember.$('.'+item.label+'-step-icn').addClass('hide-me');
         Ember.$('.'+item.label+'.step').removeClass('active');
       }
     });
