@@ -22,7 +22,7 @@ export default Ember.Component.extend({
     let selectedStepId = this.stageSteps.findBy('label',this.opt.get('stage')).id;
     let sSteps = this.stageSteps;
     // debugger;
-    sSteps.forEach((item, index) => {
+    sSteps.forEach((item) => {
       // console.log(`${item}`);
       if(item.id === selectedStepId){
         // show step as active

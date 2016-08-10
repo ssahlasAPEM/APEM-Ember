@@ -10,11 +10,12 @@ export default Ember.Component.extend({
     openModal:function(){
       this.set('serverErrors',[]);
       this.set('sessionUser', null);
-      
+
       let thisUserId = this.get('identity').get('profile').get('id');
       this.get('store').findRecord('user', thisUserId).then((data) => {
           this.set('sessionUser',data);
         }, (error) => {
+          console.log(error);
       });
 
       Ember.$('.manage-password-pop')
