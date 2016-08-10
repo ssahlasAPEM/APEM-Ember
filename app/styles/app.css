@@ -194,6 +194,9 @@
   border-radius: 0px !important;
   margin-left: -4px !important;
 }
+.menu.adv-search-menu.transition.visible {
+    left: -264px;
+}
 .date-picker-btn{
   padding: 0.7em;
   width: 100%;
