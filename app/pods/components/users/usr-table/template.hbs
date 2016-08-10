@@ -50,9 +50,7 @@
       <th></th>
       <th colspan="4">
         {{new-user onCreate=(action 'didCreateUser')}}
-        <!-- {{#link-to 'users.new' tagName='div' class="ui right floated small button green sm-margin-btn" activeClass=""}}
-          <i class="plus icon"></i>New User
-        {{/link-to}} -->
+        
         {{confirm-delete isDisabled=disableDelete deletableRecords=selectedItems
           title='Confirm Delete'
           recordType='user'

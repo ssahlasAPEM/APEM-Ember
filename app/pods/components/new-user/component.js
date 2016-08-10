@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { validator, buildValidations } from 'ember-cp-validations';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
@@ -25,9 +24,6 @@ export default Ember.Component.extend({
       .modal('show');
     },
 
-    selectUserType(type) {
-      this.get('model').set('type', type);
-    },
 
     createUser() {
       // Create the user
