@@ -5,22 +5,26 @@
 {{#ui-modal name="user-invite-form" class="modal new-user-pop" }}
   <div class="header"><i class="user icon"></i>New User</div>
   <div class="content">
-    <form class="ui form">
+    <form class="ui form segment new-user-form" style="padding-bottom:60px;">
       <div class="field">
         <label>User Name</label>
-        {{input name='username' value=model.username class="form-control" required=true}}
+        {{input name='username' value=model.username class="form-control" type="text"}}
       </div>
+
       <div class="field">
         <label>Password</label>
-        {{input name='password' value=model.password type="password" class="form-control" required=true}}
+        {{input name='password' value=model.password type="password" }}
       </div>
+
       <div class="field">
         <label>Confirm Password</label>
-        {{input name='passwordVerify' value=model.passwordVerify type="password" class="form-control" required=true}}
+        {{input name='passwordVerify' value=model.passwordVerify type="password"}}
       </div>
+
       <div class="field">
-        <label for="user_type">User Type:</label>
-        {{#ui-dropdown class="search selection" required=true allowAdditions=false onChange=(action (mut model.type)) as |execute mapper|}}
+        <label>User Type:</label>
+        {{#ui-dropdown class="ui dropdown selection" allowAdditions=false onChange=(action (mut model.type)) as |execute mapper|}}
+          <input type="hidden" name="type">
           <div class="default text">Select User Type</div>
           <i class="dropdown icon"></i>
           <div class="menu">
@@ -32,6 +36,10 @@
           </div>
         {{/ui-dropdown}}
       </div>
+
+      <div class="ui submit button right floated green" {{action 'createUser'}}><i class="check icon"></i>Save</div>
+      <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
+
     </form>
   </div>
 
@@ -40,9 +48,6 @@
       {{error-message errors=serverErrors}}
   </div>
 
-  <div class="actions">
-    <div class="ui green right floated button" {{action 'createUser'}}><i class="check icon"></i>Save</div>
-    <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
-  </div>
+
 {{/ui-modal}}
 {{yield}}
