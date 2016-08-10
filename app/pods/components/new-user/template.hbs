@@ -20,7 +20,7 @@
       </div>
       <div class="field">
         <label for="user_type">User Type:</label>
-        {{#ui-dropdown class="search selection" allowAdditions=false onChange=(action (mut model.type)) as |execute mapper|}}
+        {{#ui-dropdown class="search selection" required=true allowAdditions=false onChange=(action (mut model.type)) as |execute mapper|}}
           <div class="default text">Select User Type</div>
           <i class="dropdown icon"></i>
           <div class="menu">
