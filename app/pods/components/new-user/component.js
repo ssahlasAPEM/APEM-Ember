@@ -7,10 +7,11 @@ export default Ember.Component.extend({
   model:null,
 
   didRender(){
+    this._super(...arguments);
+    //add validation to form
     Ember.$('.new-user-form')
       .form({
         inline : true,
-        on: 'blur',
         fields: {
           username: {
             identifier: 'username',
@@ -70,7 +71,7 @@ export default Ember.Component.extend({
 
 
     createUser() {
-      
+
       let hasErrors = Ember.$('.error');
 
       if(hasErrors.length === 0){
@@ -100,6 +101,9 @@ export default Ember.Component.extend({
   },
 
   closeModal:function(){
+    //clear the form
+    Ember.$('.new-user-form').form('clear');
+
     Ember.$('.new-user-pop')
     .modal('hide');
   }

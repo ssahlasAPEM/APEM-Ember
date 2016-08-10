@@ -5,23 +5,29 @@
 {{#ui-modal class="modal manage-password-pop" }}
   <div class="header"><i class="user icon"></i>Manage Password {{sessionUser.username}}</div>
   <div class="content">
-    <form class="ui form">
+
+    <form class="ui form segment managePasswords" style="padding-bottom:60px;">
+
       <div class="field">
-        <label>New Password</label>
-        {{input name=sessionUser.password value=sessionUser.password type="password"}}
+        <label>Password</label>
+        {{input name='password' value=sessionUser.password type="password" }}
       </div>
+
       <div class="field">
         <label>Confirm Password</label>
-        {{input name=sessionUser.passConfirm value=sessionUser.passwordVerify type="password"}}
+        {{input name='passwordVerify' value=sessionUser.passwordVerify type="password"}}
       </div>
+
+      <div class="ui submit button right floated green" {{action 'editPassword'}}><i class="check icon"></i>Save</div>
+      <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
+
     </form>
+    
   </div>
+
   <div class="validation-errors">
       {{error-message errors=serverErrors}}
   </div>
-  <div class="actions">
-    <div class="ui green right floated button" {{action 'editPassword'}}><i class="check icon"></i>Save</div>
-    <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
-  </div>
+
 {{/ui-modal}}
 {{yield}}
