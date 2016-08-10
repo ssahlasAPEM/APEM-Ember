@@ -31,7 +31,7 @@
 .full-width{
     width: 100% !important;
 }
-.hidden{
+.hide-me{
   display:none !important;
 }
 .loading-indicator{
@@ -138,9 +138,6 @@
 }
 .ui.steps .step.active .title{
   color:black;
-}
-.modal{
-  padding:12px;
 }
 
 .validation-errors {
