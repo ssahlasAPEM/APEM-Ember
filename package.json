@@ -46,7 +46,6 @@
     "ember-cli-selectize": "0.4.4",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-cp-validations": "2.6.1",
     "ember-crumbly": "1.0.2",
     "ember-data": "^2.4.0",
     "ember-data-fixture-adapter": "1.13.0",
