@@ -17,3 +17,5 @@ npm-debug.log
 testem.log
 .ember-cli
 /.idea
+/app/pods/.DS_Store
+/app/.DS_Store
