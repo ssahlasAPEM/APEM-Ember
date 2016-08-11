@@ -4,39 +4,47 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   identity:Ember.inject.service(),
   sessionUser:null,
+  myModal:null,
 
   didInsertElement(){
     this._super(...arguments);
+
+    if(this.myModal === null){
+      this.set('myModal', Ember.$('#'+ this.elementId+' .manage-password-pop'));
+    }
+    // COMMENTING VALIDATION OUT - NOT WORKING
     //add validation to form
-    Ember.$('.managePasswords')
-      .form({
-        inline : true,
-        fields: {
-          password   : {
-            identifier:'password',
-            rules: [
-              {
-                type   : 'empty'
-              }
-            ]
-          },
-          passwordVerify : {
-            identifier  : 'passwordVerify',
-            rules: [
-              {
-                type   : 'match[password]',
-                prompt : 'Passwords do not match.'
-              }
-            ]
-          }
-        }
-    });
+    // Ember.$('.managePasswords')
+    //   .form({
+    //     inline : true,
+    //     fields: {
+    //       mpPassword   : {
+    //         identifier:'mpPassword',
+    //         rules: [
+    //           {
+    //             type   : 'empty'
+    //           }
+    //         ]
+    //       },
+    //       mpPasswordVerify : {
+    //         identifier  : 'mpPasswordVerify',
+    //         rules: [
+    //           {
+    //             type   : 'match[mpPassword]',
+    //             prompt : 'Passwords do not match.'
+    //           }
+    //         ]
+    //       }
+    //     }
+    // });
   },
 
   actions:{
 
     openModal:function(){
       this.set('serverErrors',[]);
+
+
 
       let thisUserId = this.get('identity').get('profile').get('id');
 
@@ -46,8 +54,7 @@ export default Ember.Component.extend({
           console.log(error);
       });
 
-      Ember.$('.manage-password-pop')
-      .modal({
+      this.myModal.modal({
         blurring: true
       })
       .modal('setting', 'closable', false)
@@ -79,7 +86,6 @@ export default Ember.Component.extend({
   },
 
   closeModal:function(){
-
     // this.set('sessionUser', null);
     //clear the form
     Ember.$('.managePasswords').form('clear');
@@ -87,4 +93,5 @@ export default Ember.Component.extend({
     Ember.$('.manage-password-pop')
     .modal('hide');
   }
+
 });

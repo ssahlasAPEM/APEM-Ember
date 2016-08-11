@@ -2,7 +2,7 @@
   Manage Password
 </button>
 
-{{#ui-modal class="modal manage-password-pop" }}
+{{#ui-modal class="ui modal manage-password-pop" }}
   <div class="header"><i class="user icon"></i>Manage Password {{sessionUser.username}}</div>
   <div class="content">
 
@@ -10,19 +10,19 @@
 
       <div class="field">
         <label>Password</label>
-        {{input name='password' value=sessionUser.password type="password" }}
+        {{input name='mpPassword' value=sessionUser.password type="password" }}
       </div>
 
       <div class="field">
         <label>Confirm Password</label>
-        {{input name='passwordVerify' value=sessionUser.passwordVerify type="password"}}
+        {{input name='mpPasswordVerify' value=sessionUser.passwordVerify type="password"}}
       </div>
 
       <div class="ui submit button right floated green" {{action 'editPassword'}}><i class="check icon"></i>Save</div>
       <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
 
     </form>
-    
+
   </div>
 
   <div class="validation-errors">
