@@ -16,10 +16,10 @@
           {{fld.label}}
         </td>
         <td>
-          {{input type="checkbox" class="" checked=fld.visible change=(action 'onVisibleChange')}}
+          {{input type="checkbox" class="" checked=fld.visible change=(action "onVisibleChange" fld)}}
         </td>
         <td>
-          {{input type="checkbox" class="" checked=fld.required change=(action 'onRequiredChange')}}
+          {{input type="checkbox" class="" checked=(mut fld.required) disabled=(is-equal fld.visible false) change=(action "onRequiredChange" fld)}}
         </td>
       </tr>
     {{/each}}
