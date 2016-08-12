@@ -10,7 +10,7 @@
 
       <div class="field">
         <label>Password</label>
-        {{input name='mpPassword' value=sessionUser.password type="password" }}
+        {{input name='mppassword' value=sessionUser.password type="password" }}
       </div>
 
       <div class="field">
@@ -18,7 +18,7 @@
         {{input name='mpPasswordVerify' value=sessionUser.passwordVerify type="password"}}
       </div>
 
-      <div class="ui submit button right floated green" {{action 'editPassword'}}><i class="check icon"></i>Save</div>
+      <div class="ui button right floated green" {{action 'submitNewPassword'}}><i class="check icon"></i>Save</div>
       <div class="ui right floated button" {{action 'cancelModal'}}><i class="ban icon"></i>Cancel</div>
 
     </form>

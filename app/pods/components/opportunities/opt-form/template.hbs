@@ -33,24 +33,28 @@
       <h3 class="ui dividing header">{{group.value}}</h3>
       <ul>
         {{#each group.items as |field|}}
-          <div class="field">
-            <label>{{field.label}}</label>
-            {{#if (is-equal field.type 'dropdown')}}
-              {{#ui-dropdown class="fluid selection" selected=field.value onChange=(action (mut field.value)) required=field.required}}
-                <i class="dropdown icon"></i>
-                <div class="default text">Select Value</div>
-                <div class="menu">
-                  {{#each field.options as |item|}}
-                    <div class="item" data-value="{{item}}">
-                      {{item}}
-                    </div>
-                  {{/each}}
-                </div>
-              {{/ui-dropdown}}
-            {{else}}
-              {{input name=field.name value=(mut (get model field.name)) type="text" required=field.required}}
-            {{/if}}
-          </div>
+          <!-- we only add a form field if it is visible. -->
+          <!-- Todo: Ask what to do with form fields which were previously visible and have values. -->
+          {{#if field.visible}}
+            <div class="field">
+              <label>{{field.label}}</label>
+              {{#if (is-equal field.type 'dropdown')}}
+                {{#ui-dropdown class="fluid selection" selected=field.value onChange=(action (mut field.value)) required=field.required}}
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Select Value</div>
+                  <div class="menu">
+                    {{#each field.options as |item|}}
+                      <div class="item" data-value="{{item}}">
+                        {{item}}
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/ui-dropdown}}
+              {{else}}
+                {{input name=field.name value=(mut (get model field.name)) type="text" required=field.required}}
+              {{/if}}
+            </div>
+          {{/if}}<!-- END if field visible-->
         {{/each}}
       </ul>
     {{/each}}

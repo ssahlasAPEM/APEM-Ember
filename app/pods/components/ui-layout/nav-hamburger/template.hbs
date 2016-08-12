@@ -6,7 +6,7 @@
   <div class="ui fluid vertical navbar menu">
     <div class="header side-nav-section-header">Home</div>
 
-    {{manage-password}}
+    {{manage-password mobileClass="mobile tablet only"}}
 
     {{#if (is-equal identity.profile.type 'Admin')}}
       <div class="header side-nav-section-header">Admin</div>
