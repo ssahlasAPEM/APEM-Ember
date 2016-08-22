@@ -9,6 +9,16 @@ export default Ember.Route.extend({
   },
 
   actions:{
+    onDelete(optRecord){
+      this.set('serverErrors',[]);
+      let errs = this.get('serverErrors');
+      optRecord.destroyRecord().then(() => {
+        this.transitionTo('opportunities');
+        // myRouting.transitionToRoute('opportunities');
+      }, (error) => {
+        errs.addObject(error);
+      });
+    },
     onOptSave(){
       this.transitionTo('opportunities');
     }

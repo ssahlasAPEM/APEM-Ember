@@ -39,7 +39,7 @@
             <div class="field">
               <label>{{field.label}}</label>
               {{#if (is-equal field.type 'dropdown')}}
-                {{#ui-dropdown class="fluid selection" selected=field.value onChange=(action (mut field.value)) required=field.required}}
+                {{#ui-dropdown class="fluid selection" selected=field.value onChange=(action (mut field.value))}}
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Value</div>
                   <div class="menu">
@@ -51,7 +51,7 @@
                   </div>
                 {{/ui-dropdown}}
               {{else}}
-                {{input name=field.name value=(mut (get model field.name)) type="text" required=field.required}}
+                {{input name=field.name value=(mut (get model field.name)) type="text"}}
               {{/if}}
             </div>
           {{/if}}<!-- END if field visible-->
