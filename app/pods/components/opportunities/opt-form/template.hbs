@@ -1,4 +1,4 @@
-<form class="ui form">
+<form class="ui form opportunity-form">
   <!-- HEADER -->
   <div class="top attached header">
     <h3 class="ui left floated header">NAO #{{model.id}}</h3>
@@ -11,14 +11,20 @@
           onConfirmDelete="deleteOpt" }}
       {{/if}}
 
-      {{input type="button" value="Save as Draft" class="ui button small right floated" click=(action "updateOpportunity")}}
-      {{input type="button" value="Save" class="ui button small right floated" click=(action "updateOpportunity")}}
+
+      {{input type="button" value="Save as Draft" class="ui button small right floated" click=(action "updateRecord")}}
+      <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
+      {{input type="button" value="Save" class="ui submit button small right floated" click=(action "updateRecord")}}
 
       {{#link-to 'opportunities' tagName='div' class="ui small button right floated" activeClass="" click=(action 'onCancelOptClick')}}
         Cancel
       {{/link-to}}
 
+    <br/><br/>
+    <div class="ui error message"></div>
   </div>
+
+
 
   <!-- STEPS FIELD -->
   {{opportunities/stage-step stageSteps=stages opt=model}}
