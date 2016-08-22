@@ -4,6 +4,8 @@ export default Ember.Component.extend({
 
   users:Ember.inject.service(),
 
+  recordType:'',
+
   //attributeBindings - the component properties which are bound to data from parent
   attributeBindings: ['isDisabled', 'deletableRecords', 'recordType', 'message', 'title'],
 
@@ -18,15 +20,20 @@ export default Ember.Component.extend({
         .modal('show');
     },
 
+
     approveDelete:function(){
-      console.log('deleting records ...');
-      var deletable = this.get('deletableRecords'),
-      store = deletable[0].store;
-      for(var i=0, dLen = deletable.length; i<dLen; i++){
-        store.findRecord(this.recordType, deletable[i].id).then(function(foundRecord) {
-          foundRecord.destroyRecord(); // => DELETE to /posts/2
-        });
+      if(this.recordType === 'Opportunity'){
+        this.sendAction('onConfirmDelete');
+      }else {//Users
+        var deletable = this.get('deletableRecords'),
+        store = deletable[0].store;
+        for(var i=0, dLen = deletable.length; i<dLen; i++){
+          store.findRecord(this.recordType, deletable[i].id).then(function(foundRecord) {
+            foundRecord.destroyRecord(); // => DELETE to /posts/2
+          });
+        }
       }
+      console.log('deleting records ...');
     },
 
     cancelConfirm(){

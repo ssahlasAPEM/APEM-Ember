@@ -32,19 +32,15 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    // softDelete: function() {
-    //   this.controller.get('model').deleteRecord();
-    // },
-    // confirm: function() {
-    //   this.controller.get('model').save();
-    // },
-    // undo: function() {
-    //   this.controller.get('model').rollbackAttributes();
-    // }
-    onDeleteOptClick:function(){
+    onDropdownSelect(fieldName, selectedValue){
+      let opt = this.get('model');
+      opt.set(fieldName, selectedValue);
+    },
+
+    deleteOpt:function(){
       let opt = this.get('model');
       this.sendAction('onOptDelete', opt);
-      console.log('delete opt method reached!');
+      // console.log('delete opt method reached!');
     },
 
     onCancelOptClick:function(){
@@ -64,7 +60,7 @@ export default Ember.Component.extend({
         opt.set('user', sessionUser);
 
         console.log('Updating Opportunity...');
-        
+
         opt.save().then(() => {
           this.sendAction('onOptSave');
         }, (error) => {
