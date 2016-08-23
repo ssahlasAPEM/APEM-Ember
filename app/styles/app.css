@@ -263,6 +263,19 @@
   outline-style: none;
 }
 
+.meta {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
+  float: right;
+  font-size: 26px;
+}
+.meta span {
+  font-size: 34px;
+}
+
 @media (max-width: 768px) {
 
   .advanced-search-component{
