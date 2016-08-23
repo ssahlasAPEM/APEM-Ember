@@ -19,6 +19,14 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
+  //observing the table's selectedItems to manage the delete button's disabled property
+  hasNoChanges: function() {
+    return !this.get('model').get('hasDirtyAttributes');
+  }.property('model.hasDirtyAttributes'),
+
+  noValidName:false,
+
+
   didRender(){
     this._super(...arguments);
     let myFields = this.get('fields'),
@@ -91,6 +99,7 @@ export default Ember.Component.extend({
     },
 
     onCancelOptClick:function(){
+      this.get('model').rollbackAttributes();
       console.log('cancel opt method reached!');
     },
 

@@ -12,11 +12,11 @@
       {{/if}}
 
 
-      {{input type="button" value="Save as Draft" class="ui button small right floated" click=(action "saveDraft")}}
+      {{input type="button" value="Save as Draft" disabled=noValidName class="ui button small right floated" click=(action "saveDraft")}}
       <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
-      {{input type="button" value="Save" class="ui submit button small right floated" click=(action "updateRecord")}}
+      {{input type="button" value="Save" disabled=hasNoChanges class="ui submit button small right floated" click=(action "updateRecord")}}
 
-      {{#link-to 'opportunities' tagName='div' class="ui small button right floated" activeClass="" click=(action 'onCancelOptClick')}}
+      {{#link-to 'opportunities' tagName='div' class="ui small reset button right floated" activeClass="" click=(action 'onCancelOptClick')}}
         Cancel
       {{/link-to}}
 
