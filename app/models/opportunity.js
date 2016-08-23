@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   user: DS.belongsTo('user'),
+  draft:DS.attr('boolean', { defaultValue: false }),
   status: DS.attr('string', { defaultValue: null }),
   stage: DS.attr('string', { defaultValue: 'quote' }),
   company : DS.attr('string', { defaultValue: null }),
