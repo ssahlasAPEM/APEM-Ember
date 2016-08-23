@@ -4,14 +4,26 @@ export default Ember.Route.extend({
   identity: Ember.inject.service(),
 
   redirect() {
-    let newOpportunity = this.store.createRecord('opportunity');
+    let newOpportunity = this.store.createRecord('opportunity'),
+    ident = this.get('identity');
+    let theUser = ident.get('profile');
+    
+    if(ident){
+      newOpportunity.set('user', theUser);
 
-    let theUser = this.get('identity').get('profile');
+      newOpportunity.save().then((savedOpportunity) => {
+        this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
+      });
+    }else{
+      theUser = this.get('identity').get('profile').then(() => {
+        newOpportunity.set('user', theUser);
 
-    newOpportunity.set('user', theUser);
-
-    newOpportunity.save().then((savedOpportunity) => {
-      this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
-    });
+        newOpportunity.save().then((savedOpportunity) => {
+          this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
+        });
+      }, (error) => {
+        errs.addObject(error);
+      });
+    }
   }
 });
