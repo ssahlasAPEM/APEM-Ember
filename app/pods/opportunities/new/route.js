@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     let newOpportunity = this.store.createRecord('opportunity'),
     ident = this.get('identity');
     let theUser = ident.get('profile');
-    
+
     if(ident){
       newOpportunity.set('user', theUser);
 
@@ -22,7 +22,7 @@ export default Ember.Route.extend({
           this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
         });
       }, (error) => {
-        errs.addObject(error);
+        console.log(error);
       });
     }
   }
