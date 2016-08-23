@@ -58,7 +58,7 @@ export default Ember.Component.extend({
       });
 
       //ensure prevent default behavior...because semantic and ember work well together on occasion..
-      Ember.$('.opportunity-form').submit(function(e){
+      Ember.$('.opportunity-form').submit(function(/*e*/){
           //e.preventDefault(); usually use this, but below works best here.
           return false;
       });
@@ -92,6 +92,12 @@ export default Ember.Component.extend({
 
     onCancelOptClick:function(){
       console.log('cancel opt method reached!');
+    },
+
+    saveDraft(){
+      let opt = this.get('model');
+      opt.set('draft',true);
+      this.updateRecord();
     },
 
     updateRecord:function() {
