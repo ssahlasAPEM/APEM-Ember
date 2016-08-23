@@ -1,6 +1,6 @@
 <form class="ui form opportunity-form">
   <!-- HEADER -->
-  <div class="top attached header">
+  <div class="top attached header"><!--fixed-->
     <h3 class="ui left floated header">NAO #{{model.id}}</h3>
       {{#if (is-equal identity.profile.type 'Admin')}}
         <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
@@ -12,7 +12,7 @@
       {{/if}}
 
 
-      {{input type="button" value="Save as Draft" class="ui button small right floated" click=(action "updateRecord")}}
+      {{input type="button" value="Save as Draft" class="ui button small right floated" click=(action "saveDraft")}}
       <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
       {{input type="button" value="Save" class="ui submit button small right floated" click=(action "updateRecord")}}
 
