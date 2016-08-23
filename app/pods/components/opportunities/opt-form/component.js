@@ -97,31 +97,36 @@ export default Ember.Component.extend({
     saveDraft(){
       let opt = this.get('model');
       opt.set('draft',true);
-      this.updateRecord();
+      this.doSave();
     },
 
     updateRecord:function() {
-      //Ember.$('.opportunity-form').form('validate');
-      let hasErrors = Ember.$('.field.error');
-      if(hasErrors.length === 0){
-        // Update the opportunity
-        let opt = this.get('model');
-        this.set('serverErrors',[]);
-        let errs = this.get('serverErrors'),
-        sessionUser = this.get('identity').get('profile');
-        // let myRouting = this.get('routing');
-        if (opt.get('hasDirtyAttributes')) {
-          opt.set('user', sessionUser);
+      this.doSave();
+    }
+  },
 
-          console.log('Updating Opportunity...');
+  doSave:function(){
+    //Ember.$('.opportunity-form').form('validate');
+    let opt = this.get('model');
+    let hasErrors = Ember.$('.field.error');
+    //form saves if there are no missing required fields, or if it's a draft.
+    if(hasErrors.length === 0 || opt.get('draft') === true){
+      // Update the opportunity
+      this.set('serverErrors',[]);
+      let errs = this.get('serverErrors'),
+      sessionUser = this.get('identity').get('profile');
+      // let myRouting = this.get('routing');
+      if (opt.get('hasDirtyAttributes')) {
+        opt.set('user', sessionUser);
 
-          opt.save().then(() => {
-            this.sendAction('onOptSave');
-            console.log('Opportunity Saved');
-          }, (error) => {
-            errs.addObject(error);
-          });
-        }
+        console.log('Updating Opportunity...');
+
+        opt.save().then(() => {
+          this.sendAction('onOptSave');
+          console.log('Opportunity Saved');
+        }, (error) => {
+          errs.addObject(error);
+        });
       }
     }
   }
