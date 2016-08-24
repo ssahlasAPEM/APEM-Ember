@@ -10,6 +10,7 @@ export default Ember.Component.extend({
   classNames: ['opp-table'],
   model: null,
   fields: null,
+  optStatuses:['Backburner', 'Won', 'Lost'],
 
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
   stages:[
@@ -106,6 +107,19 @@ export default Ember.Component.extend({
   // }),
 
   actions: {
+    onStatusChange(button){
+      let allStatusButtons = this.get('optStatuses');
+
+      for(var statBtn in allStatusButtons){
+        if (button.value === allStatusButtons[statBtn]) {
+          Ember.$('#'+button.id).addClass('active');
+        } else {
+          Ember.$('#'+button.id).removeClass('active');
+        }
+      }
+      let mymodel = this.get('model');
+      mymodel.set('status', button.value);
+    },
     /* Copies the current record to create a new one */
     cloneRecord(){
       let oldModel = this.get('model');

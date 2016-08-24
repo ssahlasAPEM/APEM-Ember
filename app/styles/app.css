@@ -275,6 +275,19 @@
 .meta span {
   font-size: 34px;
 }
+.make-me-button label:before, .make-me-button label:after{
+  display:none;
+}
+.make-me-button{
+  text-align: center;
+  padding: 8px;
+}
+.make-me-button label{
+  padding:0 !important;
+}
+.make-me-button.checked{
+  background-color: #BABBBC;
+}
 
 @media (max-width: 768px) {
 

@@ -30,14 +30,13 @@
 
   <!-- STEPS FIELD -->
   {{opportunities/stage-step stageSteps=stages opt=model}}
-
 <!-- STATUS FIELD -->
   <div class="field gap1">
     <label>Status</label>
-    <div class="ui buttons status-group-btns">
-      {{input type="button" name="status" value="Backburner" class="ui button" click=(action (mut model.status) value="target.value") }}
-      {{input type="button" name="status" value="Won" class="ui button" click=(action (mut model.status) value="target.value") }}
-      {{input type="button" name="status" value="Lost" class="ui button" click=(action (mut model.status) value="target.value") }}
+    <div class="row ui buttons">
+      {{ui-radio name="status" class="make-me-button button" label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
+      {{ui-radio name="status" class="make-me-button button" label="Won" value="Won" onChange=(action (mut model.status))}}
+      {{ui-radio name="status" class="make-me-button button" label="Lost" value="Lost" onChange=(action (mut model.status))}}
     </div>
   </div>
 
