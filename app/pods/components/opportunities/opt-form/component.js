@@ -19,13 +19,32 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
-  //observing the table's selectedItems to manage the delete button's disabled property
+  //observing the table's hasDirtyAttributes to manage the delete button's disabled property
   hasNoChanges: function() {
-    return !this.get('model').get('hasDirtyAttributes');
+    let model = this.get('model');
+    if (model.get('hasDirtyAttributes') || model.get('draft')) {
+      return false;
+    } else {
+      return true;
+    }
   }.property('model.hasDirtyAttributes'),
 
-  noValidName:false,
+  /* This property is used by the template to disable the opportunity delete
+  button unless the user is an Admin */
+  disableDelete:function() {
+    console.log(this.get('identity').get('profile').get('type'));
 
+    return (this.get('identity').get('profile').type === 'Admin')? false:true;
+  }.property('identity'),
+
+  /* This property observer is used by the template to disable the cancel button
+  when the record has been just created and still has no other attributes (i.e.:
+   all other attributes but tha id are null)*/
+  // isNewRecord:function() {
+  //   return this.get('model').get('newRecord');
+  // }.property('model.newRecord'),
+
+  noValidName:false,
 
   didRender(){
     this._super(...arguments);
@@ -87,6 +106,12 @@ export default Ember.Component.extend({
   // }),
 
   actions: {
+    /* Copies the current record to create a new one */
+    cloneRecord(){
+      let oldModel = this.get('model');
+      this.sendAction('onCopy', oldModel);
+    },
+
     onDropdownSelect(fieldName, selectedValue){
       let opt = this.get('model');
       opt.set(fieldName, selectedValue);
@@ -106,6 +131,7 @@ export default Ember.Component.extend({
     saveDraft(){
       let opt = this.get('model');
       opt.set('draft',true);
+      opt.set('newRecord', false);
       this.doSave();
     },
 
@@ -122,20 +148,13 @@ export default Ember.Component.extend({
     if(hasErrors.length === 0 || opt.get('draft') === true){
       // Update the opportunity
       this.set('serverErrors',[]);
-      let errs = this.get('serverErrors'),
-      sessionUser = this.get('identity').get('profile');
+      // let errs = this.get('serverErrors');
       // let myRouting = this.get('routing');
       if (opt.get('hasDirtyAttributes')) {
-        opt.set('user', sessionUser);
-
-        console.log('Updating Opportunity...');
-
-        opt.save().then(() => {
-          this.sendAction('onOptSave');
-          console.log('Opportunity Saved');
-        }, (error) => {
-          errs.addObject(error);
-        });
+        /*the record is no longer new at this point and copying and closing the
+        detail view are allowed */
+        opt.set('newRecord', false);
+        this.sendAction('onOptSave', opt);
       }
     }
   }

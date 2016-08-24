@@ -52,5 +52,6 @@ export default DS.Model.extend({
   reasonForLoss : DS.attr('string', { defaultValue: null }),
   commentField : DS.attr('string', { defaultValue: null }),
   createdAt : DS.attr('string', { defaultValue: null }),
-  updatedAt : DS.attr('string', { defaultValue: null })
+  updatedAt : DS.attr('string', { defaultValue: null }),
+  newRecord : DS.attr('boolean', { defaultValue: false })
 });

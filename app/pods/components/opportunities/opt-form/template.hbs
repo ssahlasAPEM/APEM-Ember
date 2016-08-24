@@ -1,22 +1,24 @@
 <form class="ui form opportunity-form">
   <!-- HEADER -->
   <div class="top attached header"><!--fixed-->
-    <h3 class="ui left floated header">NAO #{{model.id}}</h3>
+    <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
       {{#if (is-equal identity.profile.type 'Admin')}}
         <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
-        {{confirm-delete isDisabled=disableDelete
+        {{confirm-delete
+          isDisabled=(not-equal identity.profile.type 'Admin')
           title='Confirm Delete'
           recordType='Opportunity'
           message='The selected opportunity will be deleted. Continue?'
           onConfirmDelete="deleteOpt" }}
       {{/if}}
 
-
       {{input type="button" value="Save as Draft" disabled=noValidName class="ui button small right floated" click=(action "saveDraft")}}
       <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
       {{input type="button" value="Save" disabled=hasNoChanges class="ui submit button small right floated" click=(action "updateRecord")}}
 
-      {{#link-to 'opportunities' tagName='div' class="ui small reset button right floated" activeClass="" click=(action 'onCancelOptClick')}}
+      {{input type="button" value="Copy" disabled=model.newRecord class="ui submit button small right floated" click=(action "cloneRecord")}}
+
+      {{#link-to 'opportunities' disabled=model.newRecord tagName='div' class="ui small reset button right floated" activeClass="" click=(action 'onCancelOptClick')}}
         Cancel
       {{/link-to}}
 

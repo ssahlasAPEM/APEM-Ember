@@ -10,8 +10,8 @@ export default Ember.Route.extend({
 
     if(ident){
       newOpportunity.set('user', theUser);
-
       newOpportunity.save().then((savedOpportunity) => {
+        savedOpportunity.set('newRecord', true);
         this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
       });
     }else{
@@ -19,6 +19,7 @@ export default Ember.Route.extend({
         newOpportunity.set('user', theUser);
 
         newOpportunity.save().then((savedOpportunity) => {
+          savedOpportunity.set('newRecord', true);
           this.transitionTo('opportunities.opportunity.detail', savedOpportunity);
         });
       }, (error) => {

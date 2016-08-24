@@ -5,6 +5,11 @@
   </div>
 
   <div class="details">
-    {{opportunities/opt-form model=model fields=fields onOptSave='onOptSave' onOptDelete='onDelete'}}
+    {{opportunities/opt-form
+      model=model
+      fields=fields
+      onOptSave='onOptSave'
+      onOptDelete='onDelete'
+      onCopy='copyRecord'}}
   </div>
 </div>
