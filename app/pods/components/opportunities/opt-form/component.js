@@ -34,6 +34,7 @@ export default Ember.Component.extend({
   button unless the opportunity has a "sales order number" and a "company name" */
   isWinDisabled: function() {
     let m=this.get('model');
+    this.manageWonSettings(m);
     return (m.get('company')!== null && m.get('company')!== '' &&
      m.get('prodSalesOrderNum')!== null && m.get('prodSalesOrderNum')!== '')? false:true;
   }.property('model.company', 'model.prodSalesOrderNum'),
@@ -46,14 +47,15 @@ export default Ember.Component.extend({
     return (this.get('identity').get('profile').type === 'Admin')? false:true;
   }.property('identity'),
 
-  /* This property observer is used by the template to disable the cancel button
-  when the record has been just created and still has no other attributes (i.e.:
-   all other attributes but tha id are null)*/
-  // isNewRecord:function() {
-  //   return this.get('model').get('newRecord');
-  // }.property('model.newRecord'),
-
   noValidName:false,
+
+  manageWonSettings:function(model){
+    if (!(model.get('company')!== null && model.get('company')!== '' &&
+     model.get('prodSalesOrderNum')!== null && model.get('prodSalesOrderNum')!== '')) {
+       model.set('status', 'Backburner');
+      //  alert('Won can be assigned only if there are a Company and a Product Sales Number values.');
+    }
+  },
 
   didRender(){
     this._super(...arguments);

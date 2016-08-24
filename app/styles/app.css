@@ -288,6 +288,9 @@
 .make-me-button.checked{
   background-color: #BABBBC;
 }
+.no-border-radius{
+  border-radius: 0;
+}
 
 @media (max-width: 768px) {
 
