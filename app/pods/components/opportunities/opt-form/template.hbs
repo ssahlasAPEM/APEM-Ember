@@ -34,9 +34,9 @@
   <div class="field gap1">
     <label>Status</label>
     <div class="row ui buttons">
-      {{ui-radio name="status" class="make-me-button button" label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
-      {{ui-radio name="status" class="make-me-button button" label="Won" value="Won" onChange=(action (mut model.status))}}
-      {{ui-radio name="status" class="make-me-button button" label="Lost" value="Lost" onChange=(action (mut model.status))}}
+      {{ui-radio name="status" current=model.status class="make-me-button button" label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
+      {{ui-radio name="status" current=model.status class="make-me-button button" label="Won" value="Won" onChange=(action (mut model.status))}}
+      {{ui-radio name="status" current=model.status disabled=isWinDisabled class="make-me-button button" label="Lost" value="Lost" onChange=(action (mut model.status))}}
     </div>
   </div>
 
