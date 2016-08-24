@@ -30,6 +30,14 @@ export default Ember.Component.extend({
     }
   }.property('model.hasDirtyAttributes'),
 
+  /* This property is used by the template to disable the opportunity status Won
+  button unless the opportunity has a "sales order number" and a "company name" */
+  isWinDisabled: function() {
+    let m=this.get('model');
+    return (m.get('company')!== null && m.get('company')!== '' &&
+     m.get('prodSalesOrderNum')!== null && m.get('prodSalesOrderNum')!== '')? false:true;
+  }.property('model.company', 'model.prodSalesOrderNum'),
+
   /* This property is used by the template to disable the opportunity delete
   button unless the user is an Admin */
   disableDelete:function() {
