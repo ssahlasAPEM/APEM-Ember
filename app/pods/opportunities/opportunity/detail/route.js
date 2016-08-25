@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   identity: Ember.inject.service(),
-
   breadCrumb: null,
 
   setupController(controller, model) {
     controller.set('model', model);
     controller.set('fields', this.store.findAll('field'));
   },
+
 
   actions:{
     copyRecord(oldRecord){
