@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   user: DS.belongsTo('user'),
+  events: DS.hasMany('event'),
   draft:DS.attr('boolean', { defaultValue: false }),
   status: DS.attr('string', { defaultValue: null }),
   stage: DS.attr('string', { defaultValue: 'quote' }),
@@ -53,5 +54,6 @@ export default DS.Model.extend({
   commentField : DS.attr('string', { defaultValue: null }),
   createdAt : DS.attr('string', { defaultValue: null }),
   updatedAt : DS.attr('string', { defaultValue: null }),
-  newRecord : DS.attr('boolean', { defaultValue: false })
+  newRecord : DS.attr('boolean', { defaultValue: false }),
+  userId : DS.attr('string', { defaultValue: null })
 });

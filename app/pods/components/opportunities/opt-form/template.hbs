@@ -48,7 +48,8 @@
   {{#if (is-equal identity.profile.type 'Admin')}}
     <div class="field gap1">
       <label>User Relation</label>
-      {{#ui-dropdown class="fluid selection" selected=model.createdBy onChange=(action 'onDropdownSelect' field.name)}}
+
+      {{#ui-dropdown class="fluid selection" selected=model.user.id onChange=(action 'onUserSelect')}}
         <i class="dropdown icon"></i>
         <div class="default text">Select Value</div>
         <div class="menu">

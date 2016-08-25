@@ -7,6 +7,7 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     controller.set('model', model);
     controller.set('fields', this.store.findAll('field'));
+    controller.set('users', this.store.findAll('user'));
   },
 
 
@@ -37,8 +38,11 @@ export default Ember.Route.extend({
     },
 
     onOptSave(opt){
-      let sessionUser = this.get('identity').get('profile');
-      opt.set('user', sessionUser);
+      if(opt.get('user') == null) {
+        let sessionUser = this.get('identity').get('profile');
+        opt.set('user', sessionUser);
+      }
+
       opt.set('draft', false);
       console.log('Updating Opportunity...');
 

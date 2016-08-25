@@ -3,6 +3,7 @@ import groupBy from 'ember-group-by';
 
 export default Ember.Component.extend({
   identity: Ember.inject.service(),
+  store: Ember.inject.service(),
   // routing: Ember.inject.service('-routing'),
 
   //used addon ember-group-by to group our fields array by model attr group.
@@ -10,6 +11,7 @@ export default Ember.Component.extend({
   classNames: ['opp-table'],
   model: null,
   fields: null,
+  users: null,
   optStatuses:['Backburner', 'Won', 'Lost'],
 
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
@@ -19,6 +21,13 @@ export default Ember.Component.extend({
     {'label':'approval', 'id':3},
     {'label':'production', 'id':4},
   ],
+
+  // Init function
+  init() {
+    this._super(...arguments);
+
+
+  },
 
   // OBSERVERS ---------------------
 
@@ -125,6 +134,17 @@ export default Ember.Component.extend({
   // }),
 
   actions: {
+    onUserSelect(selectedValue){
+      let opt = this.get('model');
+      opt.set('userId', selectedValue);
+
+      this.get('store').findRecord('user', selectedValue).then((data) => {
+          opt.set('user', data);
+        }, (error) => {
+          console.log(error);
+      });
+    },
+
     onStatusChange(button){
       let allStatusButtons = this.get('optStatuses');
 
