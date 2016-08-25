@@ -25,8 +25,6 @@ export default Ember.Component.extend({
   // Init function
   init() {
     this._super(...arguments);
-
-
   },
 
   // OBSERVERS ---------------------

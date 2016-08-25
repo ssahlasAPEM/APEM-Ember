@@ -49,12 +49,12 @@
     <div class="field gap1">
       <label>User Relation</label>
 
-      {{#ui-dropdown class="fluid selection" selected=model.user.id onChange=(action 'onUserSelect')}}
+      {{#ui-dropdown class="fluid selection" selected=model.user.id onChange=(action (mut selected_type)) as |execute mapper|}}
         <i class="dropdown icon"></i>
         <div class="default text">Select Value</div>
         <div class="menu">
           {{#each users as |user|}}
-            <div class="item" data-value="{{user.id}}">
+            <div class="item" data-value="{{map-value mapper user.id}}">
               {{user.username}}
             </div>
           {{/each}}
