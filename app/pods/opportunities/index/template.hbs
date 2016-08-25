@@ -15,9 +15,12 @@
     {{input type="button"
     value="Download CSV"
     class="ui button csv-btn inline block"}}
-    {{#ui-dropdown class="ui floating dropdown icon button download-filter-btn"}}
+    <button class="ui icon button" {{action 'pullFilteredCSV'}}>
       <i class="filter icon"></i>
-    {{/ui-dropdown}}
+    </button>
+    <!-- {{#ui-dropdown class="ui floating dropdown icon button download-filter-btn"}}
+      <i class="filter icon"></i>
+    {{/ui-dropdown}} -->
   </div>
 </div>
 

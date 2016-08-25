@@ -16,5 +16,10 @@ export default Ember.Route.extend(RouteMixin, {
   setupController(controller, models) {
     controller.set('fields', models.fields);
     controller.set('opportunities', models.opportunities);
+  },
+  actions:{
+    pullFilteredCSV(){
+      debugger;
+    }
   }
 });
