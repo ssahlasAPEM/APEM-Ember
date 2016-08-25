@@ -1,24 +1,34 @@
-<div class="ui meta">
-<span>{{opportunities.meta.total-revenue}}</span><br/><br/>
-revenue
-</div>
-<div class="ui meta">
-<span>{{opportunities.meta.total-records}}</span><br/><br/>
-deals
-</div>
-
-<div clss="top attached ui menu">
-  <div class="ui buttons column">
+ <div clss="top attached ui menu">
+   <!-- !!!!!! Uncomment the below buttons if a grid view is to be added -->
+<!--  <div class="ui buttons column">
     <button class="ui labeled icon button white-button {{if (is-equal defaultView 'grid') 'active'}}" {{action 'showGridView'}}>
       <i class="block layout icon"></i>Grid
     </button>
     <button class="ui labeled icon button white-button {{if (is-equal defaultView 'list') 'active'}}" {{action 'showListView'}}>
       <i class="list layout icon"></i>List
     </button>
+  </div> -->
+
+  {{adv-search class="column inline-block"}}
+
+  <div class="ui buttons right floated">
+    {{input type="button"
+    value="Download CSV"
+    class="ui button csv-btn inline block"}}
+    {{#ui-dropdown class="ui floating dropdown icon button download-filter-btn"}}
+      <i class="filter icon"></i>
+    {{/ui-dropdown}}
   </div>
+</div>
 
-  {{adv-search class="column inline-block center aligned"}}
-
+<br/>
+<div class="ui meta">
+  <span>{{opportunities.meta.total-revenue}}</span><br/><br/>
+  revenue
+</div>
+<div class="ui meta">
+  <span>{{opportunities.meta.total-records}}</span><br/><br/>
+  deals
 </div>
 
 {{#if (is-equal defaultView 'list')}}

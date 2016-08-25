@@ -33,17 +33,58 @@
       <div class="divider gap1"></div>
 
       <div class="ui field">
-        <div class="ui buttons gap1">
+        <div class="row ui buttons gap1">
+          {{ui-radio
+            name="sStatus"
+            current=searchedStatus
+            class="make-me-button button"
+            label="Backburner"
+            value="Backburner"
+            onChange=(action (mut searchedStatus))}}
+
+          {{ui-radio
+            name="sStatus"
+            current=model.status
+            class="make-me-button button"
+            label="Won"
+            value="Won"
+            onChange=(action (mut searchedStatus))}}
+
+          {{ui-radio
+            name="sStatus"
+            current=model.status
+            class="make-me-button button"
+            label="Lost"
+            value="Lost"
+            onChange=(action (mut searchedStatus))}}
+        </div>
+        <!-- <div class="ui buttons gap1">
+
           <button class="ui button">Won</button>
           <button class="ui button">Lost</button>
           <button class="ui button">Backburner</button>
-        </div>
+        </div> -->
       </div>
       <div class="ui field">
         <br/>
         <div class="ui buttons fluid gap1">
-          <button class="ui button">Open</button>
-          <button class="ui button">Closed</button>
+          {{ui-radio
+            name="sState"
+            current=searchedState
+            class="make-me-button button"
+            label="Open"
+            value="Open"
+            onChange=(action (mut searchedState))}}
+
+          {{ui-radio
+            name="sState"
+            current=searchedState
+            class="make-me-button button"
+            label="Closed"
+            value="Closed"
+            onChange=(action (mut searchedState))}}
+          <!-- <button class="ui button">Open</button>
+          <button class="ui button">Closed</button> -->
         </div>
       </div>
 

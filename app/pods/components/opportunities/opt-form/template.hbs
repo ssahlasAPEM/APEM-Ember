@@ -1,32 +1,66 @@
 <form class="ui form opportunity-form">
   <!-- HEADER -->
   <div class="top attached header"><!--fixed-->
+
     <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
-      {{#if (is-equal identity.profile.type 'Admin')}}
-        <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
-        {{confirm-delete
-          isDisabled=(not-equal identity.profile.type 'Admin')
-          title='Confirm Delete'
-          recordType='Opportunity'
-          message='The selected opportunity will be deleted. Continue?'
-          onConfirmDelete="deleteOpt" }}
-      {{/if}}
+    {{#if (is-equal identity.profile.type 'Admin')}}
+      <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
+      {{confirm-delete
+        isDisabled=(not-equal identity.profile.type 'Admin')
+        title='Confirm Delete'
+        recordType='Opportunity'
+        message='The selected opportunity will be deleted. Continue?'
+        onConfirmDelete="deleteOpt" }}
+    {{/if}}
 
-      {{input type="button" value="Save as Draft" disabled=noValidName class="ui button small right floated" click=(action "saveDraft")}}
-      <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
-      {{input type="button" value="Save" disabled=hasNoChanges class="ui submit button small right floated" click=(action "updateRecord")}}
+    {{#if noValidName}}
+      {{#ui-popup
+        content="Please provide a Company name."}}
+        {{input type="button" value="Save as Draft"
+          disabled=noValidName
+          class="ui button small right floated" click=(action "saveDraft")}}
+      {{/ui-popup}}
+    {{else}}
+      {{input type="button" value="Save as Draft" class="ui button small right floated"
+      click=(action "saveDraft")}}
+    {{/if}}
 
-      {{input type="button" value="Copy" disabled=model.newRecord class="ui submit button small right floated" click=(action "cloneRecord")}}
+    <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
+    {{input type="button" value="Save" disabled=hasNoChanges
+    class="ui submit button small right floated"
+    click=(action "updateRecord")}}
 
-      {{#link-to 'opportunities' disabled=model.newRecord tagName='div' class="ui small reset button right floated" activeClass="" click=(action 'onCancelOptClick')}}
-        Cancel
-      {{/link-to}}
+    {{input type="button" value="Copy" disabled=model.newRecord
+    class="ui submit button small right floated"
+    click=(action "cloneRecord")}}
+
+    {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
+    class="ui small reset button right floated" activeClass=""
+    click=(action 'onCancelOptClick')}}
+      Cancel
+    {{/link-to}}
 
     <br/><br/>
     <div class="ui error message"></div>
   </div>
 
-
+  <!-- IF ADMIN - CAN CHANGE USER RELATION -->
+  {{#if (is-equal identity.profile.type 'Admin')}}
+    <div class="field gap1">
+      <label>User Relation</label>
+      {{#ui-dropdown class="fluid selection" selected=model.createdBy onChange=(action 'onDropdownSelect' field.name)}}
+        <i class="dropdown icon"></i>
+        <div class="default text">Select Value</div>
+        <div class="menu">
+          {{#each users as |user|}}
+            <div class="item" data-value="{{user.id}}">
+              {{user.username}}
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  {{/if}}
 
   <!-- STEPS FIELD -->
   {{opportunities/stage-step stageSteps=stages opt=model}}
@@ -34,9 +68,11 @@
   <div class="field gap1">
     <label>Status</label>
     <div class="row ui buttons">
-      {{ui-radio name="status" current=model.status class="make-me-button button" label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
+      {{ui-radio name="status" current=model.status class="make-me-button button"
+      label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
       {{#if isWinDisabled}}
-        {{#ui-popup content="Won can be assigned only if there are a Company and a Product Sales Order Number values."}}
+        {{#ui-popup
+          content="Won can be assigned only if there are a Company and a Product Sales Order Number values."}}
           {{ui-radio name="status"
           current=model.status
           disabled=isWinDisabled
@@ -54,7 +90,12 @@
         value="Won"
         onChange=(action (mut model.status))}}
       {{/if}}
-      {{ui-radio name="status" current=model.status class="make-me-button button" label="Lost" value="Lost" onChange=(action (mut model.status))}}
+      {{ui-radio name="status"
+      current=model.status
+      class="make-me-button button"
+      label="Lost"
+      value="Lost"
+      onChange=(action (mut model.status))}}
     </div>
   </div>
 
@@ -63,6 +104,9 @@
       <h3 class="ui dividing header">{{group.value}}</h3>
       <ul>
         {{#each group.items as |field|}}
+          <!-- {{#if (if-odd field.index)}}
+           <div class="two fields">
+          {{/if}} -->
           <!-- we only add a form field if it is visible. -->
           <!-- Todo: Ask what to do with form fields which were previously visible and have values. -->
           {{#if field.visible}}
@@ -85,7 +129,13 @@
               {{/if}}
             </div>
           {{/if}}<!-- END if field visible-->
-        {{/each}}
+
+          <!-- {{#if (if-odd field.index)}}
+            </div>
+          {{/if}} --><!--End two fields -->
+
+        {{/each}}<!-- END EACH field -->
+
       </ul>
     {{/each}}
   {{else}}

@@ -20,6 +20,8 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
+  // OBSERVERS ---------------------
+
   //observing the table's hasDirtyAttributes to manage the delete button's disabled property
   hasNoChanges: function() {
     let model = this.get('model');
@@ -39,24 +41,7 @@ export default Ember.Component.extend({
      m.get('prodSalesOrderNum')!== null && m.get('prodSalesOrderNum')!== '')? false:true;
   }.property('model.company', 'model.prodSalesOrderNum'),
 
-  /* This property is used by the template to disable the opportunity delete
-  button unless the user is an Admin */
-  disableDelete:function() {
-    console.log(this.get('identity').get('profile').get('type'));
-
-    return (this.get('identity').get('profile').type === 'Admin')? false:true;
-  }.property('identity'),
-
-  noValidName:false,
-
-  manageWonSettings:function(model){
-    if (!(model.get('company')!== null && model.get('company')!== '' &&
-     model.get('prodSalesOrderNum')!== null && model.get('prodSalesOrderNum')!== '')) {
-       model.set('status', 'Backburner');
-      //  alert('Won can be assigned only if there are a Company and a Product Sales Number values.');
-    }
-  },
-
+  //HOOKS ----
   didRender(){
     this._super(...arguments);
     let myFields = this.get('fields'),
@@ -101,6 +86,29 @@ export default Ember.Component.extend({
           return false;
       });
 
+    }
+  },
+
+  //METHODS
+
+  /* This property is used by the template to disable the opportunity delete
+  button unless the user is an Admin */
+  disableDelete:function() {
+    console.log(this.get('identity').get('profile').get('type'));
+
+    return (this.get('identity').get('profile').type === 'Admin')? false:true;
+  }.property('identity'),
+
+  noValidName:function() {
+    let m = this.get('model');
+    return (m.get('company') !== '' && m.get('company') !== null && m.get('company') !== undefined)? false:true;
+  }.property('model.company'),
+
+  manageWonSettings:function(model){
+    if (!(model.get('company')!== null && model.get('company')!== '' &&
+     model.get('prodSalesOrderNum')!== null && model.get('prodSalesOrderNum')!== '')) {
+       model.set('status', 'Backburner');
+      //  alert('Won can be assigned only if there are a Company and a Product Sales Number values.');
     }
   },
 
@@ -154,6 +162,8 @@ export default Ember.Component.extend({
 
     saveDraft(){
       let opt = this.get('model');
+      //failsafe
+      if(opt.get('company') === '' || opt.get('company') === null || opt.get('company') === undefined) { return; }
       opt.set('draft',true);
       opt.set('newRecord', false);
       this.doSave();

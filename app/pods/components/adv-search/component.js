@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+  searchedStatus:'Backburner',//default
+  searchedState:'Open',
   actions:{
     onSearchClick:function(){
       //todo write search quesry here ?
