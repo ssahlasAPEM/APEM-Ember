@@ -17,10 +17,10 @@ export default Ember.Component.extend({
     updateDate:function(action){
 
       let newDate = window.moment(action._d, 'ddd MMM DD YYYY HH:mm:ss Z').format('MM/DD/YYYY');
-
+      let searchServiceFormat = window.moment(action._d, 'ddd MMM DD YYYY HH:mm:ss Z').format('MM-DD-YYYY');
       this.$('.date-picker__button').text(newDate);
       this.set('date', newDate);
-      this.sendAction('updatedDate',newDate);
+      this.sendAction('updatedDate',searchServiceFormat);
     },
     openDatepicker:function(){
       this.$(".date-picker__button").click();

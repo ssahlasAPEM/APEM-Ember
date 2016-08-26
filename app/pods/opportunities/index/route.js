@@ -14,10 +14,14 @@ export default Ember.Route.extend(InfinityFilter, {
   model: function(params) {
     return this.infinityFilterModel("opportunity");
   },
-  
+
   actions:{
     pullFilteredCSV(){
       //debugger;
+    },
+    filterOpportunities(params){
+      console.log(params);
+      this.infinityModel("opportunity", params);
     }
   }
 });

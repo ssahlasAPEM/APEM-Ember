@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   startDate:null,
   endDate:null,
   estimatedProdDate:null,
+  searchString:null,
 
   notUsingDates: function() {
     console.log('disabled change!!!');
@@ -16,7 +17,7 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays'),
 
   notUsingDateEntered: function() {
-    console.log('manage date entered!!!');
+    // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
     this.get('startDate') !== null ||
     this.get('endDate') !== null ||
@@ -24,14 +25,14 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'startDate', 'endDate', 'estimatedProdDate'),
 
   notUsingDateRange: function() {
-    console.log('manage date entered!!!');
+    // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
     this.get('dateEntered') !== null ||
     this.get('estimatedProdDate') !== null)? true:false;
   }.property('lastThirtyDays', 'dateEntered', 'estimatedProdDate'),
 
   notUsingEstProdDate: function() {
-    console.log('manage date entered!!!');
+    // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
     this.get('dateEntered') !== null ||
     this.get('startDate') !== null ||
@@ -58,8 +59,16 @@ export default Ember.Component.extend({
 
     onSearchClick:function(){
       let params = {
-
+          lastThirtyDays:this.get('lastThirtyDays'),
+          dateEntered:this.get('dateEntered'),
+          startDate:this.get('startDate'),
+          endDate:this.get('endDate'),
+          estimatedProdDate:this.get('estimatedProdDate'),
+          searchedStatus:this.get('searchedStatus'),
+          searchedState:this.get('searchedState'),
+          searchString:this.get('searchString')
       };
+      this.sendAction('doSearch', params);
       //todo write search quesry here ?
     }
   }
