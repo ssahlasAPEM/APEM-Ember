@@ -4,7 +4,12 @@ export default Ember.Component.extend({
   classNames: ['opp-table'],
   model: null,
 
-  init() {
-    this._super(...arguments);
+  // init() {
+  //   this._super(...arguments);
+  // },
+  actions:{
+    infinityLoad(data){
+      debugger;
+    }
   }
 });
