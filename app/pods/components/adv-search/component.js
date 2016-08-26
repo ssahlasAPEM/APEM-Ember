@@ -10,6 +10,7 @@ export default Ember.Component.extend({
   endDate:null,
   estimatedProdDate:null,
   searchString:null,
+  searchUsed:false,
 
   notUsingDates: function() {
     console.log('disabled change!!!');
@@ -40,6 +41,10 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
+    clearSearch(){
+      this.toggleProperty('searchUsed');
+      this.sendAction('clearSearchFilter');
+    },
     onDateEntered(data){
       this.set('dateEntered', data);
     },
@@ -68,6 +73,7 @@ export default Ember.Component.extend({
           searchedState:this.get('searchedState'),
           searchString:this.get('searchString')
       };
+      this.toggleProperty('searchUsed');
       this.sendAction('doSearch', params);
       //todo write search quesry here ?
     }

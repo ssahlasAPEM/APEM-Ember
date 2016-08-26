@@ -22,6 +22,9 @@ export default Ember.Route.extend(InfinityFilter, {
     filterOpportunities(params){
       console.log(params);
       this.infinityModel("opportunity", params);
+    },
+    clearSearchFilter(){
+      this.infinityModel("opportunity",{});
     }
   }
 });
