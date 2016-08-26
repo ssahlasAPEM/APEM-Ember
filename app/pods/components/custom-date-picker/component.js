@@ -15,11 +15,14 @@ export default Ember.Component.extend({
 
   actions:{
     clearTheDate(){
-      // this.$('.date-picker__wrapper').action('clearDate');
-      let a=this.$('.cust-date-field');
-      this.$('.cust-date-field').set('date', '');
+      this.$('.date-picker__button').text("");
+      this.set('date', null);
+      this.sendAction('updatedDate', null);
+
+      //this.$('.date-picker__wrapper').action('clearDate');
+      //let a=this.$('.cust-date-field');
       // this.get('_picker').setDate(d.format())
-      debugger;
+      //debugger;
       // a[0].innerText='';
       // a.triggerAction({
       //   action:'clearDate',
@@ -28,7 +31,6 @@ export default Ember.Component.extend({
       // debugger;//.actions.clearDate();
       // let dC = this.$(".cust-date-field");
       // dC.setDate(null);
-      // this.set('date', null);
     },
     updateDate:function(action){
       let newDate = window.moment(action._d, 'YYYY-MM-DD').format('DD/MM/YYYY');//action._d;
