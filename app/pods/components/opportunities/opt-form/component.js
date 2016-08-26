@@ -132,17 +132,6 @@ export default Ember.Component.extend({
   // }),
 
   actions: {
-    onUserSelect(selectedValue){
-      let opt = this.get('model');
-      opt.set('userId', selectedValue);
-
-      this.get('store').findRecord('user', selectedValue).then((data) => {
-          opt.set('user', data);
-        }, (error) => {
-          console.log(error);
-      });
-    },
-
     onStatusChange(button){
       let allStatusButtons = this.get('optStatuses');
 
@@ -206,6 +195,15 @@ export default Ember.Component.extend({
         /*the record is no longer new at this point and copying and closing the
         detail view are allowed */
         opt.set('newRecord', false);
+
+        /* If the userId is an object, that means someone selected
+         * a new User and it's been hacked/copied over to the userId
+         * temporarily so we need to process this */
+        if(typeof(opt.get('userId')) === "object") {
+          opt.set('user', opt.get('userId'));
+          opt.set('userId', opt.get('user.id'));
+        }
+
         this.sendAction('onOptSave', opt);
       }
     }
