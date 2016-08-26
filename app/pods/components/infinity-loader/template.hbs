@@ -1,0 +1,12 @@
+<p class="text-center" style={{style-attr 'padding' '1rem'}}>
+
+  {{#if filterLoading}}
+    Loading Records...
+  {{else}}
+    {{#if infinityModel.reachedInfinity}}
+      No more records found.
+    {{else}}
+      Loading Records...
+    {{/if}}
+  {{/if}}
+</p>

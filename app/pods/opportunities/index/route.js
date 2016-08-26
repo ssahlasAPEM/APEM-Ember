@@ -1,30 +1,23 @@
 import Ember from 'ember';
-import InfinityRoute from "ember-infinity/mixins/route";
+import InfinityFilter from 'apem/mixins/infinity-filter';
 
-export default Ember.Route.extend(InfinityRoute, {
+export default Ember.Route.extend(InfinityFilter, {
   totalPagesParam: "meta.total-pages",
   totalRecordsParam: "meta.total-records",
-  perPage:25,
+
   breadCrumb: { title: 'Manage Opportunities' },
 
+  fields: function() {
+    return this.store.findAll('field');
+  },
+
   model: function(params) {
-    return Ember.RSVP.hash({
-      fields: this.store.findAll('field'),
-      opportunities: this.infinityModel("opportunity",
-        { perPage: this.perPage,
-          startingPage: 1,
-          modelPath: 'controller.opportunities'
-        })
-        //this.findPaged('opportunity',params)
-    });
+    return this.infinityFilterModel("opportunity");
   },
-  setupController(controller, models) {
-    controller.set('fields', models.fields);
-    controller.set('opportunities', models.opportunities);
-  },
+  
   actions:{
     pullFilteredCSV(){
-      debugger;
+      //debugger;
     }
   }
 });

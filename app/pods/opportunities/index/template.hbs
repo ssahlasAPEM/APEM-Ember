@@ -26,20 +26,61 @@
 
 <br/>
 <div class="ui meta">
-  <span>{{opportunities.meta.total-revenue}}</span><br/><br/>
+  <span>{{model.meta.total-revenue}}</span><br/><br/>
   revenue
 </div>
 <div class="ui meta">
-  <span>{{opportunities.meta.total-records}}</span><br/><br/>
+  <span>{{model.meta.total-records}}</span><br/><br/>
   deals
 </div>
 
 {{#if (is-equal defaultView 'list')}}
-  {{opportunities/opp-table model=opportunities fields=fields}}
-{{/if}}
 
-{{#if (is-equal defaultView 'grid')}}
- Grid mockup
+  <div class="opp-table">
+
+    <table class="ui table ui-table">
+
+      <thead>
+        <tr>
+          <th>NAO #</th>
+          <th>Sales Person</th>
+          <th>Revenue</th>
+          <th>Prod Type</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each model as |opp|}}
+          <tr>
+            <td>
+              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                {{opp.id}}
+              {{/link-to}}
+            </td>
+            <td>
+              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                {{opp.apemSalesPerson}}
+              {{/link-to}}
+            </td>
+            <td>
+              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                {{currency-format opp.potentialAnnualRev}}
+              {{/link-to}}
+            </td>
+            <td>
+              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                {{opp.productType}}
+              {{/link-to}}
+            </td>
+          </tr>
+        {{/each}}
+        {{infinity-loader infinityModel=model scrollable=".opp-table"}}
+      </tbody>
+
+    </table>
+
+  </div>
+
 {{/if}}
 
 {{outlet}}
