@@ -16,6 +16,11 @@
   overflow: auto;
   width: 100%;
 }
+.opportunity-form{
+  max-height: calc(100vh - 102px);
+  height: calc(100% - 30px);
+  overflow: auto;
+}
 .logo-wrapper{
   width: 260px;
   height: 240px;
