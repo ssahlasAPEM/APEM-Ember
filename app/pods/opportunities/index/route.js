@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
+import InfinityRoute from "ember-infinity/mixins/route";
 
-export default Ember.Route.extend(RouteMixin, {
+export default Ember.Route.extend(InfinityRoute, {
   totalPagesParam: "meta.total-pages",
   totalRecordsParam: "meta.total-records",
   perPage:25,
@@ -10,7 +10,8 @@ export default Ember.Route.extend(RouteMixin, {
   model: function(params) {
     return Ember.RSVP.hash({
       fields: this.store.findAll('field'),
-      opportunities: this.findPaged('opportunity',params)
+      opportunities: this.infinityModel("opportunity", { perPage: this.perPage, startingPage: 1,
+        modelPath: 'controller.opportunities' }) //this.findPaged('opportunity',params)
     });
   },
   setupController(controller, models) {

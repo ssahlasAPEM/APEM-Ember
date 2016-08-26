@@ -1,12 +1,39 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  attributeBindings: ['btnLabel'],
-  classNameBindings:['class'],
-  className: 'custom-date-picker',
-  actions:{
-    updateDate:function(){
 
+export default Ember.Component.extend({
+  attributeBindings: ['btnLabel', 'date', 'inputWidth'],
+  classNameBindings:['class', 'disabled'],
+  className: 'custom-date-picker',
+  inputWidth:100,
+  date: null,
+
+  formattedDate: function() {
+    console.log(window.moment(this.get('date'), 'YYYY-MM-DD').format('DD/MM/YYYY'));
+    return window.moment(this.get('date'), 'YYYY-MM-DD').format('DD/MM/YYYY');
+  }.property('date'),
+
+  actions:{
+    clearTheDate(){
+      // this.$('.date-picker__wrapper').action('clearDate');
+      let a=this.$('.cust-date-field');
+      this.$('.cust-date-field').set('date', '');
+      // this.get('_picker').setDate(d.format())
+      debugger;
+      // a[0].innerText='';
+      // a.triggerAction({
+      //   action:'clearDate',
+      //   target: this
+      // });
+      // debugger;//.actions.clearDate();
+      // let dC = this.$(".cust-date-field");
+      // dC.setDate(null);
+      // this.set('date', null);
+    },
+    updateDate:function(action){
+      let newDate = window.moment(action._d, 'YYYY-MM-DD').format('DD/MM/YYYY');//action._d;
+      this.set('date', newDate);
+      this.sendAction('updatedDate',newDate);
     },
     openDatepicker:function(){
       this.$(".date-picker__button").click();

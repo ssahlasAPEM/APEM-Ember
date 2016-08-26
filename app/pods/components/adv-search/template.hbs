@@ -7,27 +7,29 @@
 
   {{input type="button" value="Search" class="ui button adv-search-btn" click=(action "onSearchClick")}}
 
-  {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown"}}
+  {{#ui-dropdown
+    class="ui floating dropdown icon button adv-search-dropdown"
+  }}
 
     <i class="dropdown icon"></i>
     <div class="menu adv-search-menu">
       <div class="ui field">
-        {{ui-checkbox label="New (last 30 days)" checked=true onChange=(action (mut checked))}}
+        {{ui-checkbox label="New (last 30 days)" checked=lastThirtyDays onChange=(action 'onLastThirtyChange' lastThirtyDays)}}
         <div class="item fake-item"></div>
         <br/><br/>
       </div>
-      <div class="ui field gap1">
-        <span class="menu-label" >Date Entered</span>
-        {{custom-date-picker btnLabel=''}}
+      <div class="ui field gap1" >
+        <span class="menu-label">Date Entered</span>
+        {{custom-date-picker btnLabel='' disabled=notUsingDateEntered inputWidth=300 class='adv-search-field' updatedDate='onDateEntered'}}
       </div>
       <div class="ui field gap1">
         <span class="menu-label">Date Range</span><br/>
-        {{custom-date-picker btnLabel='Start'}}
-        {{custom-date-picker btnLabel='End' class='gap1'}}
+        {{custom-date-picker btnLabel='Start'  disabled=notUsingDateRange class='adv-search-field' updatedDate='onStartDate'}}
+        {{custom-date-picker btnLabel='End' disabled=notUsingDateRange class='gap1 adv-search-field' updatedDate='onEndDate'}}
       </div>
-      <div class="ui field gap1">
+      <div class="ui field gap1" >
         <span class="menu-label ">Estimated Production Date</span><br/>
-        {{custom-date-picker btnLabel=''}}
+        {{custom-date-picker btnLabel='' disabled=notUsingEstProdDate class='adv-search-field' updateDate='onEstProductionDate'}}
       </div>
 
       <div class="divider gap1"></div>

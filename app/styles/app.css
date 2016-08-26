@@ -4,6 +4,10 @@
   background: white;
   padding-top: 32%;
 }
+.adv-search-field.disabled{
+  pointer-events: none;
+  opacity: 0.4;
+}
 .top-z-index{
   z-index: 9999 !important;
 }
@@ -159,7 +163,7 @@
 }
 /*  Advanced search styles  */
 .advanced-search-component{
-  margin:12px;
+  /*margin:12px;*/
   white-space: nowrap;
 }
 .advanced-search{
