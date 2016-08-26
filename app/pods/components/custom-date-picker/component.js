@@ -5,13 +5,9 @@ export default Ember.Component.extend({
   attributeBindings: ['btnLabel', 'date', 'inputWidth'],
   classNameBindings:['class', 'disabled'],
   className: 'custom-date-picker',
-  inputWidth:100,
+  inputWidth:"200px",
   date: null,
 
-  formattedDate: function() {
-    console.log(window.moment(this.get('date'), 'YYYY-MM-DD').format('DD/MM/YYYY'));
-    return window.moment(this.get('date'), 'YYYY-MM-DD').format('DD/MM/YYYY');
-  }.property('date'),
 
   actions:{
     clearTheDate(){

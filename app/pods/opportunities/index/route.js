@@ -10,8 +10,12 @@ export default Ember.Route.extend(InfinityRoute, {
   model: function(params) {
     return Ember.RSVP.hash({
       fields: this.store.findAll('field'),
-      opportunities: this.infinityModel("opportunity", { perPage: this.perPage, startingPage: 1,
-        modelPath: 'controller.opportunities' }) //this.findPaged('opportunity',params)
+      opportunities: this.infinityModel("opportunity",
+        { perPage: this.perPage,
+          startingPage: 1,
+          modelPath: 'controller.opportunities'
+        })
+        //this.findPaged('opportunity',params)
     });
   },
   setupController(controller, models) {
