@@ -1,8 +1,11 @@
 {{date-picker
   action=(action 'updateDate' on="setDate")
   width=inputWidth
-  valueFormat='YYYY-MM-DD'
   placeholder=""
+  valueFormat='YYYY-MM-DD'
+  format='YYYY-MM-DD'
+  utc=false
+  style="width:calc(100% - 80px);"
   allowBlank=true
   buttonClasses="date-picker-btn"
   class="cust-date-field"}}
@@ -13,5 +16,5 @@
   <i class="calendar icon no-margin"></i>
 </button>
 {{#if date}}
-  <i class="close icon" {{action 'clearTheDate'}}></i>
+  <i class="close icon clear-date-btn" {{action 'clearTheDate'}}></i>
 {{/if}}

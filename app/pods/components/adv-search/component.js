@@ -17,12 +17,17 @@ export default Ember.Component.extend({
 
   notUsingDateEntered: function() {
     console.log('manage date entered!!!');
-    return (this.get('lastThirtyDays') === true || this.get('startDate') !== null || this.get('endDate') !== null || this.get('estimatedProdDate') !== null)? true:false;
+    return (this.get('lastThirtyDays') === true ||
+    this.get('startDate') !== null ||
+    this.get('endDate') !== null ||
+    this.get('estimatedProdDate') !== null)? true:false;
   }.property('lastThirtyDays', 'startDate', 'endDate', 'estimatedProdDate'),
 
   notUsingDateRange: function() {
     console.log('manage date entered!!!');
-    return (this.get('lastThirtyDays') === true || this.get('dateEntered') !== null || this.get('estimatedProdDate') !== null)? true:false;
+    return (this.get('lastThirtyDays') === true ||
+    this.get('dateEntered') !== null ||
+    this.get('estimatedProdDate') !== null)? true:false;
   }.property('lastThirtyDays', 'dateEntered', 'estimatedProdDate'),
 
   notUsingEstProdDate: function() {
@@ -38,19 +43,17 @@ export default Ember.Component.extend({
       this.set('dateEntered', data);
     },
     onStartDate(data){
-      //debugger;
+      this.set('startDate', data);
     },
     onEndDate(data){
-      //debugger;
+      this.set('endDate', data);
     },
     onEstProductionDate(data){
-    //  debugger;
+      debugger;
+      this.set('estimatedProdDate', data);
     },
     onLastThirtyChange(value){
       this.toggleProperty('lastThirtyDays');
-      if (this.get('lastThirtyDays') === true) {
-        this.resetAllDates();
-      }
     },
 
     onSearchClick:function(){
@@ -59,10 +62,6 @@ export default Ember.Component.extend({
       };
       //todo write search quesry here ?
     }
-  },
-
-  resetAllDates:function(){
-    //debugger;
   }
 });
 

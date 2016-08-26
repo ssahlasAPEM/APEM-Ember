@@ -20,16 +20,32 @@
       </div>
       <div class="ui field gap1" >
         <span class="menu-label">Date Entered</span>
-        {{custom-date-picker btnLabel='' disabled=notUsingDateEntered inputWidth="200px" class='adv-search-field' updatedDate='onDateEntered'}}
+        {{custom-date-picker
+          btnLabel=''
+          disabled=notUsingDateEntered
+          inputWidth="200px"
+          class='adv-search-field'
+          updatedDate='onDateEntered'}}
       </div>
       <div class="ui field gap1">
         <span class="menu-label">Date Range</span><br/>
-        {{custom-date-picker btnLabel='Start'  disabled=notUsingDateRange class='adv-search-field' updatedDate='onStartDate'}}
-        {{custom-date-picker btnLabel='End' disabled=notUsingDateRange class='gap1 adv-search-field' updatedDate='onEndDate'}}
+        {{custom-date-picker btnLabel='Start'
+        disabled=notUsingDateRange
+        class='adv-search-field'
+        updatedDate='onStartDate'}}
+        {{custom-date-picker
+          btnLabel='End'
+          disabled=notUsingDateRange
+          class='gap1 adv-search-field'
+          updatedDate='onEndDate'}}
       </div>
       <div class="ui field gap1" >
         <span class="menu-label ">Estimated Production Date</span><br/>
-        {{custom-date-picker btnLabel='' disabled=notUsingEstProdDate class='adv-search-field' updateDate='onEstProductionDate'}}
+        {{custom-date-picker
+          btnLabel=''
+        disabled=notUsingEstProdDate
+        class='adv-search-field'
+        updateDate='onEstProductionDate'}}
       </div>
 
       <div class="divider gap1"></div>
