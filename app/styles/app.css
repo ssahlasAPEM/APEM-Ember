@@ -329,13 +329,25 @@
 
 @media (max-width: 768px) {
 
+.meta{
+  padding: 0px;
+  text-align: center;
+  line-height: 16px;
+  font-size: 16px;
+  float:none;
+}
+.meta span{
+  font-size: 16px;
+}
   .advanced-search-component{
     margin:12px 0;
   }
-  .adv-search-input{
+  /*.adv-search-input{
     max-width: 160px;
+  }*/
+  .download-csv-btn{
+    width:100%;
   }
-
   .ui.grid.main{
   	margin-top: 70px;
   }
