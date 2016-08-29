@@ -138,6 +138,15 @@
 
       </div>
     {{/each}}
+
+    {{#if model.events}}
+      <h3 class="ui dividing header">Event Log</h3>
+      {{#each model.events as |evt|}}
+          <label>{{evt.type}}</label>:<span>{{evt.date}}</span>
+      {{/each}}
+    {{/if}}
+
+
   {{else}}
     <span>Loading Fields...</span>
   {{/if}}
@@ -150,4 +159,6 @@
     {{/each-in}}
   </ul> -->
 </form>
+
+
 {{yield}}
