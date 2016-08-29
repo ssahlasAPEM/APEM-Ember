@@ -12,6 +12,11 @@ export default Ember.Component.extend({
   model: null,
   fields: null,
   users: null,
+  quoteEvent: null,
+  sampleEvent: null,
+  approvalEvent: null,
+  productionEvent: null,
+  nonStageEvents: null,
   optStatuses:['Backburner', 'Won', 'Lost'],
 
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
@@ -38,6 +43,43 @@ export default Ember.Component.extend({
       return true;
     }
   }.property('model.hasDirtyAttributes'),
+
+  //observing the table's hasDirtyAttributes to manage the delete button's disabled property
+  hasEvents: function() {
+    let model = this.get('model');
+    let otherEvents = [];
+    let events = this.get('model.events');
+
+    if (events) {
+
+      // Rali ... need to figure out how to get the events, set the ones not related to stage in their own array so we can parse them in the event log...
+      // pass the ones that are event-related into the component for state-step...
+
+      for(event in events) {
+        if(event.type == 'quote') {
+          this.set('quoteEvent', event);
+        } else if (event.type == 'sample') {
+          this.set('sampleEvent', event);
+        } else if (event.type == 'approval') {
+          this.set('approvalEvent', event);
+        } else if (event.type == 'production') {
+          this.set('productionEvent', event);
+        } else {
+          otherEvents.push(event);
+        }
+      }
+
+      this.set('nonStageEvents', otherEvents)
+
+      if(otherEvents.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }.property('hasEvents'),
 
   /* This property is used by the template to disable the opportunity status Won
   button unless the opportunity has a "sales order number" and a "company name" */

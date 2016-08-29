@@ -71,7 +71,7 @@
 
     <!-- STEPS FIELD -->
     {{opportunities/stage-step stageSteps=stages opt=model}}
-    
+
   <!-- STATUS FIELD -->
     <div class="field gap1 side-padded-fourteen">
       <label>Status</label>
@@ -140,13 +140,14 @@
       </div>
     {{/each}}
 
-    {{#if model.events}}
+    {{#if hasEvents}}
       <h3 class="ui dividing header">Event Log</h3>
-      {{#each model.events as |evt|}}
-          <label>{{evt.type}}</label>:<span>{{evt.date}}</span>
-      {{/each}}
+      <div class="ui two column stackable grid">
+        {{#each nonStageEvents as |evt|}}
+            <label>{{evt.type}}</label>:<span>{{evt.date}}</span>
+        {{/each}}
+      </div>
     {{/if}}
-
 
   {{else}}
     <span>Loading Fields...</span>
