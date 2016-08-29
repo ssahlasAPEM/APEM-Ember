@@ -7,6 +7,10 @@
 .dark-gray-bg{
   background: #c3c3c3 !important;
 }
+.backburner label{
+  position: absolute;
+  left: 13px;
+}
 .pusher-window {
   height:100vh;
   overflow: hidden;
@@ -29,9 +33,13 @@
   max-height: calc(100vh - 102px);
   height: calc(100% - 30px);
   overflow: auto;
+  overflow-x: hidden;
+}
+.form-header-tools{
+  padding: 12px;
 }
 .logo-wrapper{
-  width: 260px;
+  /*width: 260px;*/
   height: 240px;
   background: white;
   padding-top: 32%;

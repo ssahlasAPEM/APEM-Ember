@@ -43,6 +43,7 @@ export default Ember.Component.extend({
   actions:{
     clearSearch(){
       this.toggleProperty('searchUsed');
+      this.set('searchString', null);
       this.sendAction('clearSearchFilter');
     },
     onDateEntered(data){
