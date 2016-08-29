@@ -11,7 +11,10 @@
     <i class="dropdown icon"></i>
       <div class="menu adv-search-menu">
         <div class="ui field">
-          {{ui-checkbox label="New (last 30 days)" checked=lastThirtyDays onChange=(action 'onLastThirtyChange' lastThirtyDays)}}
+          {{ui-checkbox
+            label="New (last 30 days)"
+            checked=lastThirtyDays
+            onChange=(action 'onLastThirtyChange' lastThirtyDays)}}
           <div class="item fake-item"></div>
           <br/><br/>
         </div>
@@ -55,7 +58,7 @@
           {{ui-radio
             name="sStatus"
             current=searchedStatus
-            class="make-me-button button backburnener"
+            class="make-me-button button backburner"
             label="Backburner"
             value="Backburner"
             onChange=(action (mut searchedStatus))}}

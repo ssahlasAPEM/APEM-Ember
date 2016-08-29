@@ -5,11 +5,11 @@ export default Ember.Component.extend({
   searchedStatus:'Backburner',//default
   searchedState:'Open',
   lastThirtyDays:true,
-  dateEntered:null,
-  startDate:null,
-  endDate:null,
-  estimatedProdDate:null,
-  searchString:null,
+  dateEntered:'',
+  startDate:'',
+  endDate:'',
+  estimatedProdDate:'',
+  searchString:'',
   searchUsed:false,
 
   notUsingDates: function() {
@@ -20,30 +20,29 @@ export default Ember.Component.extend({
   notUsingDateEntered: function() {
     // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
-    this.get('startDate') !== null ||
-    this.get('endDate') !== null ||
-    this.get('estimatedProdDate') !== null)? true:false;
+    this.get('startDate') !== '' ||
+    this.get('endDate') !== '' ||
+    this.get('estimatedProdDate') !== '')? true:false;
   }.property('lastThirtyDays', 'startDate', 'endDate', 'estimatedProdDate'),
 
   notUsingDateRange: function() {
     // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
-    this.get('dateEntered') !== null ||
-    this.get('estimatedProdDate') !== null)? true:false;
+     this.get('dateEntered') !== '' ||
+     this.get('estimatedProdDate') !== '')? true:false;
   }.property('lastThirtyDays', 'dateEntered', 'estimatedProdDate'),
 
   notUsingEstProdDate: function() {
     // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
-    this.get('dateEntered') !== null ||
-    this.get('startDate') !== null ||
-    this.get('endDate') !== null)? true:false;
+     this.get('dateEntered') !== '' || this.get('startDate') !== '' ||
+     this.get('endDate') !== '')? true:false;
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
     clearSearch(){
       this.toggleProperty('searchUsed');
-      this.set('searchString', null);
+      this.set('searchString', '');
       this.sendAction('clearSearchFilter');
     },
     onDateEntered(data){
@@ -65,7 +64,9 @@ export default Ember.Component.extend({
 
     onSearchClick:function(){
       let params = {
-          lastThirtyDays:this.get('lastThirtyDays'),
+          perPage: 25,
+          startingPage: 1,
+          lastThirtyDays:this.get('lastThirtyDays').toString(),
           dateEntered:this.get('dateEntered'),
           startDate:this.get('startDate'),
           endDate:this.get('endDate'),

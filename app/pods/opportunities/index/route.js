@@ -7,13 +7,20 @@ export default Ember.Route.extend(InfinityFilter, {
 
   breadCrumb: { title: 'Manage Opportunities' },
 
+  filterParams:null,
+
+  pagingParams:{
+    perPage: 25,
+    startingPage: 1
+  },
+
   fields: function() {
     return this.store.findAll('field');
   },
 
   model: function() {
-    debugger;
-    return this.infinityFilterModel("opportunity");
+    console.log(this.filterParams);
+    return this.infinityModel("opportunity", this.pagingParams);
   },
 
   actions:{
@@ -24,14 +31,27 @@ export default Ember.Route.extend(InfinityFilter, {
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
       console.log(params);
-      this.store.unloadAll("opportunity");
-      this.get('model');
+      // this.set('filterParams', params);
+      // this.store.unloadAll("opportunity");
+      //debugger;
       this.infinityModel("opportunity", params);
+      // {
+      //   perPage: 25,
+      //   startingPage: 1,
+      //   dateEntered:params.dateEntered,
+      //   endDate:params.endDate,
+      //   estimatedProdDate:params.estimatedProdDate,
+      //   lastThirtyDays:params.lastThirtyDays,
+      //   searchString:params.searchString,
+      //   searchedState:params.searchedState,
+      //   searchedStatus:params.searchedStatus,
+      //   startDate:params.startDate
+      // });
+      //this.infinityModel("opportunity", params);
     },
 
     clearSearchFilter(){
-      this.store.unloadAll("opportunity");
-      this.refresh();
+      this.infinityModel("opportunity", this.pagingParams, null);
     }
   }
 });

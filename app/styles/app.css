@@ -12,7 +12,7 @@
   padding-right: 14px;
 }
 .backburner label{
-  position: absolute;
+  position: absolute !important;
   left: 13px;
 }
 .pusher-window {
