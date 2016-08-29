@@ -34,8 +34,8 @@
   width: 100%;
 }
 .opportunity-form{
-  max-height: calc(100vh - 102px);
-  height: calc(100% - 30px);
+  max-height: calc(100vh - 112px);
+  height: calc(100% - 40px);
   overflow: auto;
   overflow-x: hidden;
 }
