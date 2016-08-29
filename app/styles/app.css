@@ -36,6 +36,15 @@
   background: white;
   padding-top: 32%;
 }
+.seventy-p{
+  width: 70%;
+}
+.adv-srch-start-date-input{
+  width: 179px;
+}
+.adv-srch-end-date-input{
+  width: 185px;
+}
 .adv-search-field.disabled{
   pointer-events: none;
   opacity: 0.4;
@@ -228,7 +237,9 @@
   margin-left: -4px !important;
 }
 .menu.adv-search-menu.transition.visible {
-    left: -264px;
+    /*left: -264px;*/
+    left: -307px;
+    width: 337px;
 }
 .date-picker-btn{
   padding: 0.7em;

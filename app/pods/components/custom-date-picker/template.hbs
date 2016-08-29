@@ -1,14 +1,12 @@
 {{date-picker
   action=(action 'updateDate' on="setDate")
-  width=inputWidth
   placeholder=""
   valueFormat='YYYY-MM-DD'
   format='YYYY-MM-DD'
   utc=false
-  style="width:calc(100% - 80px);"
   allowBlank=true
   buttonClasses="date-picker-btn"
-  class="cust-date-field"}}
+  class=inputClass}}
 
 <!-- action=(action (mut date)) -->
 <button class="ui active button date-icn-btn" {{action 'openDatepicker'}}>

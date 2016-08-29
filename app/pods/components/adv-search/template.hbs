@@ -7,7 +7,7 @@
 
   {{input type="button" value="Search" class="ui button adv-search-btn" click=(action "onSearchClick")}}
 
-  {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown"}}
+  {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown dark-gray-bg"}}
     <i class="dropdown icon"></i>
       <div class="menu adv-search-menu">
         <div class="ui field">
@@ -19,8 +19,8 @@
           <span class="menu-label">Date Entered</span>
           {{custom-date-picker
             btnLabel=''
+            inputClass='seventy-p cust-date-field'
             disabled=notUsingDateEntered
-            inputWidth="200px"
             class='adv-search-field'
             updatedDate='onDateEntered'}}
         </div>
@@ -28,10 +28,12 @@
           <span class="menu-label">Date Range</span><br/>
           {{custom-date-picker btnLabel='Start'
           disabled=notUsingDateRange
+          inputClass='fifty-p cust-date-field'
           class='adv-search-field'
           updatedDate='onStartDate'}}
           {{custom-date-picker
             btnLabel='End'
+            inputClass='fifty-p cust-date-field'
             disabled=notUsingDateRange
             class='gap1 adv-search-field'
             updatedDate='onEndDate'}}
@@ -39,16 +41,17 @@
         <div class="ui field gap1" >
           <span class="menu-label ">Estimated Production Date</span><br/>
           {{custom-date-picker
+            inputClass='seventy-p cust-date-field'
             btnLabel=''
-          disabled=notUsingEstProdDate
-          class='adv-search-field'
-          updateDate='onEstProductionDate'}}
+            disabled=notUsingEstProdDate
+            class='adv-search-field'
+            updateDate='onEstProductionDate'}}
         </div>
 
       <div class="divider gap1"></div>
 
       <div class="ui field">
-        <div class="row ui buttons gap1">
+        <div class="row ui three buttons gap1">
           {{ui-radio
             name="sStatus"
             current=searchedStatus

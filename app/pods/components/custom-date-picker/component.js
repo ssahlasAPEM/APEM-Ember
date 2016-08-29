@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 
 export default Ember.Component.extend({
-  attributeBindings: ['btnLabel', 'date', 'inputWidth'],
+  attributeBindings: ['btnLabel', 'date', 'inputClass'],
   classNameBindings:['class', 'disabled'],
   className: 'custom-date-picker',
   date: null,
