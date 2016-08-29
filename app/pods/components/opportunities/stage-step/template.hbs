@@ -5,13 +5,16 @@
       <i class="green check icon quote-step-icn hidden"></i>
       <div class="content">
         <div class="title">Quote</div>
-        <!-- <div class="description">Choose your shipping options</div> -->
+          <div class="description">08/29/2016</div>
       </div>
     </div>
     <div class="sample step" {{action 'onStepClick' 'sample'}}>
       <i class="green check icon sample-step-icn hidden"></i>
       <div class="content">
         <div class="title">Sample</div>
+        {{#if opt.events}}
+          <div class="description">08/29/2016</div>
+        {{/if}}
         <!-- <div class="description">Enter billing information</div> -->
       </div>
     </div>
@@ -19,12 +22,18 @@
       <i class="green check icon approval-step-icn hidden"></i>
       <div class="content">
         <div class="title">Approval</div>
+        {{#if opt.events}}
+          <div class="description">08/29/2016</div>
+        {{/if}}
       </div>
     </div>
     <div class="production step" {{action 'onStepClick' 'production'}}>
       <i class="green check icon production-step-icn hidden"></i>
       <div class="content">
         <div class="title">Production</div>
+        {{#if opt.events}}
+          <div class="description">08/29/2016</div>
+        {{/if}}
       </div>
     </div>
   </div>

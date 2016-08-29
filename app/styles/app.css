@@ -190,7 +190,7 @@
 }
 .ui.four.steps > .step {
     width: 25%;
-    height: 36px;
+    /*height: 36px;*/
     padding: 6px;
 }
 .ui.steps .step.active .title{
