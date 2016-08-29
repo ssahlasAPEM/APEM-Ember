@@ -44,64 +44,66 @@
     <div class="ui error message"></div>
   </div>
 
-  <!-- IF ADMIN - CAN CHANGE USER RELATION -->
-  {{#if (is-equal identity.profile.type 'Admin')}}
-    <div class="field gap1">
-      <label>User Relation</label>
 
-      {{#ui-dropdown class="fluid selection" selected=model.user onChange=(action (mut model.userId)) as |execute mapper|}}
-        <i class="dropdown icon"></i>
-        <div class="default text">Select Value</div>
-        <div class="menu">
-          {{#each users as |user|}}
-            <div class="item" data-value="{{map-value mapper user}}">
-              {{user.username}}
-            </div>
-          {{/each}}
-        </div>
-      {{/ui-dropdown}}
-      <input type="hidden" id="userId" value={{model.userId}}>
-    </div>
-  {{/if}}
+  {{#if fieldsByGroup}}
 
-  <!-- STEPS FIELD -->
-  {{opportunities/stage-step stageSteps=stages opt=model}}
-<!-- STATUS FIELD -->
-  <div class="field gap1">
-    <label>Status</label>
-    <div class="row ui buttons">
-      {{ui-radio name="status" current=model.status class="make-me-button button"
-      label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
-      {{#if isWinDisabled}}
-        {{#ui-popup
-          content="Won can be assigned only if there are a Company and a Product Sales Order Number values."}}
+    <!-- IF ADMIN - CAN CHANGE USER RELATION -->
+    {{#if (is-equal identity.profile.type 'Admin')}}
+      <div class="field gap1 side-padded-fourteen">
+        <label>User Relation</label>
+
+        {{#ui-dropdown class="fluid selection" selected=model.user onChange=(action (mut model.userId)) as |execute mapper|}}
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Value</div>
+          <div class="menu">
+            {{#each users as |user|}}
+              <div class="item" data-value="{{map-value mapper user}}">
+                {{user.username}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+        <input type="hidden" id="userId" value={{model.userId}}>
+      </div>
+    {{/if}}
+
+    <!-- STEPS FIELD -->
+    {{opportunities/stage-step stageSteps=stages opt=model}}
+  <!-- STATUS FIELD -->
+    <div class="field gap1 side-padded-fourteen">
+      <label>Status</label>
+      <div class="row ui buttons">
+        {{ui-radio name="status" current=model.status class="make-me-button button"
+        label="Backburner" value="Backburner" onChange=(action (mut model.status))}}
+        {{#if isWinDisabled}}
+          {{#ui-popup
+            content="Won can be assigned only if there are a Company and a Product Sales Order Number values."}}
+            {{ui-radio name="status"
+            current=model.status
+            disabled=isWinDisabled
+            class="make-me-button no-border-radius button"
+            label="Won"
+            value="Won"
+            onChange=(action (mut model.status))}}
+          {{/ui-popup}}
+        {{else}}
           {{ui-radio name="status"
           current=model.status
           disabled=isWinDisabled
-          class="make-me-button no-border-radius button"
+          class="make-me-button button"
           label="Won"
           value="Won"
           onChange=(action (mut model.status))}}
-        {{/ui-popup}}
-      {{else}}
+        {{/if}}
         {{ui-radio name="status"
         current=model.status
-        disabled=isWinDisabled
         class="make-me-button button"
-        label="Won"
-        value="Won"
+        label="Lost"
+        value="Lost"
         onChange=(action (mut model.status))}}
-      {{/if}}
-      {{ui-radio name="status"
-      current=model.status
-      class="make-me-button button"
-      label="Lost"
-      value="Lost"
-      onChange=(action (mut model.status))}}
+      </div>
     </div>
-  </div>
 
-  {{#if fieldsByGroup}}
     {{#each fieldsByGroup as |group|}}
       <h3 class="ui dividing header">{{group.value}}</h3>
       <div class="ui two column stackable grid">

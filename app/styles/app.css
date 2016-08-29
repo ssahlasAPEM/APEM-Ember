@@ -7,6 +7,10 @@
 .dark-gray-bg{
   background: #c3c3c3 !important;
 }
+.side-padded-fourteen{
+  padding-left: 14px;
+  padding-right: 14px;
+}
 .backburner label{
   position: absolute;
   left: 13px;
@@ -36,7 +40,7 @@
   overflow-x: hidden;
 }
 .form-header-tools{
-  padding: 12px;
+  padding: 0 18px;
 }
 .logo-wrapper{
   /*width: 260px;*/
