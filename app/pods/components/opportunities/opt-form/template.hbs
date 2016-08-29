@@ -1,49 +1,51 @@
+<!-- HEADER -->
+<div class="fixed top header form-header-tools"><!--fixed-->
+
+  <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
+  {{#if (is-equal identity.profile.type 'Admin')}}
+    <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
+    {{confirm-delete
+      isDisabled=(not-equal identity.profile.type 'Admin')
+      title='Confirm Delete'
+      recordType='Opportunity'
+      message='The selected opportunity will be deleted. Continue?'
+      onConfirmDelete="deleteOpt" }}
+  {{/if}}
+
+  {{#if noValidName}}
+    {{#ui-popup
+      content="Please provide a Company name."}}
+      {{input type="button" value="Save as Draft"
+        disabled=noValidName
+        class="ui button small right floated" click=(action "saveDraft")}}
+    {{/ui-popup}}
+  {{else}}
+    {{input type="button" value="Save as Draft" class="ui button small right floated"
+    click=(action "saveDraft")}}
+  {{/if}}
+
+  <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
+  {{input type="button" value="Save" disabled=hasNoChanges
+  class="ui submit button small right floated"
+  click=(action "updateRecord")}}
+
+  {{input type="button" value="Copy" disabled=model.newRecord
+  class="ui submit button small right floated"
+  click=(action "cloneRecord")}}
+
+  {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
+  class="ui small reset button right floated" activeClass=""
+  click=(action 'onCancelOptClick')}}
+    Cancel
+  {{/link-to}}
+
+  <br/><br/>
+
+</div>
+
 <form class="ui form opportunity-form">
-  <!-- HEADER -->
-  <div class="header form-header-tools"><!--fixed-->
 
-    <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
-    {{#if (is-equal identity.profile.type 'Admin')}}
-      <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
-      {{confirm-delete
-        isDisabled=(not-equal identity.profile.type 'Admin')
-        title='Confirm Delete'
-        recordType='Opportunity'
-        message='The selected opportunity will be deleted. Continue?'
-        onConfirmDelete="deleteOpt" }}
-    {{/if}}
-
-    {{#if noValidName}}
-      {{#ui-popup
-        content="Please provide a Company name."}}
-        {{input type="button" value="Save as Draft"
-          disabled=noValidName
-          class="ui button small right floated" click=(action "saveDraft")}}
-      {{/ui-popup}}
-    {{else}}
-      {{input type="button" value="Save as Draft" class="ui button small right floated"
-      click=(action "saveDraft")}}
-    {{/if}}
-
-    <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
-    {{input type="button" value="Save" disabled=hasNoChanges
-    class="ui submit button small right floated"
-    click=(action "updateRecord")}}
-
-    {{input type="button" value="Copy" disabled=model.newRecord
-    class="ui submit button small right floated"
-    click=(action "cloneRecord")}}
-
-    {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
-    class="ui small reset button right floated" activeClass=""
-    click=(action 'onCancelOptClick')}}
-      Cancel
-    {{/link-to}}
-
-    <br/><br/>
-    <div class="ui error message"></div>
-  </div>
-
+  <div class="ui error message"></div>
 
   {{#if fieldsByGroup}}
 
