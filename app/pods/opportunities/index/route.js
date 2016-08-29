@@ -11,7 +11,8 @@ export default Ember.Route.extend(InfinityFilter, {
     return this.store.findAll('field');
   },
 
-  model: function(params) {
+  model: function() {
+    debugger;
     return this.infinityFilterModel("opportunity");
   },
 
@@ -19,12 +20,18 @@ export default Ember.Route.extend(InfinityFilter, {
     pullFilteredCSV(){
       //debugger;
     },
+
+    // Clear old data and then load the newly queried records.
     filterOpportunities(params){
       console.log(params);
+      this.store.unloadAll("opportunity");
+      this.get('model');
       this.infinityModel("opportunity", params);
     },
+
     clearSearchFilter(){
-      this.infinityModel("opportunity",{});
+      this.store.unloadAll("opportunity");
+      this.refresh();
     }
   }
 });
