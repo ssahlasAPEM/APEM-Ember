@@ -6,9 +6,14 @@ export default Ember.Mixin.create(InfinityRoute, {
 
   filterProperty: 'modelFilter',
   filterModelProperty: 'listTitle',
-
+  params:null,
+  
   infinityFilterModel(modeltype, params) {
-    return this.infinityModel(modeltype, { perPage: 25, startingPage: 1 }, { name: this.get('filterProperty') });
+    if(params){
+      return this.infinityModel(modeltype, params);
+    }else{
+      return this.infinityModel(modeltype, { perPage: 25, startingPage: 1 });
+    }
   },
 
   addInfinityModel(newObject) {
@@ -49,7 +54,6 @@ export default Ember.Mixin.create(InfinityRoute, {
     let rx = new RegExp(this.get(`controller.${this.get('filterProperty')}`), 'gi');
     let model = this.get('controller.model');
     let filterProperty = this.get('filterModelProperty');
-    debugger;
     this.set('controller.filteredModel', model.filter((item) => {
       if (item.get(filterProperty) === undefined) {
         return true;
