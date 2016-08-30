@@ -1,9 +1,10 @@
 {{date-picker
   action=(action 'updateDate' on="setDate")
-  placeholder=""
-  valueFormat='YYYY-MM-DD'
-  format='YYYY-MM-DD'
+  placeholder=formattedDate
+  valueFormat='MM-DD-YYYY'
+  format='MM-DD-YYYY'
   utc=false
+  date=date
   allowBlank=true
   buttonClasses="date-picker-btn"
   class=inputClass}}

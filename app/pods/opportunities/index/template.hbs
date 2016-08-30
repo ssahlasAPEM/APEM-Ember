@@ -41,6 +41,7 @@
           <th>Sales Person</th>
           <th>Revenue</th>
           <th>Prod Type</th>
+          <th>Est. Prod Date</th>
         </tr>
       </thead>
 
@@ -65,6 +66,11 @@
             <td>
               {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
                 {{opp.productType}}
+              {{/link-to}}
+            </td>
+            <td>
+              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                {{moment-format opp.estimatedProdDate 'MMMM Do, YYYY'}}
               {{/link-to}}
             </td>
           </tr>

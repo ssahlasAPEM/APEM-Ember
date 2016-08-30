@@ -10,9 +10,9 @@
   {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown dark-gray-bg"}}
     <i class="dropdown icon"></i>
       <div class="menu adv-search-menu">
-
         <div class="ui field">
           {{ui-checkbox
+            class="toggle"
             label="New (last 30 days)"
             checked=lastThirtyDays
             onChange=(action 'onLastThirtyChange')}}
@@ -25,6 +25,7 @@
             btnLabel=''
             inputClass='seventy-p cust-date-field'
             disabled=notUsingDateEntered
+            date=dateEntered
             class='adv-search-field'
             updatedDate='onDateEntered'}}
         </div>
@@ -32,6 +33,7 @@
           <span class="menu-label">Date Range</span><br/>
           {{custom-date-picker btnLabel='Start'
           disabled=notUsingDateRange
+          date=startDate
           inputClass='fifty-p cust-date-field'
           class='adv-search-field'
           updatedDate='onStartDate'}}
@@ -39,6 +41,7 @@
             btnLabel='End'
             inputClass='fifty-p cust-date-field'
             disabled=notUsingDateRange
+            date=endDate
             class='gap1 adv-search-field'
             updatedDate='onEndDate'}}
         </div>
@@ -48,6 +51,7 @@
             inputClass='seventy-p cust-date-field'
             btnLabel=''
             disabled=notUsingEstProdDate
+            date=estimatedProdDate
             class='adv-search-field'
             updateDate='onEstProductionDate'}}
         </div>
@@ -66,7 +70,7 @@
 
           {{ui-radio
             name="sStatus"
-            current=model.status
+            current=searchedStatus
             class="make-me-button button"
             label="Won"
             value="Won"
@@ -74,7 +78,7 @@
 
           {{ui-radio
             name="sStatus"
-            current=model.status
+            current=searchedStatus
             class="make-me-button button"
             label="Lost"
             value="Lost"

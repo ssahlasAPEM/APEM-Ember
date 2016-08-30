@@ -6,7 +6,15 @@ export default Ember.Component.extend({
   classNameBindings:['class', 'disabled'],
   className: 'custom-date-picker',
   date: null,
+  formattedDate: null,
 
+  init() {
+    this._super(...arguments);
+
+    if(this.get('date') !== null && this.get('date') !== '') {
+      this.set('formattedDate', window.moment(this.get('date'), 'MM-DD-YYYY').format('MM/DD/YYYY'));
+    }
+  },
 
   actions:{
     clearTheDate(){

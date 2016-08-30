@@ -22,7 +22,13 @@ export default Ember.Component.extend({
 
     this.set('searchedStatus', this.get('filterParams.searchedStatus'));
     this.set('searchedState', this.get('filterParams.searchedState'));
-    this.set('lastThirtyDays', this.get('filterParams.lastThirtyDays'));
+
+    if(this.get('filterParams.lastThirtyDays') == "false") {
+      this.set('lastThirtyDays', false);
+    } else {
+      this.set('lastThirtyDays', true);
+    }
+
     this.set('dateEntered', this.get('filterParams.dateEntered'));
     this.set('startDate', this.get('filterParams.startDate'));
     this.set('endDate', this.get('filterParams.endDate'));
