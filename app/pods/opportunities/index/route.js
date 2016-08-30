@@ -30,22 +30,44 @@ export default Ember.Route.extend(InfinityFilter, {
 
 
     pullFilteredCSV(){
-      debugger;
-    },
-    pullEntireCSV(button){
-      debugger;
+      let button = Ember.$('#csvBtn');
+      button.addClass('loading');
+
       const loginURL = this.get('appConfig').APP.apiUrl;
-      let url = loginURL+'/api/v1/opportunities/csv';
+      let filterParams = '';
+      let url = loginURL+'/api/v1/opportunities/csv' + '?' +filterParams;
+
       Ember.$.ajax({
           url: url
           // your other details...
       }).then(function(resolve) {
+        button.removeClass('loading');
         var anchor = document.createElement('a');
         anchor.href = resolve['csv-download']+'?download';
         anchor.target = '_blank';
         anchor.click();
       });
     },
+    pullEntireCSV(){
+
+      let button = Ember.$('#csvBtn');
+      button.addClass('loading');
+
+      const loginURL = this.get('appConfig').APP.apiUrl;
+      let url = loginURL+'/api/v1/opportunities/csv';
+
+      Ember.$.ajax({
+          url: url
+          // your other details...
+      }).then(function(resolve) {
+        button.removeClass('loading');
+        var anchor = document.createElement('a');
+        anchor.href = resolve['csv-download']+'?download';
+        anchor.target = '_blank';
+        anchor.click();
+      });
+    },
+
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
       console.log(params);
