@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   identity: Ember.inject.service(),
-  
+
 
   redirect() {
-    let astor = this.store;
+    //let astor = this.store;
     let newOpportunity = this.store.createRecord('opportunity'),
     ident = this.get('identity').get('profile');
     // let theUser = ident.get('profile');

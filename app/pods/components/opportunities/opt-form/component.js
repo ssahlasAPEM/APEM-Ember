@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
 
     let opp = this.get('model');
-    let theEvents = opp.get('events.content');
+    //let theEvents = opp.get('events.content');
     let otherEvents = Ember.A([]);
 
     opp.get('events').then((events) => {

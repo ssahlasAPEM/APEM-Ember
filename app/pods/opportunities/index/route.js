@@ -59,7 +59,7 @@ export default Ember.Route.extend(InfinityRoute, {
     clearSearchFilter(){
       this.controller.set('filterParams', null);
       this.controller.set('isFiltering', false);
-      this.set('filterParams', params);
+      this.set('filterParams', null);
       this.set('isFiltering', true);
       this.refresh();
     },

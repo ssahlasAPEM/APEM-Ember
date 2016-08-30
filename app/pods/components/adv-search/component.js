@@ -23,7 +23,7 @@ export default Ember.Component.extend({
     this.set('searchedStatus', this.get('filterParams.searchedStatus'));
     this.set('searchedState', this.get('filterParams.searchedState'));
 
-    if(this.get('filterParams.lastThirtyDays') == "false") {
+    if(this.get('filterParams.lastThirtyDays') === "false") {
       this.set('lastThirtyDays', false);
     } else {
       this.set('lastThirtyDays', true);
@@ -97,7 +97,7 @@ export default Ember.Component.extend({
     onEstProductionDate(data){
       this.set('estimatedProdDate', data);
     },
-    onLastThirtyChange(value){
+    onLastThirtyChange(){
       this.toggleProperty('lastThirtyDays');
     },
 
