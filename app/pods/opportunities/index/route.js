@@ -40,12 +40,10 @@ export default Ember.Route.extend(InfinityFilter, {
           url: url
           // your other details...
       }).then(function(resolve) {
-        Ember.$.ajax({
-            url: resolve['csv-download']+'?download'
-            // your other details...
-        });
-        // this.set('controller.isLoading', false);
-          // process the result...
+        var anchor = document.createElement('a');
+        anchor.href = resolve['csv-download']+'?download';
+        anchor.target = '_blank';
+        anchor.click();
       });
     },
     // Clear old data and then load the newly queried records.
