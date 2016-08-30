@@ -32,7 +32,10 @@ export default Ember.Route.extend(InfinityFilter, {
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
       console.log(params);
-      this.infinityFilterModel("opportunity", params);
+      this.infinityFilterModel("opportunity", params).then(function(data){
+        debugger;
+        // this.get('store').pushPayload(data);
+      });
     },
 
     clearSearchFilter(){
