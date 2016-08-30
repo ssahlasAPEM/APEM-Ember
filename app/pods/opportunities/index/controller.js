@@ -1,8 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
   defaultView:'list',
+  isFiltering:false,
+
+  pagingParams:{
+    perPage: '25',
+    startingPage: '1'
+  },
+
+  filterParams:{
+    searchedStatus:'Backburner',//default
+    searchedState:'Open',
+    lastThirtyDays:true,
+    dateEntered:'',
+    startDate:'',
+    endDate:'',
+    estimatedProdDate:'',
+    searchString:''
+  },
 
   actions:{
     showGridView:function(){

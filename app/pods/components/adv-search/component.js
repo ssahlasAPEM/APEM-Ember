@@ -4,11 +4,9 @@ export default Ember.Component.extend({
   attributeBindings:['searchUsed', 'filterParams'],
 
   filterParams:null,
-  //TEST CODE
-  thisWorks:null,
-  //END TEST CODE
 
-  searchedStatus:'Backburner',//default
+  // Defaults
+  searchedStatus:'Backburner',
   searchedState:'Open',
   lastThirtyDays:true,
   dateEntered:'',
@@ -18,6 +16,19 @@ export default Ember.Component.extend({
   searchString:'',
 
   searchUsed:false,
+
+  init() {
+    this._super(...arguments);
+
+    this.set('searchedStatus', this.get('filterParams.searchedStatus'));
+    this.set('searchedState', this.get('filterParams.searchedState'));
+    this.set('lastThirtyDays', this.get('filterParams.lastThirtyDays'));
+    this.set('dateEntered', this.get('filterParams.dateEntered'));
+    this.set('startDate', this.get('filterParams.startDate'));
+    this.set('endDate', this.get('filterParams.endDate'));
+    this.set('estimatedProdDate', this.get('filterParams.estimatedProdDate'));
+    this.set('searchString', this.get('filterParams.searchString'));
+  },
 
   notUsingDates: function() {
     console.log('disabled change!!!');
@@ -78,7 +89,6 @@ export default Ember.Component.extend({
       this.set('endDate', data);
     },
     onEstProductionDate(data){
-      debugger;
       this.set('estimatedProdDate', data);
     },
     onLastThirtyChange(value){
