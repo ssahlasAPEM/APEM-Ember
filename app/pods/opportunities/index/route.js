@@ -25,10 +25,7 @@ export default Ember.Route.extend(InfinityRoute, {
     searchString:''
   },
 
-  enableFilteredCSV:function(){
-    return (this.get('filterParams') === null )? true:false;
-  }.property('filterParams'),
-
+  
   fields: function() {
     return this.store.findAll('field');
   },
