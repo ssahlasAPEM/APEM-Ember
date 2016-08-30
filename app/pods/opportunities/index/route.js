@@ -7,13 +7,14 @@ export default Ember.Route.extend(InfinityFilter, {
   appConfig:config,
   totalPagesParam: "meta.total-pages",
   totalRecordsParam: "meta.total-records",
-
+  isFiltering:false,
   breadCrumb: { title: 'Manage Opportunities' },
 
   pagingParams:{
-    perPage: 25,
-    startingPage: 1
+    perPage: '25',
+    startingPage: '1'
   },
+  filterParams:null,
 
   enableFilteredCSV:function(){
     return (this.get('filterParams') === null )? true:false;
@@ -25,11 +26,32 @@ export default Ember.Route.extend(InfinityFilter, {
 
   model: function() {
     console.log(this.filterParams);
-    return this.infinityFilterModel("opportunity");
+    let extraParams = this.get('filterParams'),
+    pagingParams = this.get('pagingParams');
+
+    if (extraParams) {
+      return this.infinityModel("opportunity", extraParams);
+    } else {
+      return this.infinityModel("opportunity", pagingParams);
+    }
   },
 
   actions:{
+    // Clear old data and then load the newly queried records.
+    filterOpportunities(params){
+      // console.log(params);
+      debugger;
+      this.set('filterParams',params);
+      this.set('isFiltering', true);
+      this.refresh();
+      // this.infinityModel("opportunity", params);
+    },
 
+    clearSearchFilter(){
+      this.set('isFiltering', false);
+      this.set('filterParams',null);
+      this.refresh();
+    },
 
     pullFilteredCSV(params){
 
@@ -41,7 +63,7 @@ export default Ember.Route.extend(InfinityFilter, {
           return key + '=' + params[key];
       }).join('&');
       let url = loginURL+'/api/v1/opportunities/csv' + '?' +paramString;
-      
+
       Ember.$.ajax({
           url: url
       }).then(function(resolve) {
@@ -71,20 +93,6 @@ export default Ember.Route.extend(InfinityFilter, {
         anchor.target = '_blank';
         anchor.click();
       });
-    },
-
-    // Clear old data and then load the newly queried records.
-    filterOpportunities(params){
-      // console.log(params);
-      var me = this;
-      this.set('filterParams',params);
-      this.infinityFilterModel("opportunity", params);
-      // .then(function(data){
-      // });
-    },
-
-    clearSearchFilter(){
-      this.infinityFilterModel("opportunity");
     }
   }
 });

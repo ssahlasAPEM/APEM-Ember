@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
+  attributeBindings:['searchUsed'],
   searchedStatus:'Backburner',//default
   searchedState:'Open',
   lastThirtyDays:true,
@@ -80,8 +80,8 @@ export default Ember.Component.extend({
 
     onSearchClick:function(){
       let params = {
-          perPage: 25,
-          startingPage: 1,
+          perPage: '25',
+          startingPage: '1',
           lastThirtyDays:this.get('lastThirtyDays').toString(),
           dateEntered:this.get('dateEntered'),
           startDate:this.get('startDate'),
