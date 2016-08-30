@@ -1,7 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  attributeBindings:['searchUsed'],
+  attributeBindings:['searchUsed', 'filterParams'],
+
+  filterParams:null,
+  //TEST CODE
+  thisWorks:null,
+  //END TEST CODE
+
   searchedStatus:'Backburner',//default
   searchedState:'Open',
   lastThirtyDays:true,
@@ -10,6 +16,7 @@ export default Ember.Component.extend({
   endDate:'',
   estimatedProdDate:'',
   searchString:'',
+
   searchUsed:false,
 
   notUsingDates: function() {

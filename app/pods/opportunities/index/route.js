@@ -8,12 +8,27 @@ export default Ember.Route.extend(InfinityFilter, {
   totalPagesParam: "meta.total-pages",
   totalRecordsParam: "meta.total-records",
   isFiltering:false,
+
   breadCrumb: { title: 'Manage Opportunities' },
 
   pagingParams:{
     perPage: '25',
     startingPage: '1'
   },
+  //TEST CODE
+  searchedStatus:'Backburner',
+  searchParams:{
+    searchedStatus:'Backburner',//default
+    searchedState:'Open',
+    lastThirtyDays:true,
+    dateEntered:'',
+    startDate:'',
+    endDate:'',
+    estimatedProdDate:'',
+    searchString:''
+  },
+  //END TEST CODE
+
   filterParams:null,
 
   enableFilteredCSV:function(){
@@ -29,7 +44,7 @@ export default Ember.Route.extend(InfinityFilter, {
     let extraParams = this.get('filterParams'),
     pagingParams = this.get('pagingParams');
 
-    if (extraParams) {
+    if (this.get('isFiltering')) {
       return this.infinityModel("opportunity", extraParams);
     } else {
       return this.infinityModel("opportunity", pagingParams);
@@ -40,7 +55,6 @@ export default Ember.Route.extend(InfinityFilter, {
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
       // console.log(params);
-      debugger;
       this.set('filterParams',params);
       this.set('isFiltering', true);
       this.refresh();

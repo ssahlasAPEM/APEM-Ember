@@ -10,11 +10,17 @@
   {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown dark-gray-bg"}}
     <i class="dropdown icon"></i>
       <div class="menu adv-search-menu">
+
+        <!-- TESTING CODE -->
+        {{filterParams}}{{thisWorks}}
+        <!--END TESTING CODE-->
+
+
         <div class="ui field">
           {{ui-checkbox
             label="New (last 30 days)"
             checked=lastThirtyDays
-            onChange=(action 'onLastThirtyChange' lastThirtyDays)}}
+            onChange=(action 'onLastThirtyChange')}}
           <div class="item fake-item"></div>
           <br/><br/>
         </div>
