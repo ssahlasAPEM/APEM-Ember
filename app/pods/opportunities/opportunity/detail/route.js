@@ -10,14 +10,6 @@ export default Ember.Route.extend({
     controller.set('users', this.store.findAll('user'));
   },
 
-  events: function() {
-    return this.store.findAll('event');
-  },
-
-  afterModel(model) {
-   let myEvents =   model.get('events');
-  },
-
   actions:{
     copyRecord(oldRecord){
       let attrs = oldRecord.toJSON();
