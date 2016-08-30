@@ -12,9 +12,8 @@
   {{adv-search class="column inline-block" doSearch='filterOpportunities' clearSearchFilter='clearSearchFilter'}}
 
   <div class="ui buttons right floated download-csv-btn">
-    {{input type="button"
-    value="Download CSV"
-    class="ui button csv-btn inline block"}}
+
+  <a class="ui button csv-btn inline block" href='/api/v1/opportunities/csv' download>Download CSV</a>
     <button class="ui icon button dark-gray-bg" {{action 'pullFilteredCSV'}}>
       <i class="filter icon"></i>
     </button>
