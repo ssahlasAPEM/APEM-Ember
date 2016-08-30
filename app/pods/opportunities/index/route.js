@@ -1,8 +1,10 @@
 import Ember from 'ember';
 import InfinityFilter from 'apem/mixins/infinity-filter';
+import config from './../../../config/environment';
 // import InfinityRoute from "ember-infinity/mixins/route";
 
 export default Ember.Route.extend(InfinityFilter, {
+  appConfig:config,
   totalPagesParam: "meta.total-pages",
   totalRecordsParam: "meta.total-records",
 
@@ -25,36 +27,26 @@ export default Ember.Route.extend(InfinityFilter, {
   },
 
   actions:{
+
+
     pullFilteredCSV(){
       debugger;
     },
-    pullEntireCSV(){
-      let sUrl = '/api/v1/opportunities/csv';
-      //If in Chrome or Safari - download via virtual link click
-        if (window.downloadFile.isChrome || window.downloadFile.isSafari) {
-            //Creating new link node.
-            var link = document.createElement('a');
-            link.href = sUrl;
-
-            if (link.download !== undefined){
-                //Set HTML5 download attribute. This will prevent file from opening if supported.
-                var fileName = sUrl.substring(sUrl.lastIndexOf('/') + 1, sUrl.length);
-                link.download = fileName;
-            }
-
-            //Dispatching click event.
-            if (document.createEvent) {
-                var e = document.createEvent('MouseEvents');
-                e.initEvent('click' ,true ,true);
-                link.dispatchEvent(e);
-                return true;
-            }
-        }
-
-        // Force file download (whether supported by server).
-        var query = '?download';
-        debugger;
-        window.open(sUrl + query);
+    pullEntireCSV(button){
+      debugger;
+      const loginURL = this.get('appConfig').APP.apiUrl;
+      let url = loginURL+'/api/v1/opportunities/csv';
+      Ember.$.ajax({
+          url: url
+          // your other details...
+      }).then(function(resolve) {
+        Ember.$.ajax({
+            url: resolve['csv-download']+'?download'
+            // your other details...
+        });
+        // this.set('controller.isLoading', false);
+          // process the result...
+      });
     },
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
