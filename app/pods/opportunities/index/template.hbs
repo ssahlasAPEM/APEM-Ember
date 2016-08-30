@@ -9,17 +9,14 @@
     </button>
   </div> -->
 
-  {{adv-search class="column inline-block" doSearch='filterOpportunities' clearSearchFilter='clearSearchFilter'}}
+  {{adv-search
+    class="column"
+    doSearch='filterOpportunities'
+    clearSearchFilter='clearSearchFilter'
+    pullEntireCSV='pullEntireCSV'
+    pullFilteredCSV='pullFilteredCSV'}}
 
-  <div class="ui buttons right floated download-csv-btn">
-    <button id='csvBtn' class="ui button csv-btn inline block" {{action 'pullEntireCSV'}}>Download CSV</button>
-    <button class="ui icon button dark-gray-bg" {{action 'pullFilteredCSV'}}>
-      <i class="filter icon"></i>
-    </button>
-    <!-- {{#ui-dropdown class="ui floating dropdown icon button download-filter-btn"}}
-      <i class="filter icon"></i>
-    {{/ui-dropdown}} -->
-  </div>
+
 </div>
 
 <br/>

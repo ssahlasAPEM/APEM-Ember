@@ -10,12 +10,14 @@ export default Ember.Route.extend(InfinityFilter, {
 
   breadCrumb: { title: 'Manage Opportunities' },
 
-  filterParams:null,
-
   pagingParams:{
     perPage: 25,
     startingPage: 1
   },
+
+  enableFilteredCSV:function(){
+    return (this.get('filterParams') === null )? true:false;
+  }.property('filterParams'),
 
   fields: function() {
     return this.store.findAll('field');
@@ -29,17 +31,19 @@ export default Ember.Route.extend(InfinityFilter, {
   actions:{
 
 
-    pullFilteredCSV(){
-      let button = Ember.$('#csvBtn');
+    pullFilteredCSV(params){
+
+      let button = Ember.$('#filteredCsvBtn');
       button.addClass('loading');
 
       const loginURL = this.get('appConfig').APP.apiUrl;
-      let filterParams = '';
-      let url = loginURL+'/api/v1/opportunities/csv' + '?' +filterParams;
-
+      var paramString = Object.keys(params).map(function(key) {
+          return key + '=' + params[key];
+      }).join('&');
+      let url = loginURL+'/api/v1/opportunities/csv' + '?' +paramString;
+      
       Ember.$.ajax({
           url: url
-          // your other details...
       }).then(function(resolve) {
         button.removeClass('loading');
         var anchor = document.createElement('a');
@@ -48,6 +52,7 @@ export default Ember.Route.extend(InfinityFilter, {
         anchor.click();
       });
     },
+
     pullEntireCSV(){
 
       let button = Ember.$('#csvBtn');
@@ -70,11 +75,12 @@ export default Ember.Route.extend(InfinityFilter, {
 
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
-      console.log(params);
-      this.infinityFilterModel("opportunity", params).then(function(data){
-        debugger;
-        // this.get('store').pushPayload(data);
-      });
+      // console.log(params);
+      var me = this;
+      this.set('filterParams',params);
+      this.infinityFilterModel("opportunity", params);
+      // .then(function(data){
+      // });
     },
 
     clearSearchFilter(){

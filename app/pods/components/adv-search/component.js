@@ -40,6 +40,22 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
+    pullEntireCSV(){
+      this.sendAction('pullEntireCSV');
+    },
+    pullFilteredCSV(){
+      let params = {
+          lastThirtyDays:this.get('lastThirtyDays').toString(),
+          dateEntered:this.get('dateEntered'),
+          startDate:this.get('startDate'),
+          endDate:this.get('endDate'),
+          estimatedProdDate:this.get('estimatedProdDate'),
+          searchedStatus:this.get('searchedStatus'),
+          searchedState:this.get('searchedState'),
+          searchString:this.get('searchString')
+      };
+      this.sendAction('pullFilteredCSV',params);
+    },
     clearSearch(){
       this.toggleProperty('searchUsed');
       this.set('searchString', '');

@@ -119,4 +119,13 @@
     </span>
     <!-- <i class="close large icon clear-search-btn" {{action 'clearSearch'}} data-tooltip='Clear Search'></i> -->
   {{/if}}
+
+
+  <div class="ui buttons right floated download-csv-btn">
+    <button id='csvBtn' class="ui button csv-btn inline block" {{action 'pullEntireCSV'}}>Download CSV</button>
+    <button id='filteredCsvBtn' disabled={{enableFilteredCSV}} class="ui icon button dark-gray-bg" {{action 'pullFilteredCSV'}}>
+      <i class="filter icon"></i>
+    </button>
+  </div>
+
 </div>
