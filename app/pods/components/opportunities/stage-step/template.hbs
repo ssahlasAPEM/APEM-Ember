@@ -5,7 +5,20 @@
       <i class="green check icon quote-step-icn hidden"></i>
       <div class="content">
         <div class="title">Quote</div>
-          <div class="description">08/29/2016</div>
+        {{#if quoteEvent}}
+          <div class="description">
+            {{date-picker
+              action=(action 'updateQuoteStageDate' quoteEvent)
+              placeholder=quoteEvent.date
+              valueFormat='MM-DD-YYYY'
+              format='MM-DD-YYYY'
+              utc=false
+              time=false
+              date=quoteEvent.date
+              allowBlank=true
+              buttonClasses='label-like'}}
+          </div>
+        {{/if}}
       </div>
     </div>
     <div class="sample step" {{action 'onStepClick' 'sample'}}>

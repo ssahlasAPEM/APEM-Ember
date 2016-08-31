@@ -53,6 +53,7 @@ export default Ember.Component.extend({
         } else if (event.type === 'production') {
           this.set('productionEvent', event);
         } else {
+          this.set('quoteEvent', event);
           otherEvents.pushObject(event);
         }
 

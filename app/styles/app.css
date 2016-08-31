@@ -39,6 +39,18 @@
   overflow: auto;
   width: 100%;
 }
+
+/* STAGE COMPONENT and children*/
+/*.stage-date-editor:hover{
+  background: #fff !important;
+  border: 1px solid #22242626 !important;
+}*/
+/*.stage-date-editor{
+  background-color: transparent !important;
+  border: none !important;
+  font-weight: bold;
+}*/
+
 .opportunity-form{
   max-height: calc(100vh - 130px);
   height: calc(100vh - 130px);

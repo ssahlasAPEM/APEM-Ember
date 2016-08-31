@@ -70,7 +70,13 @@
     {{/if}}
 
     <!-- STEPS FIELD -->
-    {{opportunities/stage-step stageSteps=stages opt=model}}
+    {{opportunities/stage-step
+      stageSteps=stages
+      opt=model
+      quoteEvent=quoteEvent
+      sampleEvent=sampleEvent
+      approvalEvent=approvalEvent
+      productionEvent=productionEvent}}
 
   <!-- STATUS FIELD -->
     <div class="field gap1 side-padded-fourteen">

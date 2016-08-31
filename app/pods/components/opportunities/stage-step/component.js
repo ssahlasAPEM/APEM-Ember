@@ -4,6 +4,10 @@ export default Ember.Component.extend({
   stageSteps:[],
   //current opportunity
   opt:null,
+  quoteEvent:null,
+  sampleEvent:null,
+  approvalEvent:null,
+  productionEvent:null,
 
   didRender(){
     this._super(...arguments);
@@ -12,6 +16,20 @@ export default Ember.Component.extend({
   },
 
   actions:{
+    updateQuoteStageDate(event, date){
+      let formattedDate = window.moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY'),
+      opp = this.get('opt');
+      this.get('quoteEvent').set('date',formattedDate);
+      opp.get('events').then((events) => {
+        events.forEach((evt) => {
+          if(evt.get('type') === event.get('type')) {
+            evt.set('date',formattedDate);
+          }
+        });
+      });
+      // let myTargetEvt = optEvtArray.get(event);
+      debugger;
+    },
     onStepClick:function(value){
       this.opt.set('stage', value);
       this.markSteps();
