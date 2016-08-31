@@ -137,14 +137,16 @@
 
         {{/each}}<!-- END EACH field -->
 
-      </div>
-    {{/each}}
+      </div><!--END GRID-->
 
-    {{#if hasEvents}}
+    {{/each}}<!-- END EACH group -->
+
+
+    {{#if nonStageEvents}}
       <h3 class="ui dividing header">Event Log</h3>
       <div class="ui two column stackable grid">
         {{#each nonStageEvents as |evt|}}
-            <label>{{evt.type}}</label>:<span>{{evt.date}}</span>
+            <span><label class='bold capitalize'>{{evt.type}} Date</label>: {{evt.date}}</span>
         {{/each}}
       </div>
     {{/if}}

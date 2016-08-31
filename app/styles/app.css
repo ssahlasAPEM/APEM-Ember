@@ -1,3 +1,9 @@
+.capitalize{
+      text-transform: capitalize;
+}
+.bold{
+  font-weight: bold;
+}
 .clear-date-btn{
   width: 30px;
   vertical-align: middle;
@@ -34,8 +40,8 @@
   width: 100%;
 }
 .opportunity-form{
-  max-height: calc(100vh - 112px);
-  height: calc(100% - 40px);
+  max-height: calc(100vh - 130px);
+  height: calc(100vh - 130px);
   overflow: auto;
   overflow-x: hidden;
 }

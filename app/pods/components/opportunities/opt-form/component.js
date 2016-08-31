@@ -27,6 +27,12 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
+  didRender() {
+    this._super(...arguments);
+    let eE = this.get('otherEvents');
+    let opt = this.get('model');
+  },
+
   // Init function
   init() {
     this._super(...arguments);
@@ -52,10 +58,12 @@ export default Ember.Component.extend({
 
       });
     });
-console.log(otherEvents);
+    console.log(otherEvents);
 
-  // RALI - otherEvents (non stage events) show at the bottom of NAO form. The other four event types match stages, the above variables
-  // would go to the stage-step component and display editor text fields to update the respective event. This is where I'm at.
+  // RALI - otherEvents (ie: non stage events) show at the bottom of NAO form.
+  // The other four event types match stages, the above variables
+  // would go to the stage-step component and display editor text fields
+  // to update the respective event. This is where I'm at.
   // We have events now at least.
 
     this.set('nonStageEvents', otherEvents);
@@ -73,12 +81,13 @@ console.log(otherEvents);
     }
   }.property('model.hasDirtyAttributes'),
 
-  /*hasEvents: Ember.computed('model.events', 'model.events.[]', function () {
-    if (this.get('model.events').length > 0) {
-      return true;
-    }
-    return false;
-  }),*/
+  // hasEvents: Ember.computed('model.events', 'model.events.[]', function () {
+  //   console.log('hasEvents RAN!!!!');
+  //   if (this.get('model.events').length > 0) {
+  //     return true;
+  //   }
+  //   return false;
+  // }).property('model.events'),
 
   /* This property is used by the template to disable the opportunity status Won
   button unless the opportunity has a "sales order number" and a "company name" */
