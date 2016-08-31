@@ -1,6 +1,7 @@
 .capitalize{
       text-transform: capitalize;
 }
+
 .bold{
   font-weight: bold;
 }
@@ -41,6 +42,18 @@
 }
 
 /* STAGE COMPONENT and children*/
+.label-like{
+  background: transparent;
+  border: none;
+  padding-left: 0px;
+  text-align: left;
+  outline:none;
+}
+.label-like-date-picker{
+  border:none !important;
+  box-shadow: none;
+  outline:none;
+}
 /*.stage-date-editor:hover{
   background: #fff !important;
   border: 1px solid #22242626 !important;
@@ -50,6 +63,7 @@
   border: none !important;
   font-weight: bold;
 }*/
+
 
 .opportunity-form{
   max-height: calc(100vh - 130px);

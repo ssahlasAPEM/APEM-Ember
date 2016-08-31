@@ -27,11 +27,7 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
-  didRender() {
-    this._super(...arguments);
-    let eE = this.get('otherEvents');
-    let opt = this.get('model');
-  },
+
 
   // Init function
   init() {
@@ -43,7 +39,7 @@ export default Ember.Component.extend({
 
     opp.get('events').then((events) => {
       events.forEach((event) => {
-
+        console.log(event);
         if(event.type === 'quote') {
           this.set('quoteEvent', event);
         } else if (event.type === 'sample') {
@@ -53,7 +49,7 @@ export default Ember.Component.extend({
         } else if (event.type === 'production') {
           this.set('productionEvent', event);
         } else {
-          this.set('quoteEvent', event);
+          //this.set('quoteEvent', event);//this is for tests in case there is no stage event
           otherEvents.pushObject(event);
         }
 
