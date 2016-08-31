@@ -31,6 +31,7 @@ export default Ember.Component.extend({
   onStepClick:function(value){
 
     this.opt.set('stage', value);
+
     this.markSteps();
 
     let sSteps = this.stageSteps;
@@ -51,7 +52,6 @@ export default Ember.Component.extend({
             type: value,
             opportunity:this.opt
           });
-          // debugger;
           myEvt.save().then(function(data){
             me.set(eventName, data);
           });
@@ -63,26 +63,24 @@ export default Ember.Component.extend({
             type: value,
             opportunity:this.opt
           });
-          // debugger;
           myEvt.save().then(function(data){
             me.set(eventName, data);
           });
         }
       }else{
         //delete anything before the clicked date
-        // if(myEvt){
-        //   myEvt.destroyRecord();
-        // }
+        if(myEvt){
+          this.deleteUncheckedEvents(myEvt);//myEvt.destroyRecord();
+        }
       }
     });
   },
 
-  // deleteUncheckedEvents:function(eventName){
-  //   let delEvt = this.get(eventName);
-  //   if(delEvt){
-  //     delEvt.destroyRecord();
-  //   }
-  // },
+  deleteUncheckedEvents:function(event){
+    let eventName = event.get('type')+'Event';
+    this.set(eventName, null);
+    event.destroyRecord();
+  },
 
   markSteps:function(){
     let selectedStepId = this.stageSteps.findBy('label',this.opt.get('stage')).id;
