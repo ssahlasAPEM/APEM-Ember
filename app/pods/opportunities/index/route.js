@@ -17,7 +17,7 @@ export default Ember.Route.extend(InfinityRoute, {
   filterParams:{
     searchedStatus:'Backburner',//default
     searchedState:'Open',
-    lastThirtyDays:true,
+    lastThirtyDays:false,
     dateEntered:'',
     startDate:'',
     endDate:'',
@@ -25,7 +25,7 @@ export default Ember.Route.extend(InfinityRoute, {
     searchString:''
   },
 
-  
+
   fields: function() {
     return this.store.findAll('field');
   },

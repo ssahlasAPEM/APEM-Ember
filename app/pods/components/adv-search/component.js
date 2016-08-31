@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   // Defaults
   searchedStatus:'Backburner',
   searchedState:'Open',
-  lastThirtyDays:true,
+  lastThirtyDays:false,
   dateEntered:'',
   startDate:'',
   endDate:'',
@@ -23,9 +23,12 @@ export default Ember.Component.extend({
     this.set('searchedStatus', this.get('filterParams.searchedStatus'));
     this.set('searchedState', this.get('filterParams.searchedState'));
 
-    if(this.get('filterParams.lastThirtyDays') === "false") {
+    if(this.get('filterParams.lastThirtyDays') === "false" ||
+      this.get('filterParams.lastThirtyDays') === false) {
       this.set('lastThirtyDays', false);
-    } else {
+    }
+    else if(this.get('filterParams.lastThirtyDays') === "true" ||
+      this.get('filterParams.lastThirtyDays') === true) {
       this.set('lastThirtyDays', true);
     }
 
