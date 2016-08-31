@@ -46,6 +46,11 @@ export default Ember.Component.extend({
 
   notUsingDateEntered: function() {
     console.log('notUsingDateEntered triggered!!!');
+    let a = this.get('lastThirtyDays'),
+    b = this.get('startDate'),
+    c = this.get('endDate'),
+    d = this.get('estimatedProdDate');
+    debugger;
     return (this.get('lastThirtyDays') === true ||
     this.get('startDate') !== '' ||
     this.get('endDate') !== '' ||
