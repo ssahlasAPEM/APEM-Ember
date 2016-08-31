@@ -20,7 +20,7 @@ export default Ember.Component.extend({
     clearTheDate(){
       this.$('.date-picker__button').text(null);
       this.set('date', null);
-      this.sendAction('updatedDate', null);
+      this.sendAction('updatedDate', '');
     },
     updateDate:function(action){
 
