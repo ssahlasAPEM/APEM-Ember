@@ -222,6 +222,7 @@
 }
 .ui.four.steps > .step {
     width: 25%;
+    min-height: 42px;
     /*height: 36px;*/
     padding: 6px;
 }
