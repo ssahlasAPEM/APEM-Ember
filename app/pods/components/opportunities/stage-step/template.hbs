@@ -26,7 +26,7 @@
       <i class="green check icon sample-step-icn hidden"></i>
       <div class="content">
         <div class="title">Sample</div>
-        {{#if opt.events}}
+        {{#if sampleEvent}}
         {{date-picker
           action=(action 'updateStageDate' quoteEvent)
           placeholder=sampleEvent.date
@@ -46,7 +46,7 @@
       <i class="green check icon approval-step-icn hidden"></i>
       <div class="content">
         <div class="title">Approval</div>
-        {{#if opt.events}}
+        {{#if approvalEvent}}
         {{date-picker
           action=(action 'updateStageDate' quoteEvent)
           placeholder=approvalEvent.date
@@ -65,7 +65,7 @@
       <i class="green check icon production-step-icn hidden"></i>
       <div class="content">
         <div class="title">Production</div>
-        {{#if opt.events}}
+        {{#if productionEvent}}
         {{date-picker
           action=(action 'updateStageDate' quoteEvent)
           placeholder=productionEvent.date

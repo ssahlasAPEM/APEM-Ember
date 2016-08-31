@@ -27,7 +27,10 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
-
+  didReceiveAttrs(){
+    this._super(...arguments);
+  //  debugger;
+  },
 
   // Init function
   init() {
