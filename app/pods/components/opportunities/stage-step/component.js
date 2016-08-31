@@ -23,7 +23,8 @@ export default Ember.Component.extend({
       event.save();
     },
 
-    onStepClick:function(value){
+    onStepClick:function(event, value){
+      debugger;
       this.opt.set('stage', value);
       this.markSteps();
 

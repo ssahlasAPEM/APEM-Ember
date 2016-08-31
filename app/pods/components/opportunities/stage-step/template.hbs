@@ -27,17 +27,17 @@
       <div class="content">
         <div class="title">Sample</div>
         {{#if sampleEvent}}
-        {{date-picker
-          action=(action 'updateStageDate' quoteEvent)
-          placeholder=sampleEvent.date
-          valueFormat='MM-DD-YYYY'
-          format='MM-DD-YYYY'
-          utc=false
-          time=false
-          date=sampleEvent.date
-          allowBlank=true
-          class="label-like-date-picker"
-          buttonClasses='label-like'}}
+          {{date-picker
+            action=(action 'updateStageDate' quoteEvent)
+            placeholder=sampleEvent.date
+            valueFormat='MM-DD-YYYY'
+            format='MM-DD-YYYY'
+            utc=false
+            time=false
+            date=sampleEvent.date
+            allowBlank=true
+            class="label-like-date-picker"
+            buttonClasses='label-like'}}
         {{/if}}
         <!-- <div class="description">Enter billing information</div> -->
       </div>
@@ -47,17 +47,17 @@
       <div class="content">
         <div class="title">Approval</div>
         {{#if approvalEvent}}
-        {{date-picker
-          action=(action 'updateStageDate' quoteEvent)
-          placeholder=approvalEvent.date
-          valueFormat='MM-DD-YYYY'
-          format='MM-DD-YYYY'
-          utc=false
-          time=false
-          date=approvalEvent.date
-          allowBlank=true
-          class="label-like-date-picker"
-          buttonClasses='label-like'}}
+          {{date-picker
+            action=(action 'updateStageDate' quoteEvent)
+            placeholder=approvalEvent.date
+            valueFormat='MM-DD-YYYY'
+            format='MM-DD-YYYY'
+            utc=false
+            time=false
+            date=approvalEvent.date
+            allowBlank=true
+            class="label-like-date-picker"
+            buttonClasses='label-like'}}
         {{/if}}
       </div>
     </div>
