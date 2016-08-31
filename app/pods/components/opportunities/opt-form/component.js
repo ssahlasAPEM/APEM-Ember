@@ -42,14 +42,15 @@ export default Ember.Component.extend({
 
     opp.get('events').then((events) => {
       events.forEach((event) => {
+        let type = event.get('type');
         console.log(event);
-        if(event.type === 'quote') {
+        if(type === 'quote') {
           this.set('quoteEvent', event);
-        } else if (event.type === 'sample') {
+        } else if (type === 'sample') {
           this.set('sampleEvent', event);
-        } else if (event.type === 'approval') {
+        } else if (type === 'approval') {
           this.set('approvalEvent', event);
-        } else if (event.type === 'production') {
+        } else if (type === 'production') {
           this.set('productionEvent', event);
         } else {
           //this.set('quoteEvent', event);//this is for tests in case there is no stage event

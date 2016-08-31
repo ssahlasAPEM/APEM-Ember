@@ -1,13 +1,14 @@
 <div class="field gap1 side-padded-fourteen">
   <label>Stage</label>
   <div class="ui four top attached steps">
-    <div class="quote step" {{action 'onStepClick' 'quote'}}>
-      <i class="green check icon quote-step-icn hidden"></i>
-      <div class="content">
-        <div class="title">Quote</div>
+    <div class="quote step" value="quote">
+      <i class="green check icon quote-step-icn hidden" value="quote"></i>
+      <div class="content" value="quote">
+        <div class="title" value="quote">Quote</div>
         {{#if quoteEvent}}
           <div class="description">
             {{date-picker
+              bubble
               action=(action 'updateStageDate' quoteEvent)
               placeholder=quoteEvent.date
               valueFormat='MM-DD-YYYY'
@@ -22,10 +23,10 @@
         {{/if}}
       </div>
     </div>
-    <div class="sample step" {{action 'onStepClick' 'sample'}}>
-      <i class="green check icon sample-step-icn hidden"></i>
-      <div class="content">
-        <div class="title">Sample</div>
+    <div class="sample step" value="sample">
+      <i class="green check icon sample-step-icn hidden" value="sample"></i>
+      <div class="content" value="sample">
+        <div class="title" value="sample">Sample</div>
         {{#if sampleEvent}}
           {{date-picker
             action=(action 'updateStageDate' quoteEvent)
@@ -42,10 +43,10 @@
         <!-- <div class="description">Enter billing information</div> -->
       </div>
     </div>
-    <div class="approval step" {{action 'onStepClick' 'approval'}}>
-      <i class="green check icon approval-step-icn hidden"></i>
-      <div class="content">
-        <div class="title">Approval</div>
+    <div class="approval step" value="approval">
+      <i class="green check icon approval-step-icn hidden" value="approval"></i>
+      <div class="content" value="approval">
+        <div class="title" value="approval">Approval</div>
         {{#if approvalEvent}}
           {{date-picker
             action=(action 'updateStageDate' quoteEvent)
@@ -61,10 +62,11 @@
         {{/if}}
       </div>
     </div>
-    <div class="production step" {{action 'onStepClick' 'production'}}>
-      <i class="green check icon production-step-icn hidden"></i>
-      <div class="content">
-        <div class="title">Production</div>
+    
+    <div class="production step" value="production">
+      <i class="green check icon production-step-icn hidden" value="production"></i>
+      <div class="content" value="production">
+        <div class="title" value="production">Production</div>
         {{#if productionEvent}}
         {{date-picker
           action=(action 'updateStageDate' quoteEvent)

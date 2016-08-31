@@ -10,67 +10,71 @@ export default Ember.Component.extend({
   approvalEvent:null,
   productionEvent:null,
 
+  click:function(event){
+    let targetAttr = event.target.attributes;
+    for(var i=0, attLen=targetAttr.length;i<attLen;i++){
+      if(targetAttr[i].nodeValue === 'quote' ||
+          targetAttr[i].nodeValue === 'sample' ||
+          targetAttr[i].nodeValue === 'approval' ||
+          targetAttr[i].nodeValue === 'production'){
+          this.onStepClick(targetAttr[i].nodeValue);
+      }
+    }
+  },
+
   didRender(){
     this._super(...arguments);
     console.log('OPT DETAIL RENDER');
     this.markSteps();
   },
 
-  actions:{
-    updateStageDate(event, date){
-      let formattedDate = window.moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY');
-      event.set('date',formattedDate);
-      event.save();
-    },
+  onStepClick:function(value){
 
-    onStepClick:function(event, value){
-      debugger;
-      this.opt.set('stage', value);
-      this.markSteps();
+    this.opt.set('stage', value);
+    this.markSteps();
 
-      let sSteps = this.stageSteps;
-      let eventedStepId = sSteps.findBy('label',this.opt.get('stage')).id-1;
-      sSteps.forEach((item) => {
-        let me=this;
-        let eventName = item.label+'Event';
-        let today = window.moment(Date().toString(), 'ddd MMM DD YYYY HH:mm:ss Z').format('MM-DD-YYYY');
-        let myEvt = this.get(eventName);
-        // console.log(`${item}`);
-        if(item.id === eventedStepId){
-          //Remark Aug 31st Ralica M.: using the stageSteps hardcoded array,
-          //we find the current step's type by looking at the label and get the
-          //appropriate stage attribute from the component to asign today's date.
-          if(!myEvt){
-            myEvt = this.get('store').createRecord('event', {
-              date: today,
-              type: value,
-              opportunity:this.opt
-            });
-            // debugger;
-            myEvt.save().then(function(data){
-              me.set(eventName, data);
-            });
-          }
-        } else if(item.id < eventedStepId){
-          if(!myEvt){
-            myEvt = this.get('store').createRecord('event', {
-              date: today,
-              type: value,
-              opportunity:this.opt
-            });
-            // debugger;
-            myEvt.save().then(function(data){
-              me.set(eventName, data);
-            });
-          }
-        }else{
-          //delete anything before the clicked date
-          // if(myEvt){
-          //   myEvt.destroyRecord();
-          // }
+    let sSteps = this.stageSteps;
+    let eventedStepId = sSteps.findBy('label',this.opt.get('stage')).id-1;
+    sSteps.forEach((item) => {
+      let me=this;
+      let eventName = item.label+'Event';
+      let today = window.moment(Date().toString(), 'ddd MMM DD YYYY HH:mm:ss Z').format('MM-DD-YYYY');
+      let myEvt = this.get(eventName);
+      // console.log(`${item}`);
+      if(item.id === eventedStepId){
+        //Remark Aug 31st Ralica M.: using the stageSteps hardcoded array,
+        //we find the current step's type by looking at the label and get the
+        //appropriate stage attribute from the component to asign today's date.
+        if(!myEvt){
+          myEvt = this.get('store').createRecord('event', {
+            date: today,
+            type: value,
+            opportunity:this.opt
+          });
+          // debugger;
+          myEvt.save().then(function(data){
+            me.set(eventName, data);
+          });
         }
-      });
-    }
+      } else if(item.id < eventedStepId){
+        if(!myEvt){
+          myEvt = this.get('store').createRecord('event', {
+            date: today,
+            type: value,
+            opportunity:this.opt
+          });
+          // debugger;
+          myEvt.save().then(function(data){
+            me.set(eventName, data);
+          });
+        }
+      }else{
+        //delete anything before the clicked date
+        // if(myEvt){
+        //   myEvt.destroyRecord();
+        // }
+      }
+    });
   },
 
   // deleteUncheckedEvents:function(eventName){
@@ -98,5 +102,13 @@ export default Ember.Component.extend({
         Ember.$('.'+item.label+'.step').removeClass('active');
       }
     });
+  },
+
+  actions:{
+    updateStageDate(event, date){
+      let formattedDate = window.moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY');
+      event.set('date',formattedDate);
+      event.save();
+    },
   }
 });
