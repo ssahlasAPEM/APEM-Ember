@@ -37,12 +37,12 @@ export default Ember.Component.extend({
   },
 
   notUsingDates: function() {
-    console.log('disabled change!!!');
+    console.log('notUsingDates triggered!!!');
     return this.get('lastThirtyDays');
   }.property('lastThirtyDays'),
 
   notUsingDateEntered: function() {
-    // console.log('manage date entered!!!');
+    console.log('notUsingDateEntered triggered!!!');
     return (this.get('lastThirtyDays') === true ||
     this.get('startDate') !== '' ||
     this.get('endDate') !== '' ||
@@ -50,7 +50,7 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'startDate', 'endDate', 'estimatedProdDate'),
 
   notUsingDateRange: function() {
-    // console.log('manage date entered!!!');
+    console.log('notUsingDateRange triggered!!!');
     return (this.get('lastThirtyDays') === true ||
      this.get('dateEntered') !== '' ||
      this.get('estimatedProdDate') !== '')? true:false;
@@ -59,7 +59,8 @@ export default Ember.Component.extend({
   notUsingEstProdDate: function() {
     // console.log('manage date entered!!!');
     return (this.get('lastThirtyDays') === true ||
-     this.get('dateEntered') !== '' || this.get('startDate') !== '' ||
+     this.get('dateEntered') !== '' ||
+     this.get('startDate') !== '' ||
      this.get('endDate') !== '')? true:false;
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 

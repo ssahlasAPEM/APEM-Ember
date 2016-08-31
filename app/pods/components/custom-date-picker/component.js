@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
 
     if(this.get('date') !== null && this.get('date') !== '') {
-      this.set('formattedDate', window.moment(this.get('date'), 'MM-DD-YYYY').format('MM/DD/YYYY'));
+      this.set('formattedDate', window.moment(this.get('date'), 'MM-DD-YYYY').format('MM-DD-YYYY'));
     }
   },
 
@@ -24,7 +24,7 @@ export default Ember.Component.extend({
     },
     updateDate:function(action){
 
-      let newDate = window.moment(action._d, 'ddd MMM DD YYYY HH:mm:ss Z').format('MM/DD/YYYY');
+      let newDate = window.moment(action._d, 'ddd MMM DD YYYY HH:mm:ss Z').format('MM-DD-YYYY');
       let searchServiceFormat = window.moment(action._d, 'ddd MMM DD YYYY HH:mm:ss Z').format('MM-DD-YYYY');
       this.$('.date-picker__button').text(newDate);
       this.set('date', newDate);
