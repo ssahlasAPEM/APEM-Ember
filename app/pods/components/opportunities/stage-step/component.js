@@ -49,7 +49,7 @@ export default Ember.Component.extend({
         if(!myEvt){
           myEvt = this.get('store').createRecord('event', {
             date: today,
-            type: value,
+            type: item.label,
             opportunity:this.opt
           });
           myEvt.save().then(function(data){
@@ -60,7 +60,7 @@ export default Ember.Component.extend({
         if(!myEvt){
           myEvt = this.get('store').createRecord('event', {
             date: today,
-            type: value,
+            type: item.label,
             opportunity:this.opt
           });
           myEvt.save().then(function(data){
