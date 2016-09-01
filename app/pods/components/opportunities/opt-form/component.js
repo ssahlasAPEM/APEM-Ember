@@ -18,7 +18,7 @@ export default Ember.Component.extend({
   approvalEvent: null,
   productionEvent: null,
   nonStageEvents: null,
-  optStatuses:['Backburner', 'Won', 'Lost'],
+  optStatuses:['Backburner', 'Won', 'Lost', ''],
   optStates:['Open', 'Closed'],
 
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
@@ -159,7 +159,7 @@ export default Ember.Component.extend({
   manageWonSettings:function(model){
     if (!(model.get('company')!== null && model.get('company')!== '' &&
      model.get('prodSalesOrderNum')!== null && model.get('prodSalesOrderNum')!== '')) {
-       model.set('status', 'Backburner');
+       model.set('status', '');
       //  alert('Won can be assigned only if there are a Company and a Product Sales Number values.');
     }
   },

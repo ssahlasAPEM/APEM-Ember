@@ -65,11 +65,11 @@ class="ui floating dropdown icon button adv-search-dropdown advanced-search-comp
       <div class="divider gap1"></div>
 
       <div class="ui field">
-        <div class="row ui three buttons gap1">
+        <div class="row ui buttons gap1">
           {{ui-radio
             name="sStatus"
             current=searchedStatus
-            class="make-me-button button backburner"
+            class="make-me-button button"
             label="Backburner"
             value="Backburner"
             onChange=(action (mut searchedStatus))}}
@@ -89,6 +89,14 @@ class="ui floating dropdown icon button adv-search-dropdown advanced-search-comp
             label="Lost"
             value="Lost"
             onChange=(action (mut searchedStatus))}}
+
+          {{ui-radio
+            name="sState"
+            current=searchedStatus
+            class="make-me-button button"
+            label="None"
+            value=""
+            onChange=(action (mut searchedState))}}
         </div>
         <!-- <div class="ui buttons gap1">
 
