@@ -10,22 +10,15 @@ export default Ember.Component.extend({
   approvalEvent:null,
   productionEvent:null,
 
-
-  didReceiveAttrs() {
+  init(){
     this._super(...arguments);
-    for(var i=0, attrLen = arguments.length;i<attrLen; i++){
-      let newAttrs = arguments[i].newAttrs;
-      if(newAttrs){
-        if(newAttrs.opt.value.get('newRecord')){
-          /* set all events to null because this is a new record.*/
-          this.set('quoteEvent', null);
-          this.set('sampleEvent', null);
-          this.set('approvalEvent', null);
-          this.set('productionEvent', null);
-        }
-      }
-    }
+    //clear previous event leftovers
+    this.set('quoteEvent', null);
+    this.set('sampleEvent', null);
+    this.set('approvalEvent', null);
+    this.set('productionEvent', null);
   },
+
 
   /* A basic to every component click action handler which allows us to recognise
    click event targets. We need thi because the semantic step ui triggers a click
