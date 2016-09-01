@@ -57,6 +57,7 @@ export default Ember.Component.extend({
     this.markSteps();
 
     let sSteps = this.stageSteps;
+
     let eventedStepId = sSteps.findBy('label',this.opt.get('stage')).id-1;
     sSteps.forEach((item) => {
       let me=this;
@@ -79,6 +80,18 @@ export default Ember.Component.extend({
           });
         }
       } else if(item.id < eventedStepId){
+        if(!myEvt){
+          myEvt = this.get('store').createRecord('event', {
+            date: today,
+            type: item.label,
+            opportunity:this.opt
+          });
+          myEvt.save().then(function(data){
+            me.set(eventName, data);
+          });
+        }
+      } else if(value == 'production' && item.id == eventedStepId+1){
+        // If this is the last stage, we also want to set the date on this stage
         if(!myEvt){
           myEvt = this.get('store').createRecord('event', {
             date: today,
