@@ -179,7 +179,7 @@
       <h3 class="ui dividing header">Event Log</h3>
       <div class="ui two column stackable grid">
         {{#each nonStageEvents as |evt|}}
-            <span><label class='bold capitalize'>{{evt.type}} Date</label>: {{moment-format evt.date 'MMMM Do, YYYY'}}</span>
+            <span><label class='bold capitalize'>{{evt.type}} </label>: {{moment-format evt.date 'MMMM Do, YYYY'}}</span>
         {{/each}}
       </div>
     {{/if}}
