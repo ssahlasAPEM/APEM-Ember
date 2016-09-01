@@ -117,7 +117,7 @@ export default Ember.Component.extend({
       fieldsArray.forEach(function(item/*, index, enumerable*/){
         if (item.get('required') === true) {
           let fieldName = item.get('name');
-          requiredFormValidations.set(fieldName, 'empty');//[fieldName] = 'empty';
+          requiredFormValidations[fieldName] = 'empty';
             //r: for more detailed validation this structure should be used:
             // {
             //   identifier:fieldName,
