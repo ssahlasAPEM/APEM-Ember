@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 
   filterParams:{
     searchedStatus:'',//default
-    searchedState:'Open',
+    searchedState:'',
     lastThirtyDays:false,
     dateEntered:'',
     startDate:'',

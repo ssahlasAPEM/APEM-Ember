@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   // Defaults
   searchedStatus:'',
-  searchedState:'Open',
+  searchedState:'',
   lastThirtyDays:false,
   dateEntered:'',
   startDate:'',
@@ -93,6 +93,12 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
+    handleSearch(event){
+      if(event.keyCode === 13) { //check if enter button was pressed
+        this.set('searchString', event.target.value);
+        this.doTheSearch();
+      }
+    },
     onDropdownBeforeShow(){
       if(event.target.id !== 'dropTrigger'){
         return false;
@@ -137,22 +143,26 @@ export default Ember.Component.extend({
     },
 
     onSearchClick:function(){
-      let params = {
-          perPage: '25',
-          startingPage: '1',
-          lastThirtyDays:this.get('lastThirtyDays').toString(),
-          dateEntered:this.get('dateEntered'),
-          startDate:this.get('startDate'),
-          endDate:this.get('endDate'),
-          estimatedProdDate:this.get('estimatedProdDate'),
-          searchedStatus:this.get('searchedStatus'),
-          searchedState:this.get('searchedState'),
-          searchString:this.get('searchString')
-      };
-      this.toggleProperty('searchUsed');
-      this.sendAction('doSearch', params);
-      //todo write search quesry here ?
+      this.doTheSearch();
     }
+  },
+
+  doTheSearch:function(){
+    let params = {
+        perPage: '25',
+        startingPage: '1',
+        lastThirtyDays:this.get('lastThirtyDays').toString(),
+        dateEntered:this.get('dateEntered'),
+        startDate:this.get('startDate'),
+        endDate:this.get('endDate'),
+        estimatedProdDate:this.get('estimatedProdDate'),
+        searchedStatus:this.get('searchedStatus'),
+        searchedState:this.get('searchedState'),
+        searchString:this.get('searchString')
+    };
+    this.toggleProperty('searchUsed');
+    this.sendAction('doSearch', params);
+    //todo write search quesry here ?
   }
 });
 
