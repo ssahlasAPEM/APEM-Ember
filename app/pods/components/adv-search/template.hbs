@@ -1,4 +1,9 @@
-<div class="advanced-search-component">
+<!-- <div class="advanced-search-component"> -->
+
+{{#ui-dropdown onShow=(action 'onDropdownBeforeShow')
+showOnFocus=false
+class="ui floating dropdown icon button adv-search-dropdown advanced-search-component"}}
+
   <div class="ui icon input adv-search-input">
     <i class="search icon adv-search-icon-left"></i>
     {{input value=searchString key-press=(action (mut searchString)) class="prompt advanced-srch"}}
@@ -7,8 +12,8 @@
 
   {{input type="button" value="Search" class="ui button adv-search-btn" click=(action "onSearchClick")}}
 
-  {{#ui-dropdown class="ui floating dropdown icon button adv-search-dropdown dark-gray-bg"}}
-    <i class="dropdown icon"></i>
+
+    <i id="dropTrigger" class="dropdown icon dark-gray-bg"></i>
       <div class="menu adv-search-menu">
         <div class="ui field">
           {{ui-checkbox
@@ -116,7 +121,7 @@
 
     </div>
 
-  {{/ui-dropdown}}
+{{/ui-dropdown}}
 
   {{#if searchUsed}}
     <span class="ui icon" data-position="bottom left" data-tooltip="Clear Search" {{action 'clearSearch'}} >
@@ -133,4 +138,4 @@
     </button>
   </div>
 
-</div>
+<!-- </div> -->

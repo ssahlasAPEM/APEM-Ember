@@ -38,7 +38,13 @@ export default Ember.Component.extend({
     this.set('estimatedProdDate', this.get('filterParams.estimatedProdDate'));
     this.set('searchString', this.get('filterParams.searchString'));
   },
-
+  // click:function(event){
+  //   if(event.target.id === 'dropTrigger'){
+  //     let parent = event.target.offsetParent;
+  //     parent.fireEvent('drop');
+  //     debugger;
+  //   }
+  // },
   notUsingDates: function() {
     // console.log('notUsingDates triggered!!!');
     return this.get('lastThirtyDays');
@@ -73,6 +79,12 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
+    onDropdownBeforeShow(component){
+      if(event.target.id !== 'dropTrigger'){
+        return false;
+      }
+      console.log(event.target);
+    },
     pullEntireCSV(){
       this.sendAction('pullEntireCSV');
     },
