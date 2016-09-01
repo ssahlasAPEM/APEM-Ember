@@ -50,9 +50,6 @@ export default Ember.Component.extend({
     }
 
     this.set('searchString', this.get('filterParams.searchString'));
-    // <input type="text" class="prompt advanced-srch" {{bind-attr value="searchString"}} onkeypress={{action "handleSearch"}} />
-
-    // this.$('#searchInput').value = this.get('searchString');
   },
 
   didRender(){
@@ -166,15 +163,19 @@ export default Ember.Component.extend({
         searchedState:this.get('searchedState'),
         searchString:this.get('searchString')
     };
-    this.toggleProperty('searchUsed');
-    this.sendAction('doSearch', params);
-    //todo write search quesry here ?
+
+    if(this.get('lastThirtyDays') === false &&
+      this.get('dateEntered') === '' &&
+      this.get('startDate') === '' &&
+      this.get('endDate') === '' &&
+      this.get('estimatedProdDate') === '' &&
+      this.get('searchedStatus') === '' &&
+      this.get('searchedState') === '' &&
+      this.get('searchString') === '' ){
+        //do not sho clear search btn
+    }else{
+      this.toggleProperty('searchUsed');
+      this.sendAction('doSearch', params);
+    }
   }
 });
-
-// import layout from '../templates/components/infinity-loader';
-// import infinityLoader from 'ember-infinity/components/infinity-loader';
-//
-// export default infinityLoader.extend({
-//   layout: layout
-// });
