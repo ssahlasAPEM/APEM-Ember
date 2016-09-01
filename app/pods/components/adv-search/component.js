@@ -131,13 +131,15 @@ export default Ember.Component.extend({
       };
       this.sendAction('pullFilteredCSV',params);
     },
+
     clearSearch(){
       this.toggleProperty('searchUsed');
       this.set('searchString', '');
-      this.set('searchedStatus', ''),
-      this.set('searchedState', ''),
+      this.set('searchedStatus', '');
+      this.set('searchedState', '');
       this.sendAction('clearSearchFilter');
     },
+
     onDateEntered(data){
       this.set('dateEntered', data);
     },

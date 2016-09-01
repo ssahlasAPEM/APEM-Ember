@@ -4,8 +4,6 @@ import groupBy from 'ember-group-by';
 export default Ember.Component.extend({
   identity: Ember.inject.service(),
   store: Ember.inject.service(),
-  //events:Ember.inject.service(),
-  // routing: Ember.inject.service('-routing'),
 
   //used addon ember-group-by to group our fields array by model attr group.
   fieldsByGroup:groupBy('fields', 'group'),

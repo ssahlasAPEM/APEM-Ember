@@ -90,7 +90,7 @@ export default Ember.Component.extend({
             me.set(eventName, data);
           });
         }
-      } else if(value == 'production' && item.id == eventedStepId+1){
+      } else if(value === 'production' && item.id === eventedStepId+1){
         // If this is the last stage, we also want to set the date on this stage
         if(!myEvt){
           myEvt = this.get('store').createRecord('event', {
