@@ -7,8 +7,8 @@ class="ui floating dropdown icon button adv-search-dropdown advanced-search-comp
 
   <div class="ui icon input adv-search-input">
     <i class="search icon adv-search-icon-left"></i>
-    <input type="text" class="prompt advanced-srch" value={{searchString}} onkeypress={{action "handleSearch"}} />
-    
+    {{input value=searchString key-press=(action (mut searchString)) action="onSearchClick" class="prompt advanced-srch"}}
+    <!-- <input class="prompt search advanced-search" type="text" > -->
   </div>
 
   {{input type="button" value="Search" class="ui button adv-search-btn" click=(action "onSearchClick")}}
