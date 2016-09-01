@@ -27,14 +27,19 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
-  didReceiveAttrs(){
-    this._super(...arguments);
-  //  debugger;
-  },
+  // didReceiveAttrs(){
+  //   this._super(...arguments);
+  // //  debugger;
+  // },
 
   // Init function
   init() {
     this._super(...arguments);
+    //null events which are left from previous record.
+    this.set('quoteEvent', null);
+    this.set('sampleEvent', null);
+    this.set('approvalEvent', null);
+    this.set('productionEvent', null);
 
     let opp = this.get('model');
     //let theEvents = opp.get('events.content');
