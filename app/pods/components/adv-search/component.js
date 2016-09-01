@@ -42,7 +42,6 @@ export default Ember.Component.extend({
   //   if(event.target.id === 'dropTrigger'){
   //     let parent = event.target.offsetParent;
   //     parent.fireEvent('drop');
-  //     debugger;
   //   }
   // },
   notUsingDates: function() {
@@ -56,7 +55,6 @@ export default Ember.Component.extend({
     // b = this.get('startDate'),
     // c = this.get('endDate'),
     // d = this.get('estimatedProdDate');
-    // debugger;
     return (this.get('lastThirtyDays') === true ||
     this.get('startDate') !== '' ||
     this.get('endDate') !== '' ||

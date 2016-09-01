@@ -131,7 +131,7 @@ export default Ember.Component.extend({
           // );
         }
       });
-      debugger;
+
       //add validation to form
       Ember.$('.opportunity-form')
         .form({
@@ -255,8 +255,7 @@ export default Ember.Component.extend({
           opt.set('user', opt.get('userId'));
           opt.set('userId', opt.get('user.id'));
         }
-        let events = this.get('events');
-
+        //let events = this.get('events');
 
         this.sendAction('onOptSave', opt);
       }
