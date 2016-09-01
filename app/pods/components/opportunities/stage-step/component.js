@@ -10,16 +10,6 @@ export default Ember.Component.extend({
   approvalEvent:null,
   productionEvent:null,
 
-  // init(){
-  //   this._super(...arguments);
-  //   //clear previous event leftovers
-  //   this.set('quoteEvent', null);
-  //   this.set('sampleEvent', null);
-  //   this.set('approvalEvent', null);
-  //   this.set('productionEvent', null);
-  // },
-
-
   /* A basic to every component click action handler which allows us to recognise
    click event targets. We need thi because the semantic step ui triggers a click
    without regard to wether a child element is clicked or a step ui element is clicked.
