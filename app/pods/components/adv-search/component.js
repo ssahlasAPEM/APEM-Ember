@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   // Defaults
   searchedStatus:'',
-  searchedState:'Open',
+  searchedState:'',
   lastThirtyDays:false,
   dateEntered:'',
   startDate:'',
@@ -48,11 +48,16 @@ export default Ember.Component.extend({
     if(dE !== undefined){
       this.set('estimatedProdDate', ePD);
     }
-    //
-    // this.set('startDate', this.get('filterParams.startDate'));
-    // this.set('endDate', this.get('filterParams.endDate'));
-    // this.set('estimatedProdDate', this.get('filterParams.estimatedProdDate'));
-    // this.set('searchString', this.get('filterParams.searchString'));
+
+    this.set('searchString', this.get('filterParams.searchString'));
+    // <input type="text" class="prompt advanced-srch" {{bind-attr value="searchString"}} onkeypress={{action "handleSearch"}} />
+
+    // this.$('#searchInput').value = this.get('searchString');
+  },
+
+  didRender(){
+    this._super(...arguments);
+    this.$('#searchInput').value = this.get('searchString');
   },
   // click:function(event){
   //   if(event.target.id === 'dropTrigger'){
@@ -93,6 +98,13 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
+    handleSearch(event){
+
+      if(event.keyCode === 13) { //check if enter button was pressed
+        this.set('searchString', event.target.value);
+        this.doTheSearch();
+      }
+    },
     onDropdownBeforeShow(){
       if(event.target.id !== 'dropTrigger'){
         return false;
@@ -137,22 +149,26 @@ export default Ember.Component.extend({
     },
 
     onSearchClick:function(){
-      let params = {
-          perPage: '25',
-          startingPage: '1',
-          lastThirtyDays:this.get('lastThirtyDays').toString(),
-          dateEntered:this.get('dateEntered'),
-          startDate:this.get('startDate'),
-          endDate:this.get('endDate'),
-          estimatedProdDate:this.get('estimatedProdDate'),
-          searchedStatus:this.get('searchedStatus'),
-          searchedState:this.get('searchedState'),
-          searchString:this.get('searchString')
-      };
-      this.toggleProperty('searchUsed');
-      this.sendAction('doSearch', params);
-      //todo write search quesry here ?
+      this.doTheSearch();
     }
+  },
+
+  doTheSearch:function(){
+    let params = {
+        perPage: '25',
+        startingPage: '1',
+        lastThirtyDays:this.get('lastThirtyDays').toString(),
+        dateEntered:this.get('dateEntered'),
+        startDate:this.get('startDate'),
+        endDate:this.get('endDate'),
+        estimatedProdDate:this.get('estimatedProdDate'),
+        searchedStatus:this.get('searchedStatus'),
+        searchedState:this.get('searchedState'),
+        searchString:this.get('searchString')
+    };
+    this.toggleProperty('searchUsed');
+    this.sendAction('doSearch', params);
+    //todo write search quesry here ?
   }
 });
 

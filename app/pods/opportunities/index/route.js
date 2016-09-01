@@ -16,7 +16,7 @@ export default Ember.Route.extend(InfinityRoute, {
 
   filterParams:{
     searchedStatus:'',//default
-    searchedState:'Open',
+    searchedState:'',
     lastThirtyDays:false,
     dateEntered:'',
     startDate:'',
@@ -62,7 +62,6 @@ export default Ember.Route.extend(InfinityRoute, {
     },
 
     pullFilteredCSV(params){
-
       let button = Ember.$('#filteredCsvBtn');
       button.addClass('loading');
 
