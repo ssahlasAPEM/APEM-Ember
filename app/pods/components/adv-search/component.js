@@ -20,9 +20,6 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
 
-    this.set('searchedStatus', this.get('filterParams.searchedStatus'));
-    this.set('searchedState', this.get('filterParams.searchedState'));
-
     if(this.get('filterParams.lastThirtyDays') === "false" ||
       this.get('filterParams.lastThirtyDays') === false) {
       this.set('lastThirtyDays', false);
@@ -32,6 +29,14 @@ export default Ember.Component.extend({
       this.set('lastThirtyDays', true);
     }
 
+    let sStatus = this.get('filterParams.searchedStatus');
+    if(sStatus !== undefined){
+      this.set('searchedStatus', sStatus);
+    }
+    let sState = this.get('filterParams.searchedState');
+    if(sState !== undefined){
+      this.set('searchedState', sState);
+    }
     let dE =this.get('filterParams.dateEntered');
     if(dE !== undefined){
       this.set('dateEntered', dE);
@@ -48,8 +53,10 @@ export default Ember.Component.extend({
     if(dE !== undefined){
       this.set('estimatedProdDate', ePD);
     }
-
-    this.set('searchString', this.get('filterParams.searchString'));
+    let sString = this.get('filterParams.searchString');
+    if(sString !== undefined){
+      this.set('searchString', sString);
+    }
   },
 
   didRender(){
@@ -127,6 +134,8 @@ export default Ember.Component.extend({
     clearSearch(){
       this.toggleProperty('searchUsed');
       this.set('searchString', '');
+      this.set('searchedStatus', ''),
+      this.set('searchedState', ''),
       this.sendAction('clearSearchFilter');
     },
     onDateEntered(data){
@@ -163,7 +172,7 @@ export default Ember.Component.extend({
         searchedState:this.get('searchedState'),
         searchString:this.get('searchString')
     };
-
+    debugger;
     if(this.get('lastThirtyDays') === false &&
       this.get('dateEntered') === '' &&
       this.get('startDate') === '' &&
