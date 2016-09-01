@@ -21,7 +21,7 @@
 
 <br/>
 <div class="ui meta">
-  <span>{{model.meta.total-revenue}}</span><br/><br/>
+  <span>{{format-currency model.meta.total-revenue}}</span><br/><br/>
   revenue
 </div>
 <div class="ui meta">
@@ -60,7 +60,7 @@
             </td>
             <td>
               {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                {{currency-format opp.potentialAnnualRev}}
+                {{format-currency opp.potentialAnnualRev}}
               {{/link-to}}
             </td>
             <td>
