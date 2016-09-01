@@ -1,11 +1,11 @@
 <div class="ui vertical menu visible home-sidebar ember-view sidebar left">
-  <div class="logo-wrapper">
+  {{#link-to "opportunities"}}<div class="logo-wrapper">
     <img src="assets/images/corp-logo.png" class="apem-logo"/>
-  </div>
+  </div>{{/link-to}}
 
   <div class="spacer spacer-lg"></div>
 
-  <div class="header side-nav-section-header">Home</div>
+  {{#link-to "opportunities" class="item side-nav-item"}}Home{{/link-to}}
   <!-- {{#link-to "opportunities" class="item side-nav-item"}}Home{{/link-to}} -->
   <!-- <a class="item side-nav-item">Currency Rate</a>{{#link-to "home" class="item"}}Currency Rate{{/link-to}} -->
   <div class="menu">
