@@ -428,6 +428,7 @@
 
 /* Infinity-loaded table styles */
 .ui.table.table-head {
+  table-layout:fixed;
   margin-bottom: 0px;
   border-bottom: 0px;
   -moz-border-radius-bottomleft: 0px;
@@ -438,6 +439,7 @@
   border-bottom-right-radius: 0px;
 }
 .ui.table.table-body {
+  table-layout:fixed;
   margin-top: 0px;
   border-top: 0px;
   -moz-border-radius-topleft: 0px;
