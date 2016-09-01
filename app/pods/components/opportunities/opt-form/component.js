@@ -4,6 +4,7 @@ import groupBy from 'ember-group-by';
 export default Ember.Component.extend({
   identity: Ember.inject.service(),
   store: Ember.inject.service(),
+  //events:Ember.inject.service(),
   // routing: Ember.inject.service('-routing'),
 
   //used addon ember-group-by to group our fields array by model attr group.
@@ -27,13 +28,9 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
-  // didReceiveAttrs(){
-  //   this._super(...arguments);
-  // //  debugger;
-  // },
 
   // Init function
-  init() {
+  didReceiveAttrs() {
     this._super(...arguments);
     //null events which are left from previous record.
     this.set('quoteEvent', null);
@@ -42,6 +39,7 @@ export default Ember.Component.extend({
     this.set('productionEvent', null);
 
     let opp = this.get('model');
+
     //let theEvents = opp.get('events.content');
     let otherEvents = Ember.A([]);
 
@@ -76,7 +74,6 @@ export default Ember.Component.extend({
   },
 
   // OBSERVERS ---------------------
-
   //observing the table's hasDirtyAttributes to manage the delete button's disabled property
   hasNoChanges: function() {
     let model = this.get('model');
@@ -120,7 +117,7 @@ export default Ember.Component.extend({
       fieldsArray.forEach(function(item/*, index, enumerable*/){
         if (item.get('required') === true) {
           let fieldName = item.get('name');
-          requiredFormValidations[fieldName] = 'empty';
+          requiredFormValidations.set(fieldName, 'empty');//[fieldName] = 'empty';
             //r: for more detailed validation this structure should be used:
             // {
             //   identifier:fieldName,
@@ -134,12 +131,12 @@ export default Ember.Component.extend({
           // );
         }
       });
-
+      debugger;
       //add validation to form
       Ember.$('.opportunity-form')
         .form({
           inline : false,
-          on:'blur',
+
           fields: requiredFormValidations
       });
 
@@ -148,7 +145,6 @@ export default Ember.Component.extend({
           //e.preventDefault(); usually use this, but below works best here.
           return false;
       });
-
     }
   },
 
@@ -259,6 +255,8 @@ export default Ember.Component.extend({
           opt.set('user', opt.get('userId'));
           opt.set('userId', opt.get('user.id'));
         }
+        let events = this.get('events');
+
 
         this.sendAction('onOptSave', opt);
       }
