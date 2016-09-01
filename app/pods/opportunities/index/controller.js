@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   },
 
   filterParams:{
-    searchedStatus:'Backburner',//default
+    searchedStatus:'',//default
     searchedState:'Open',
     lastThirtyDays:false,
     dateEntered:'',

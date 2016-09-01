@@ -15,7 +15,7 @@ export default Ember.Route.extend(InfinityRoute, {
   },
 
   filterParams:{
-    searchedStatus:'Backburner',//default
+    searchedStatus:'',//default
     searchedState:'Open',
     lastThirtyDays:false,
     dateEntered:'',
