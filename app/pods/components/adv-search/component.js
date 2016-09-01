@@ -32,11 +32,27 @@ export default Ember.Component.extend({
       this.set('lastThirtyDays', true);
     }
 
-    this.set('dateEntered', this.get('filterParams.dateEntered'));
-    this.set('startDate', this.get('filterParams.startDate'));
-    this.set('endDate', this.get('filterParams.endDate'));
-    this.set('estimatedProdDate', this.get('filterParams.estimatedProdDate'));
-    this.set('searchString', this.get('filterParams.searchString'));
+    let dE =this.get('filterParams.dateEntered');
+    if(dE !== undefined){
+      this.set('dateEntered', dE);
+    }
+    let sD =this.get('filterParams.startDate');
+    if(sD !== undefined){
+      this.set('startDate', sD);
+    }
+    let eD =this.get('filterParams.endDate');
+    if(eD !== undefined){
+      this.set('endDate', eD);
+    }
+    let ePD =this.get('filterParams.estimatedProdDate');
+    if(dE !== undefined){
+      this.set('estimatedProdDate', ePD);
+    }
+    //
+    // this.set('startDate', this.get('filterParams.startDate'));
+    // this.set('endDate', this.get('filterParams.endDate'));
+    // this.set('estimatedProdDate', this.get('filterParams.estimatedProdDate'));
+    // this.set('searchString', this.get('filterParams.searchString'));
   },
   // click:function(event){
   //   if(event.target.id === 'dropTrigger'){
