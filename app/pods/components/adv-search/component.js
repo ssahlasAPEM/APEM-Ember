@@ -172,7 +172,6 @@ export default Ember.Component.extend({
         searchedState:this.get('searchedState'),
         searchString:this.get('searchString')
     };
-    debugger;
     if(this.get('lastThirtyDays') === false &&
       this.get('dateEntered') === '' &&
       this.get('startDate') === '' &&
