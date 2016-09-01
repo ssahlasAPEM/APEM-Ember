@@ -10,14 +10,14 @@ export default Ember.Component.extend({
   approvalEvent:null,
   productionEvent:null,
 
-  init(){
-    this._super(...arguments);
-    //clear previous event leftovers
-    this.set('quoteEvent', null);
-    this.set('sampleEvent', null);
-    this.set('approvalEvent', null);
-    this.set('productionEvent', null);
-  },
+  // init(){
+  //   this._super(...arguments);
+  //   //clear previous event leftovers
+  //   this.set('quoteEvent', null);
+  //   this.set('sampleEvent', null);
+  //   this.set('approvalEvent', null);
+  //   this.set('productionEvent', null);
+  // },
 
 
   /* A basic to every component click action handler which allows us to recognise
