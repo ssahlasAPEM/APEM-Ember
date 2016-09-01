@@ -77,7 +77,7 @@ export default Ember.Route.extend(InfinityRoute, {
         button.removeClass('loading');
         var anchor = document.createElement('a');
         anchor.href = resolve['csv-download']+'?download';
-        anchor.target = '_blank';
+        anchor.target = 'self';
         anchor.click();
       });
     },
@@ -97,7 +97,7 @@ export default Ember.Route.extend(InfinityRoute, {
         button.removeClass('loading');
         var anchor = document.createElement('a');
         anchor.href = resolve['csv-download']+'?download';
-        anchor.target = '_blank';
+        anchor.target = 'self';
         anchor.click();
       });
     }
