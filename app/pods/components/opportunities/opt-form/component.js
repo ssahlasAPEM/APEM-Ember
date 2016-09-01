@@ -19,6 +19,7 @@ export default Ember.Component.extend({
   productionEvent: null,
   nonStageEvents: null,
   optStatuses:['Backburner', 'Won', 'Lost'],
+  optStates:['Open', 'Closed'],
 
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
   stages:[
@@ -28,10 +29,10 @@ export default Ember.Component.extend({
     {'label':'production', 'id':4},
   ],
 
-
   // Init function
   didReceiveAttrs() {
     this._super(...arguments);
+
     //null events which are left from previous record.
     this.set('quoteEvent', null);
     this.set('sampleEvent', null);
@@ -59,16 +60,8 @@ export default Ember.Component.extend({
           //this.set('quoteEvent', event);//this is for tests in case there is no stage event
           otherEvents.pushObject(event);
         }
-
       });
     });
-    console.log(otherEvents);
-
-  // RALI - otherEvents (ie: non stage events) show at the bottom of NAO form.
-  // The other four event types match stages, the above variables
-  // would go to the stage-step component and display editor text fields
-  // to update the respective event. This is where I'm at.
-  // We have events now at least.
 
     this.set('nonStageEvents', otherEvents);
   },
@@ -197,6 +190,21 @@ export default Ember.Component.extend({
       let mymodel = this.get('model');
       mymodel.set('status', button.value);
     },
+
+    onStateChange(button){
+      let allStatesButtons = this.get('optStates');
+
+      for(var statBtn in allStatesButtons){
+        if (button.value === allStatesButtons[statBtn]) {
+          Ember.$('#'+button.id).addClass('active');
+        } else {
+          Ember.$('#'+button.id).removeClass('active');
+        }
+      }
+      let mymodel = this.get('model');
+      mymodel.set('state', button.value);
+    },
+
     /* Copies the current record to create a new one */
     cloneRecord(){
       let oldModel = this.get('model');

@@ -45,7 +45,7 @@
     <!-- IF ADMIN - CAN CHANGE USER RELATION -->
     {{#if (is-equal identity.profile.type 'Admin')}}
       <div class="field gap1 side-padded-fourteen">
-        <label>User Relation</label>
+        <label>Owner</label>
 
         {{#ui-dropdown class="fluid selection" selected=model.user onChange=(action (mut model.userId)) as |execute mapper|}}
           <i class="dropdown icon"></i>
@@ -71,7 +71,7 @@
       approvalEvent=approvalEvent
       productionEvent=productionEvent}}
 
-  <!-- STATUS FIELD -->
+    <!-- STATUS FIELD -->
     <div class="field gap1 side-padded-fourteen">
       <label>Status</label>
       <div class="row ui buttons">
@@ -103,6 +103,27 @@
         label="Lost"
         value="Lost"
         onChange=(action (mut model.status))}}
+      </div>
+    </div>
+
+    <!-- STATE FIELD -->
+    <div class="field gap1 side-padded-fourteen">
+      <label>State</label>
+      <div class="row ui buttons">
+        {{ui-radio
+          name="state"
+          current=model.state
+          class="make-me-button button"
+          label="Open"
+          value="Open"
+          onChange=(action (mut model.state))}}
+        {{ui-radio
+          name="state"
+          current=model.state
+          class="make-me-button button"
+          label="Closed"
+          value="Closed"
+          onChange=(action (mut model.state))}}
       </div>
     </div>
 
