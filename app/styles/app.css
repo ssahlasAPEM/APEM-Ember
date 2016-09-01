@@ -53,6 +53,7 @@
   border:none !important;
   box-shadow: none;
   outline:none;
+  width: 82px;
 }
 /*.stage-date-editor:hover{
   background: #fff !important;
@@ -63,9 +64,14 @@
   border: none !important;
   font-weight: bold;
 }*/
-
-
+.confirm-delete-modal{
+  padding:10px;
+}
+.btn-margin4{
+  margin:2px 0 2px 8px !important;
+}
 .opportunity-form{
+  width:100%;
   max-height: calc(100vh - 130px);
   height: calc(100vh - 130px);
   overflow: auto;
