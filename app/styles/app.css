@@ -101,7 +101,7 @@
   width: 70%;
 }
 .small-placeholder{
-  width: 35.546%;
+  width: calc( 58% - 340px);
   display: inline-block;
 }
 .adv-srch-start-date-input{

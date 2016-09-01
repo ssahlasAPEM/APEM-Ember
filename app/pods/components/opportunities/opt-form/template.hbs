@@ -9,32 +9,33 @@
       title='Confirm Delete'
       recordType='Opportunity'
       message='The selected opportunity will be deleted. Continue?'
-      onConfirmDelete="deleteOpt" }}
+      onConfirmDelete="deleteOpt"}}
   {{/if}}
-
+  <!--TOOLTIP ON DISABLED BUTTON:-->
   {{#if noValidName}}
     {{#ui-popup
       content="Please provide a Company name."}}
       {{input type="button" value="Save as Draft"
         disabled=noValidName
-        class="ui button small right floated" click=(action "saveDraft")}}
+        class="ui button small right floated btn-margin4" click=(action "saveDraft")}}
     {{/ui-popup}}
   {{else}}
-    {{input type="button" value="Save as Draft" class="ui button small right floated"
+    {{input type="button" value="Save as Draft" class="ui button small right floated btn-margin4"
     click=(action "saveDraft")}}
   {{/if}}
 
   <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
   {{input type="button" value="Save" disabled=hasNoChanges
-  class="ui submit button small right floated"
+  class="ui submit button small right floated btn-margin4"
   click=(action "updateRecord")}}
 
   {{input type="button" value="Copy" disabled=model.newRecord
-  class="ui submit button small right floated"
+  class="ui submit button small right floated btn-margin4"
   click=(action "cloneRecord")}}
 
   {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
-  class="ui small reset button right floated" activeClass=""
+  class="ui small reset button right floated btn-margin4"
+  activeClass=""
   click=(action 'onCancelOptClick')}}
     Cancel
   {{/link-to}}
@@ -149,7 +150,7 @@
 
 
     {{#if nonStageEvents}}
-      <h3 class="ui dividing header">Event Log {{model.events.length}}</h3>
+      <h3 class="ui dividing header">Event Log</h3>
       <div class="ui two column stackable grid">
         {{#each nonStageEvents as |evt|}}
             <span><label class='bold capitalize'>{{evt.type}} Date</label>: {{moment-format evt.date 'MMMM Do, YYYY'}}</span>
