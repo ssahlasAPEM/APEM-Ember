@@ -31,9 +31,7 @@
 
 {{#if (is-equal defaultView 'list')}}
 
-  <div class="opp-table">
-
-    <table class="ui table ui-table">
+    <table class="ui table ui-table table-head">
 
       <thead>
         <tr>
@@ -45,42 +43,48 @@
         </tr>
       </thead>
 
-      <tbody>
-        {{#each model as |opp|}}
-          <tr>
-            <td>
-              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                {{opp.id}}
-              {{/link-to}}
-            </td>
-            <td>
-              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                {{opp.apemSalesPerson}}
-              {{/link-to}}
-            </td>
-            <td>
-              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                {{currency-format opp.potentialAnnualRev}}
-              {{/link-to}}
-            </td>
-            <td>
-              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                {{opp.productType}}
-              {{/link-to}}
-            </td>
-            <td>
-              {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                {{moment-format opp.estimatedProdDate 'MMMM Do, YYYY'}}
-              {{/link-to}}
-            </td>
-          </tr>
-        {{/each}}
-        {{infinity-loader infinityModel=model scrollable=".opp-table"}}
-      </tbody>
-
     </table>
 
-  </div>
+    <div class="opp-table">
+
+      <table class="ui table ui-table table-body">
+
+        <tbody class="opp-table-body">
+          {{#each model as |opp|}}
+            <tr>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{opp.id}}
+                {{/link-to}}
+              </td>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{opp.apemSalesPerson}}
+                {{/link-to}}
+              </td>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{currency-format opp.potentialAnnualRev}}
+                {{/link-to}}
+              </td>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{opp.productType}}
+                {{/link-to}}
+              </td>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{moment-format opp.estimatedProdDate 'MMMM Do, YYYY'}}
+                {{/link-to}}
+              </td>
+            </tr>
+          {{/each}}
+          {{infinity-loader infinityModel=model scrollable=".opp-table"}}
+        </tbody>
+
+      </table>
+
+    </div>
 
 {{/if}}
 

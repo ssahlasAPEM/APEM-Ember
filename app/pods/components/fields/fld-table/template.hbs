@@ -1,4 +1,4 @@
-<table class="ui table ui-table">
+<table class="ui table ui-table table-head">
 
   <thead>
     <tr>
@@ -8,22 +8,28 @@
     </tr>
   </thead>
 
-  <tbody>
-
-    {{#each model as |fld|}}
-      <tr>
-        <td>
-          {{fld.label}}
-        </td>
-        <td>
-          {{input type="checkbox" class="" checked=fld.visible change=(action "onVisibleChange" fld)}}
-        </td>
-        <td>
-          {{input type="checkbox" class="" checked=(mut fld.required) disabled=(is-equal fld.visible false) change=(action "onRequiredChange" fld)}}
-        </td>
-      </tr>
-    {{/each}}
-
-  </tbody>
-
 </table>
+
+<div class="table-wrap">
+  <table class="ui table ui-table table-body">
+
+    <tbody>
+
+      {{#each model as |fld|}}
+        <tr>
+          <td>
+            {{fld.label}}
+          </td>
+          <td>
+            {{input type="checkbox" class="" checked=fld.visible change=(action "onVisibleChange" fld)}}
+          </td>
+          <td>
+            {{input type="checkbox" class="" checked=(mut fld.required) disabled=(is-equal fld.visible false) change=(action "onRequiredChange" fld)}}
+          </td>
+        </tr>
+      {{/each}}
+
+    </tbody>
+
+  </table>
+</div>
