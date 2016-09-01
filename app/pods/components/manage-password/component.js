@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     Ember.$('#'+ this.elementId+' .manage-password-pop .managePasswords')
       .form({
         inline : true,
-        on:'blur',
+        // on:'blur',
         fields: {
            mppassword: {
             identifier:'mppassword',
