@@ -454,9 +454,16 @@
   padding-bottom: 25px;
 }
 
+@media (min-width: 769px) and (max-width:991px) {
+  .mobile.tablet.only.row.home-navbar{
+    display:none;
+  }
+}
+
 @media (max-width: 768px) {
   .small-placeholder{
     width: 26%;
+    width: calc( 58% - 340px);
     display: inline-block;
   }
 .meta{
