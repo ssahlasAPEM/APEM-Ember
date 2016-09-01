@@ -28,17 +28,19 @@
       <div class="content" value="sample">
         <div class="title" value="sample">Sample</div>
         {{#if sampleEvent}}
-          {{date-picker
-            action=(action 'updateStageDate' quoteEvent)
-            placeholder=sampleEvent.date
-            valueFormat='MM-DD-YYYY'
-            format='MM-DD-YYYY'
-            utc=false
-            time=false
-            date=sampleEvent.date
-            allowBlank=true
-            class="label-like-date-picker"
-            buttonClasses='label-like'}}
+          <div class="description">
+            {{date-picker
+              action=(action 'updateStageDate' quoteEvent)
+              placeholder=sampleEvent.date
+              valueFormat='MM-DD-YYYY'
+              format='MM-DD-YYYY'
+              utc=false
+              time=false
+              date=sampleEvent.date
+              allowBlank=true
+              class="label-like-date-picker"
+              buttonClasses='label-like'}}
+          </div>
         {{/if}}
         <!-- <div class="description">Enter billing information</div> -->
       </div>
@@ -48,6 +50,7 @@
       <div class="content" value="approval">
         <div class="title" value="approval">Approval</div>
         {{#if approvalEvent}}
+          <div class="description">
           {{date-picker
             action=(action 'updateStageDate' quoteEvent)
             placeholder=approvalEvent.date
@@ -59,26 +62,29 @@
             allowBlank=true
             class="label-like-date-picker"
             buttonClasses='label-like'}}
+          </div>
         {{/if}}
       </div>
     </div>
-    
+
     <div class="production step" value="production">
       <i class="green check icon production-step-icn hidden" value="production"></i>
       <div class="content" value="production">
         <div class="title" value="production">Production</div>
         {{#if productionEvent}}
-        {{date-picker
-          action=(action 'updateStageDate' quoteEvent)
-          placeholder=productionEvent.date
-          valueFormat='MM-DD-YYYY'
-          format='MM-DD-YYYY'
-          utc=false
-          time=false
-          date=productionEvent.date
-          allowBlank=true
-          class="label-like-date-picker"
-          buttonClasses='label-like'}}
+          <div class="description">
+            {{date-picker
+              action=(action 'updateStageDate' quoteEvent)
+              placeholder=productionEvent.date
+              valueFormat='MM-DD-YYYY'
+              format='MM-DD-YYYY'
+              utc=false
+              time=false
+              date=productionEvent.date
+              allowBlank=true
+              class="label-like-date-picker"
+              buttonClasses='label-like'}}
+            </div>
         {{/if}}
       </div>
     </div>

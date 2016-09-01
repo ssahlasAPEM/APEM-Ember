@@ -59,6 +59,10 @@
   outline:none;
   width: 82px;
 }
+.ui.steps .step .description {
+  position: relative;
+  z-index:1;
+}
 /*.stage-date-editor:hover{
   background: #fff !important;
   border: 1px solid #22242626 !important;
