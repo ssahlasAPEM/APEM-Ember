@@ -10,6 +10,28 @@ export default Ember.Component.extend({
   approvalEvent:null,
   productionEvent:null,
 
+
+  didReceiveAttrs() {
+    this._super(...arguments);
+    for(var i=0, attrLen = arguments.length;i<attrLen; i++){
+      let newAttrs = arguments[i].newAttrs;
+      if(newAttrs){
+        if(newAttrs.opt.value.get('newRecord')){
+          /* set all events to null because this is a new record.*/
+          this.set('quoteEvent', null);
+          this.set('sampleEvent', null);
+          this.set('approvalEvent', null);
+          this.set('productionEvent', null);
+        }
+      }
+    }
+  },
+
+  /* A basic to every component click action handler which allows us to recognise
+   click event targets. We need thi because the semantic step ui triggers a click
+   without regard to wether a child element is clicked or a step ui element is clicked.
+   We need to know when the user clicks on the datepicker and when the user just changes
+   the opt's stage attribute.*/
   click:function(event){
     let targetAttr = event.target.attributes;
     for(var i=0, attLen=targetAttr.length;i<attLen;i++){
@@ -27,7 +49,7 @@ export default Ember.Component.extend({
     console.log('OPT DETAIL RENDER');
     this.markSteps();
   },
-
+  /* Called by the click action handler. */
   onStepClick:function(value){
 
     this.opt.set('stage', value);
@@ -76,12 +98,15 @@ export default Ember.Component.extend({
     });
   },
 
+  /* Triggered when there are leftover events in the opt which will not be used
+  after the current user change to the stage step component.*/
   deleteUncheckedEvents:function(event){
     let eventName = event.get('type')+'Event';
     this.set(eventName, null);
     event.destroyRecord();
   },
 
+  /* A method used to manage css styles of the stage step UI*/
   markSteps:function(){
     let selectedStepId = this.stageSteps.findBy('label',this.opt.get('stage')).id;
     let sSteps = this.stageSteps;
@@ -107,6 +132,6 @@ export default Ember.Component.extend({
       let formattedDate = window.moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY');
       event.set('date',formattedDate);
       event.save();
-    },
+    }
   }
 });
