@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   filterParams:null,
 
   // Defaults
-  searchedStatus:'Backburner',
+  searchedStatus:'',
   searchedState:'Open',
   lastThirtyDays:false,
   dateEntered:'',

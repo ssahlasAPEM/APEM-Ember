@@ -12,16 +12,9 @@
       onConfirmDelete="deleteOpt"}}
   {{/if}}
   <!--TOOLTIP ON DISABLED BUTTON:-->
-  {{#if noValidName}}
-    {{#ui-popup
-      content="Please provide a Company name."}}
-      {{input type="button" value="Save as Draft"
-        class="ui button small right floated btn-margin4" click=(action "saveDraft")}}
-    {{/ui-popup}}
-  {{else}}
-    {{input type="button" value="Save as Draft" class="ui button small right floated btn-margin4"
-    click=(action "saveDraft")}}
-  {{/if}}
+  {{input type="button" value="Save as Draft"
+  class="ui button small right floated btn-margin4"
+  click=(action "saveDraft")}}
 
   <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
   {{input type="button" value="Save" disabled=hasNoChanges
