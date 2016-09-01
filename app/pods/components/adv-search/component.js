@@ -79,7 +79,7 @@ export default Ember.Component.extend({
   }.property('lastThirtyDays', 'dateEntered', 'startDate', 'endDate'),
 
   actions:{
-    onDropdownBeforeShow(component){
+    onDropdownBeforeShow(){
       if(event.target.id !== 'dropTrigger'){
         return false;
       }
