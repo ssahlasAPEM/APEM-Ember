@@ -78,7 +78,7 @@
   overflow-x: hidden;
 }
 .form-header-tools{
-  padding: 0 18px;
+  padding: 0 14px;
 }
 .logo-wrapper{
   /*width: 260px;*/
@@ -88,6 +88,10 @@
 }
 .seventy-p{
   width: 70%;
+}
+.small-placeholder{
+  width: 35.546%;
+  display: inline-block;
 }
 .adv-srch-start-date-input{
   width: 179px;
@@ -286,7 +290,7 @@
   height: 100%;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  margin-left: -7px;
+  margin-left: -8px;
 }
 .adv-search-icon-left{
   left:0;
@@ -403,7 +407,10 @@
 }
 
 @media (max-width: 768px) {
-
+  .small-placeholder{
+    width: 26%;
+    display: inline-block;
+  }
 .meta{
   padding: 1em 10%;
   text-align: center;
@@ -458,7 +465,9 @@
   }
 }
 @media (max-width:414px) {
-
+  .small-placeholder{
+    display:none;
+  }
   .advanced-search-component{
     margin:12px 0 !important;
   }
