@@ -169,8 +169,8 @@
                     <div class="default text">Select Value</div>
                     <div class="menu">
                       {{#each field.options as |item|}}
-                        <div class="item" data-value="{{item}}">
-                          {{item}}
+                        <div class="item" data-value="{{item.[0]}}">
+                          {{item.[0]}}
                         </div>
                       {{/each}}
                     </div>
