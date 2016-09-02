@@ -118,7 +118,7 @@ export default Ember.Component.extend({
                   prompt:'Please enter a ' + fieldName
                 }
               ]
-            }
+            };
         }
       });
       //debugger;

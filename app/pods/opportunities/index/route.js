@@ -49,9 +49,9 @@ export default Ember.Route.extend(InfinityRoute, {
       let me = this;
       let currFilter = this.get('filterParams');
       currFilter.orderBy = column;
-      if(currFilter.orderDir == '') {
+      if(currFilter.orderDir === '') {
         currFilter.orderDir = 'asc';
-      } else if(currFilter.orderDir == 'asc') {
+      } else if(currFilter.orderDir === 'asc') {
         currFilter.orderDir = 'desc';
       } else {
         currFilter.orderBy = '';
@@ -83,11 +83,11 @@ export default Ember.Route.extend(InfinityRoute, {
           break;
       }
 
-      Ember.$('.sorted').each(function( index ) {
+      Ember.$('.sorted').each(function() {
         Ember.$( this ).removeClass('ascending');
         Ember.$( this ).removeClass('descending');
 
-        if(Ember.$( this ).attr("id") == currColumn.attr("id")) {
+        if(Ember.$( this ).attr("id") === currColumn.attr("id")) {
           switch(currFilter.orderDir) {
             case '':
               break;
