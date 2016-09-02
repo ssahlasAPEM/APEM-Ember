@@ -48,6 +48,24 @@ export default Ember.Route.extend(InfinityRoute, {
     sortTable(column) {
       let me = this;
       let currFilter = this.get('filterParams');
+
+      if(currFilter === null) {
+        currFilter = {
+          searchedStatus:'',//default
+          searchedState:'',
+          lastThirtyDays:false,
+          dateEntered:'',
+          startDate:'',
+          endDate:'',
+          estimatedProdDate:'',
+          searchString:'',
+          orderBy:'',
+          orderDir:''
+        };
+        this.set('filterParams', currFilter);
+        currFilter = this.get('filterParams');
+      }
+
       currFilter.orderBy = column;
       if(currFilter.orderDir === '') {
         currFilter.orderDir = 'asc';
