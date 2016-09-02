@@ -35,7 +35,9 @@
 
       <thead>
         <tr>
-          <th>NAO #</th>
+          <th style="width: 8%;">NAO #</th>
+          <th>Date Open</th>
+          <th>Cust. Name</th>
           <th>Sales Person</th>
           <th>Revenue</th>
           <th>Prod Type</th>
@@ -52,9 +54,19 @@
         <tbody class="opp-table-body">
           {{#each model as |opp|}}
             <tr>
-              <td>
+              <td style="width: 8%;">
                 {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
                   {{opp.id}}
+                {{/link-to}}
+              </td>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{moment-format opp.createdAt 'MM/DD/YY'}}
+                {{/link-to}}
+              </td>
+              <td>
+                {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
+                  {{opp.contactName}}
                 {{/link-to}}
               </td>
               <td>
@@ -74,7 +86,7 @@
               </td>
               <td>
                 {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                  {{moment-format opp.estimatedProdDate 'MMMM Do, YYYY'}}
+                  {{moment-format opp.estimatedProdDate 'MM/DD/YY'}}
                 {{/link-to}}
               </td>
             </tr>
