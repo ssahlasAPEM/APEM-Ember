@@ -6,7 +6,7 @@ export default DS.Model.extend({
   draft:DS.attr('boolean', { defaultValue: false }),
   status: DS.attr('string', { defaultValue: null }),
   stage: DS.attr('string', { defaultValue: 'quote' }),
-  state: DS.attr('string', { defaultValue: 'open' }),
+  state: DS.attr('string', { defaultValue: 'Open' }),
   company : DS.attr('string', { defaultValue: null }),
   address : DS.attr('string', { defaultValue: null }),
   city : DS.attr('string', { defaultValue: null }),
