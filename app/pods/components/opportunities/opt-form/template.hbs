@@ -1,43 +1,45 @@
-<!-- HEADER -->
-<div class="fixed top header form-header-tools"><!--fixed-->
 
-  <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
-  {{#if (is-equal identity.profile.type 'Admin')}}
-    <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
-    {{confirm-delete
-      isDisabled=(not-equal identity.profile.type 'Admin')
-      title='Confirm Delete'
-      recordType='Opportunity'
-      message='The selected opportunity will be deleted. Continue?'
-      onConfirmDelete="deleteOpt"}}
-  {{/if}}
-  <!--TOOLTIP ON DISABLED BUTTON:-->
-  {{input type="button" value="Save as Draft"
-  class="ui button small right floated btn-margin4"
-  click=(action "saveDraft")}}
-
-  <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
-  {{input type="button" value="Save" disabled=hasNoChanges
-  class="ui submit button small right floated btn-margin4"
-  click=(action "updateRecord")}}
-
-  {{input type="button" value="Copy" disabled=model.newRecord
-  class="ui submit button small right floated btn-margin4"
-  click=(action "cloneRecord")}}
-
-  {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
-  class="ui small reset button right floated btn-margin4"
-  activeClass=""
-  click=(action 'onCancelOptClick')}}
-    Cancel
-  {{/link-to}}
-
-  <br/><br/>
-
-</div>
 
 <form class="ui form opportunity-form">
 
+  <!-- HEADER -->
+  <div class="fixed top header form-header-tools"><!--fixed-->
+
+    <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
+    {{#if (is-equal identity.profile.type 'Admin')}}
+      <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
+      {{confirm-delete
+        isDisabled=(not-equal identity.profile.type 'Admin')
+        title='Confirm Delete'
+        recordType='Opportunity'
+        message='The selected opportunity will be deleted. Continue?'
+        onConfirmDelete="deleteOpt"}}
+    {{/if}}
+    <!--TOOLTIP ON DISABLED BUTTON:-->
+    {{input type="button" value="Save as Draft"
+    class="ui button small right floated btn-margin4"
+    click=(action "saveDraft")}}
+
+    <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
+    {{input type="button" value="Save" disabled=hasNoChanges
+    class="ui submit button small right floated btn-margin4"
+    click=(action "updateRecord")}}
+
+    {{input type="button" value="Copy" disabled=model.newRecord
+    class="ui submit button small right floated btn-margin4"
+    click=(action "cloneRecord")}}
+
+    {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
+    class="ui small reset button right floated btn-margin4"
+    activeClass=""
+    click=(action 'onCancelOptClick')}}
+      Cancel
+    {{/link-to}}
+
+    <br/><br/>
+
+  </div>
+  <div class='form-heder-margin'></div>
   <div class="ui error message"></div>
 
   {{#if fieldsByGroup}}
@@ -47,7 +49,10 @@
       <div class="field gap1 side-padded-fourteen">
         <label>Owner</label>
 
-        {{#ui-dropdown class="fluid selection" selected=model.user onChange=(action (mut model.userId)) as |execute mapper|}}
+        {{#ui-dropdown
+          class="fluid selection"
+          selected=model.user
+          onChange=(action (mut model.userId)) as |execute mapper|}}
           <i class="dropdown icon"></i>
           <div class="default text">Select Value</div>
           <div class="menu">
@@ -148,10 +153,10 @@
           <!-- we only add a form field if it is visible. -->
           <!-- Todo: Ask what to do with form fields which were previously visible and have values. -->
           {{#if field.visible}}
-            <div class="column">
+            <div class="field column">
                 <label>{{field.label}}</label>
                 {{#if (is-equal field.type 'dropdown')}}
-                  {{#ui-dropdown class="fluid selection" selected=field.value onChange=(action 'onDropdownSelect' field.name)}}
+                  {{#ui-dropdown name=field.name class="fluid selection" selected=field.value onChange=(action 'onDropdownSelect' field.name)}}
                     <i class="dropdown icon"></i>
                     <div class="default text">Select Value</div>
                     <div class="menu">
@@ -195,6 +200,7 @@
     </div>
     {{/each-in}}
   </ul> -->
+
 </form>
 
 

@@ -85,8 +85,16 @@
   overflow: auto;
   overflow-x: hidden;
 }
+.form-heder-margin{
+  margin-top: 60px;
+}
 .form-header-tools{
   padding: 0 14px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  float: right;
 }
 .logo-wrapper{
   width: 260px;

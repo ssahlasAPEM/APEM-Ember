@@ -108,27 +108,40 @@ export default Ember.Component.extend({
       fieldsArray.forEach(function(item/*, index, enumerable*/){
         if (item.get('required') === true) {
           let fieldName = item.get('name');
-          requiredFormValidations[fieldName] = 'empty';
+          // requiredFormValidations[fieldName] = 'empty';
             //r: for more detailed validation this structure should be used:
-            // {
-            //   identifier:fieldName,
-            //   rules:[
-            //     {
-            //       type:'empty',
-            //       prompt:'Please enter a ' + fieldName
-            //     }
-            //   ]
-            // }
+            requiredFormValidations[fieldName] = {
+              fieldName:fieldName,
+              rules:[
+                {
+                  type:'empty',
+                  prompt:'Please enter a ' + fieldName
+                }
+              ]
+            }
           // );
+
+
         }
       });
+
 
       //add validation to form
       Ember.$('.opportunity-form')
         .form({
           inline : false,
-
+          //on:'blur',
           fields: requiredFormValidations
+          // {
+          //    company: {
+          //     identifier:'company',
+          //     rules: [
+          //       {
+          //         type   : 'empty'
+          //       }
+          //     ]
+          //   }
+          // }
       });
 
       //ensure prevent default behavior...because semantic and ember work well together on occasion..
@@ -240,7 +253,7 @@ export default Ember.Component.extend({
   },
 
   doSave:function(){
-    //Ember.$('.opportunity-form').form('validate');
+    Ember.$('.opportunity-form').form('validate');
     let opt = this.get('model');
     let hasErrors = Ember.$('.field.error');
     //form saves if there are no missing required fields, or if it's a draft.
