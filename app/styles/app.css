@@ -1,7 +1,21 @@
-.capitalize{
-      text-transform: capitalize;
+.spacer {
+    width: calc(100% - 650px);
+    display: inline-block;
 }
-
+.right.floated .del-btn{
+  float:right;
+}
+.right.floated .del-btn:after{
+  clear:both;
+}
+.capitalize{
+  text-transform: capitalize;
+}
+.new-nao-btn{
+  margin-left: auto;
+  padding: 6px;
+  margin-right: auto;
+}
 .bold{
   font-weight: bold;
 }
@@ -415,7 +429,7 @@
   padding-left: 100px;
   padding-right: 0px;
   float: right;
-  font-size: 26px;
+  font-size: 1.8em;
 }
 .meta span {
   font-size: 34px;
@@ -470,30 +484,72 @@
 .table-wrap .ui.table.table-body {
   padding-bottom: 25px;
 }
+@media (max-width:940px)) {
+  .form-header-tools{
+    top: 110px;
+  }
+}
+@media (min-width: 840px){
+  .adv-search-dropdown{
+    margin-bottom:14px;
+  }
+  .download-csv-btn{
+      float: right;
+  }
+  .download-csv-btn:after{
+      clear: both;
+  }
+  .mobile.tablet.only.row.home-navbar{
+    display:none;
+  }
+}
+@media (max-width: 840px){
+  .adv-search-dropdown{
 
-@media (min-width: 769px) and (max-width:991px) {
+    margin-bottom:14px !important;
+  }
+  .small-placeholder{
+    display: none;
+  }
+
+  .meta{
+    padding-top:0;
+    padding-left: 40px;
+  }
+  .meta span{
+    font-size: 24px
+  }
+  .adv-search-input{ width: calc(100% - 118px); }
+}
+
+@media (max-width:830px) {
+  .adv-search-dropdown{
+    width:100%;
+  }
+  .download-csv-btn{
+    float:none !important;
+    margin-left: 0px;
+  }
+}
+@media (min-width: 769px) {
   .mobile.tablet.only.row.home-navbar{
     display:none;
   }
 }
 
 @media (max-width: 768px) {
-  .small-placeholder{
-    width: 26%;
-    width: calc( 58% - 340px);
-    display: inline-block;
+  .adv-search-dropdown{
+    width: auto;
   }
-.meta{
-  padding: 1em 10%;
-  text-align: center;
-  line-height: 16px;
-  font-size: 16px;
-  float: right;
-}
-.meta span{
-  font-size: 16px;
-}
-
+  .meta{
+    padding-left: 10px;
+  }
+  .meta span{
+    font-size: 16px;
+  }
+  .download-csv-btn{
+    float:right !important;
+  }
   /*.adv-search-input{
     max-width: 160px;
   }*/
@@ -542,6 +598,16 @@
     height: auto !important;
   }
 }
+@media (max-width:576px) {
+  .adv-search-dropdown{
+    width: 100%;
+  }
+  .download-csv-btn{
+    float:none !important;
+    margin-left: 0 !important;
+  }
+}
+
 @media (max-width:414px) {
   .small-placeholder{
     display:none;
@@ -558,4 +624,6 @@
     top: 0px;
   }
 }
+
+
 /*END of Hamburger mobile menu*/

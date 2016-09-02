@@ -5,6 +5,7 @@
   <!-- HEADER -->
   <div class="fixed top header form-header-tools"><!--fixed-->
     <div class="form-header-tools-bg">
+      <div class="spacer"></div>
       <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
       {{#if (is-equal identity.profile.type 'Admin')}}
         <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
@@ -17,22 +18,22 @@
       {{/if}}
       <!--TOOLTIP ON DISABLED BUTTON:-->
       {{input type="button" value="Save as Draft"
-      class="ui button small right floated btn-margin4"
+      class="ui button small btn-margin4"
       click=(action "saveDraft")}}
 
       <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
       {{input type="button"
         value="Save"
         disabled=hasNoChanges
-        class="ui submit button small right floated btn-margin4"
+        class="ui submit button small  btn-margin4"
         click=(action "updateRecord")}}
 
       {{input type="button" value="Copy" disabled=model.newRecord
-      class="ui submit button small right floated btn-margin4"
+      class="ui submit button small  btn-margin4"
       click=(action "cloneRecord")}}
 
       {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
-      class="ui small reset button right floated btn-margin4"
+      class="ui small reset button btn-margin4"
       activeClass=""
       click=(action 'onCancelOptClick')}}
         Cancel

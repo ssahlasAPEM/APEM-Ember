@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
   users:Ember.inject.service(),
-
+  tagName:'span',
   recordType:'',
 
   //attributeBindings - the component properties which are bound to data from parent
