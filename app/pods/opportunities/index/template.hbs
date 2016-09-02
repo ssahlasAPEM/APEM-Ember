@@ -31,17 +31,16 @@
 
 {{#if (is-equal defaultView 'list')}}
 
-    <table class="ui table ui-table table-head">
-
+    <table class="ui table ui-table table-head sortable">
       <thead>
         <tr>
-          <th style="width: 8%;">NAO #</th>
-          <th>Date Open</th>
-          <th>Cust. Name</th>
-          <th>Sales Person</th>
-          <th>Revenue</th>
-          <th>Prod Type</th>
-          <th>Est. Prod Date</th>
+          <th class="sorted" id="id_sort" {{action 'sortTable' 'id'}} style="width: 8%;">NAO #</th>
+          <th class="sorted" id="created_at_sort" {{action 'sortTable' 'created_at'}}>Date Open</th>
+          <th class="sorted" id="contact_name_sort" {{action 'sortTable' 'contact_name'}}>Cust. Name</th>
+          <th class="sorted" id="apem_sales_person_sort" {{action 'sortTable' 'apem_sales_person'}}>Sales Person</th>
+          <th class="sorted" id="potential_annual_rev_sort" {{action 'sortTable' 'potential_annual_rev'}}>Revenue</th>
+          <th class="sorted" id="product_type_sort" {{action 'sortTable' 'product_type'}}>Prod Type</th>
+          <th class="sorted" id="estimated_prod_date_sort" {{action 'sortTable' 'estimated_prod_date'}}>Est. Prod Date</th>
         </tr>
       </thead>
 
@@ -86,7 +85,9 @@
               </td>
               <td>
                 {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                  {{moment-format opp.estimatedProdDate 'MM/DD/YY'}}
+                  {{#if opp.estimatedProdDate}}
+                    {{moment-format opp.estimatedProdDate 'MM/DD/YY'}}
+                  {{/if}}
                 {{/link-to}}
               </td>
             </tr>

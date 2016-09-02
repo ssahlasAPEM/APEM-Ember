@@ -17,7 +17,9 @@ export default Ember.Controller.extend({
     startDate:'',
     endDate:'',
     estimatedProdDate:'',
-    searchString:''
+    searchString:'',
+    orderBy:'',
+    orderDir:''
   },
 
   actions:{

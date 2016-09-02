@@ -22,9 +22,10 @@ export default Ember.Route.extend(InfinityRoute, {
     startDate:'',
     endDate:'',
     estimatedProdDate:'',
-    searchString:''
+    searchString:'',
+    orderBy:'',
+    orderDir:''
   },
-
 
   fields: function() {
     return this.store.findAll('field');
@@ -43,6 +44,80 @@ export default Ember.Route.extend(InfinityRoute, {
   },
 
   actions:{
+    // Sort the table of results by re-querying the backend
+    sortTable(column) {
+      let me = this;
+      let currFilter = this.get('filterParams');
+      currFilter.orderBy = column;
+      if(currFilter.orderDir == '') {
+        currFilter.orderDir = 'asc';
+      } else if(currFilter.orderDir == 'asc') {
+        currFilter.orderDir = 'desc';
+      } else {
+        currFilter.orderBy = '';
+        currFilter.orderDir = '';
+      }
+
+      let currColumn = null;
+      switch(column) {
+        case 'id':
+          currColumn = Ember.$('#id_sort');
+          break;
+        case 'created_at':
+          currColumn = Ember.$('#created_at_sort');
+          break;
+        case 'contact_name':
+          currColumn = Ember.$('#contact_name_sort');
+          break;
+        case 'apem_sales_person':
+          currColumn = Ember.$('#apem_sales_person_sort');
+          break;
+        case 'potential_annual_rev':
+          currColumn = Ember.$('#potential_annual_rev_sort');
+          break;
+        case 'product_type':
+          currColumn = Ember.$('#product_type_sort');
+          break;
+        case 'estimated_prod_date':
+          currColumn = Ember.$('#estimated_prod_date_sort');
+          break;
+      }
+
+      Ember.$('.sorted').each(function( index ) {
+        Ember.$( this ).removeClass('ascending');
+        Ember.$( this ).removeClass('descending');
+
+        if(Ember.$( this ).attr("id") == currColumn.attr("id")) {
+          switch(currFilter.orderDir) {
+            case '':
+              break;
+            case 'asc':
+              Ember.$( this ).addClass('ascending');
+              break;
+            case 'desc':
+              Ember.$( this ).addClass('descending');
+              break;
+          }
+        }
+      });
+
+      let promisedData = this.infinityModel("opportunity", currFilter).then(function(s) {
+          return s;
+      });
+      promisedData.then(function(data) {
+         me.controller.set('model', data);
+      });
+
+//console.log(this.controller.get('model'));
+      //let newData = this.infinityModel("opportunity", currFilter);
+      //console.log(newData);
+      //this.set('model', newData);
+      //this.controller.set('model', newData);
+      //this.controller.set('filterParams', currFilter);
+      //this.set('filterParams', currFilter);
+      //this.refresh();
+    },
+
     // Clear old data and then load the newly queried records.
     filterOpportunities(params){
       this.controller.set('filterParams', params);
