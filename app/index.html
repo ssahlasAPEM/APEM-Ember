@@ -28,6 +28,7 @@
       /*width: 2.28571429rem;
       height: 2.28571429rem;*/
       width: 50px;
+      height: 50px;
       left: 49.94%;
       margin: 0 0 0 -6.342857rem;
       margin-top: 39.80vh;
@@ -45,11 +46,12 @@
       text-align: center;
       margin-top: 40vh;
     }
-    .loading-spin:after {
+
+    .loading-spin:after{
       position: absolute;
       content: '';
       top: 0;
-      left: 50%;
+      left: 49.94%;
       -webkit-animation: loader .6s linear;
       animation: loader .6s linear;
       -webkit-animation-iteration-count: infinite;
@@ -60,12 +62,6 @@
       border-width: .2em;
       box-shadow: 0 0 0 1px #0000;
     }
-    /*.loading-spin.loader {
-      width: auto!important;
-      height: auto!important;
-      text-align: center;
-      font-style: normal;
-    }*/
     </style>
 
     {{content-for "head-footer"}}

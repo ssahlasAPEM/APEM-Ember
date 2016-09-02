@@ -1,3 +1,6 @@
+.ember-application .loading-spin.no-ember {
+  display: none;
+}
 .spacer {
     width: calc(100% - 650px);
     display: inline-block;
@@ -484,9 +487,18 @@
 .table-wrap .ui.table.table-body {
   padding-bottom: 25px;
 }
-@media (max-width:940px)) {
-  .form-header-tools{
+@media (max-width:970px) {
+
+}
+@media (max-width:940px) {
+  /*.form-header-tools{
     top: 110px;
+  }*/
+  .form-heder-margin {
+      margin-top: 90px;
+  }
+  .spacer{
+    width:100%;
   }
 }
 @media (min-width: 840px){
