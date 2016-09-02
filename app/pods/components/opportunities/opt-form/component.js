@@ -109,8 +109,8 @@ export default Ember.Component.extend({
         if (item.get('required') === true) {
           let fieldName = item.get('name');
           // requiredFormValidations[fieldName] = 'empty';
-            //r: for more detailed validation this structure should be used:
-            requiredFormValidations[fieldName] = {
+          //r: for more detailed validation this structure should be used:
+          requiredFormValidations[fieldName] = {
               fieldName:fieldName,
               rules:[
                 {
@@ -119,32 +119,19 @@ export default Ember.Component.extend({
                 }
               ]
             }
-          // );
-
-
         }
       });
-
-
+      //debugger;
       //add validation to form
       Ember.$('.opportunity-form')
         .form({
           inline : false,
           //on:'blur',
           fields: requiredFormValidations
-          // {
-          //    company: {
-          //     identifier:'company',
-          //     rules: [
-          //       {
-          //         type   : 'empty'
-          //       }
-          //     ]
-          //   }
-          // }
       });
 
-      //ensure prevent default behavior...because semantic and ember work well together on occasion..
+      //ensure prevent default behavior...because semantic and ember work well
+      // together on occasion.. oh and we have a separate submit logic..
       Ember.$('.opportunity-form').submit(function(/*e*/){
           //e.preventDefault(); usually use this, but below works best here.
           return false;

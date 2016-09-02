@@ -4,40 +4,42 @@
 
   <!-- HEADER -->
   <div class="fixed top header form-header-tools"><!--fixed-->
+    <div class="form-header-tools-bg">
+      <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
+      {{#if (is-equal identity.profile.type 'Admin')}}
+        <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
+        {{confirm-delete
+          isDisabled=(not-equal identity.profile.type 'Admin')
+          title='Confirm Delete'
+          recordType='Opportunity'
+          message='The selected opportunity will be deleted. Continue?'
+          onConfirmDelete="deleteOpt"}}
+      {{/if}}
+      <!--TOOLTIP ON DISABLED BUTTON:-->
+      {{input type="button" value="Save as Draft"
+      class="ui button small right floated btn-margin4"
+      click=(action "saveDraft")}}
 
-    <h3 class="ui left floated header">NAO #{{model.id}} {{#if model.draft}}-Draft{{/if}}</h3>
-    {{#if (is-equal identity.profile.type 'Admin')}}
-      <!-- {{input type="button" value="Delete" class="ui button right floated" click=(action "onDeleteOptClick")}} -->
-      {{confirm-delete
-        isDisabled=(not-equal identity.profile.type 'Admin')
-        title='Confirm Delete'
-        recordType='Opportunity'
-        message='The selected opportunity will be deleted. Continue?'
-        onConfirmDelete="deleteOpt"}}
-    {{/if}}
-    <!--TOOLTIP ON DISABLED BUTTON:-->
-    {{input type="button" value="Save as Draft"
-    class="ui button small right floated btn-margin4"
-    click=(action "saveDraft")}}
+      <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
+      {{input type="button"
+        value="Save"
+        disabled=hasNoChanges
+        class="ui submit button small right floated btn-margin4"
+        click=(action "updateRecord")}}
 
-    <!-- <button class="ui submit button small right floated" {{action 'updateRecord'}}>Save</button> -->
-    {{input type="button" value="Save" disabled=hasNoChanges
-    class="ui submit button small right floated btn-margin4"
-    click=(action "updateRecord")}}
+      {{input type="button" value="Copy" disabled=model.newRecord
+      class="ui submit button small right floated btn-margin4"
+      click=(action "cloneRecord")}}
 
-    {{input type="button" value="Copy" disabled=model.newRecord
-    class="ui submit button small right floated btn-margin4"
-    click=(action "cloneRecord")}}
+      {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
+      class="ui small reset button right floated btn-margin4"
+      activeClass=""
+      click=(action 'onCancelOptClick')}}
+        Cancel
+      {{/link-to}}
 
-    {{#link-to 'opportunities' disabled=model.newRecord tagName='div'
-    class="ui small reset button right floated btn-margin4"
-    activeClass=""
-    click=(action 'onCancelOptClick')}}
-      Cancel
-    {{/link-to}}
-
-    <br/><br/>
-
+      <br/><br/>
+    </div>
   </div>
   <div class='form-heder-margin'></div>
   <div class="ui error message"></div>
@@ -154,9 +156,14 @@
           <!-- Todo: Ask what to do with form fields which were previously visible and have values. -->
           {{#if field.visible}}
             <div class="field column">
-                <label>{{field.label}}</label>
+                <label>{{field.label}}{{#if field.required}}*{{/if}}</label>
                 {{#if (is-equal field.type 'dropdown')}}
-                  {{#ui-dropdown name=field.name class="fluid selection" selected=field.value onChange=(action 'onDropdownSelect' field.name)}}
+                  {{#ui-dropdown
+                      name=field.name
+                      class="ui dropdown fluid selection"
+                      selected=(get model field.name)
+                      onChange=(action 'onDropdownSelect' field.name)}}
+                      <input type="hidden" {{bind-attr value=(get model field.name)}} name={{field.name}}>
                     <i class="dropdown icon"></i>
                     <div class="default text">Select Value</div>
                     <div class="menu">

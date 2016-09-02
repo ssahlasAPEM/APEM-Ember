@@ -93,8 +93,13 @@
   position: fixed;
   top: 70px;
   left: 0;
-  right: 0;
+  right: 18px;
   float: right;
+  z-index: 800;
+  padding-bottom: 4px;
+}
+.form-header-tools-bg{
+  background-color: white;
 }
 .logo-wrapper{
   width: 260px;
