@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   users:Ember.inject.service(),
+  
   tagName:'span',
   recordType:'',
   classNames:['conf-delte'],

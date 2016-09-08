@@ -99,6 +99,12 @@ body{
   position: relative;
   z-index:1;
 }
+
+.right-confirm-btn{
+  float: right;
+  margin-right: 0em;
+  margin-left: 0.25em;
+}
 /*.stage-date-editor:hover{
   background: #fff !important;
   border: 1px solid #22242626 !important;
@@ -699,6 +705,11 @@ button.ui.small.button.del-btn {
   .ui.steps .step > .content {
     display: inline-block;
     float: left;
+  }
+}
+@media only screen and (max-width: 767px){
+  .ui.table:not(.unstackable) tr {
+      box-shadow: none !important;
   }
 }
 @media (min-width:769px) and (max-width: 900px) {

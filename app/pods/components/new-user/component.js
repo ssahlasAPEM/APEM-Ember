@@ -50,6 +50,13 @@ export default Ember.Component.extend({
           }
         }
       });
+
+      //ensure prevent default behavior...because semantic and ember work well
+      // together on occasion.. oh and we have a separate submit logic..
+      Ember.$('.new-user-form').submit(function(/*e*/){
+          //e.preventDefault(); usually use this, but below works best here.
+          return false;
+      });
   },
 
   actions:{

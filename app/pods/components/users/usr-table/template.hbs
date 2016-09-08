@@ -47,15 +47,24 @@
 
   <tfoot class="full-width">
     <tr>
-      <th></th>
-      <th colspan="4">
-        {{new-user onCreate=(action 'didCreateUser')}}
+      <th colspan="5">
 
-        {{confirm-delete isDisabled=disableDelete deletableRecords=selectedItems
+
+        <!-- <div class="ui right floated small primary labeled icon button">
+          <i class="user icon"></i> Add User
+        </div> -->
+        {{new-user onCreate=(action 'didCreateUser')
+        class="ui right floated"}}
+
+        {{confirm-delete
+          tagName="div"
+          isDisabled=disableDelete
+          deletableRecords=selectedItems
           title='Confirm Delete'
           recordType='User'
-          class="right floated"
+          class="small right-confirm-btn"
           message='The selected users will be deleted. Continue?'}}
+
       </th>
     </tr>
   </tfoot>
