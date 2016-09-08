@@ -8,7 +8,6 @@
         {{#if quoteEvent}}
           <div class="description">
             {{date-picker
-              bubble
               action=(action 'updateStageDate' quoteEvent)
               placeholder=quoteEvent.date
               valueFormat='MM-DD-YYYY'

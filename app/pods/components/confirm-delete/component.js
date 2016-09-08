@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   users:Ember.inject.service(),
   tagName:'span',
   recordType:'',
-
+  classNames:['conf-delte'],
   //attributeBindings - the component properties which are bound to data from parent
   attributeBindings: ['isDisabled', 'deletableRecords', 'recordType', 'message', 'title'],
 

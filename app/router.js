@@ -19,6 +19,8 @@ Router.map(function() {
     this.route('users', { resetNamespace: true }, function () {
       this.route('user', { path: ':id' }, function () {
         this.route('detail', { path: 'detail' });
+        // 404 it is
+        this.route('page-not-found',{path:'/*wildcard'});
       });
       this.route('new', {});
     });

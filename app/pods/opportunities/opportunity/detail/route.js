@@ -11,6 +11,9 @@ export default Ember.Route.extend({
   },
 
   actions:{
+    cancelEdit(){
+      this.transitionTo('opportunities');
+    },
     copyRecord(oldRecord){
       let attrs = oldRecord.toJSON();
 

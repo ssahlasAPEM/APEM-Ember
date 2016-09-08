@@ -4,10 +4,10 @@ import groupBy from 'ember-group-by';
 export default Ember.Component.extend({
   identity: Ember.inject.service(),
   store: Ember.inject.service(),
-
+  tagName:'form',
   //used addon ember-group-by to group our fields array by model attr group.
   fieldsByGroup:groupBy('fields', 'group'),
-  classNames: ['opp-table'],
+  classNames: ['ui','form','opportunity-form','opp-table'],
   model: null,
   fields: null,
   users: null,
@@ -18,7 +18,7 @@ export default Ember.Component.extend({
   nonStageEvents: null,
   optStatuses:['Backburner', 'Won', 'Lost', ''],
   optStates:['Open', 'Closed'],
-
+  confirmShown:false,
   //possible opportunity stages - an array used to controll and properly render the stage steps in the form
   stages:[
     {'label':'quote', 'id':1},
@@ -121,7 +121,7 @@ export default Ember.Component.extend({
             };
         }
       });
-      //debugger;
+      //
       //add validation to form
       Ember.$('.opportunity-form')
         .form({
@@ -175,6 +175,16 @@ export default Ember.Component.extend({
   // }),
 
   actions: {
+
+    onCancelOptClick:function(){
+      this.get('model').rollbackAttributes();
+      this.sendAction('cancelEdit');
+      // console.log('cancel opt method reached!');
+    },
+    onStageChange(newStage){
+      this.get('model').set('stage', newStage);
+    },
+
     onStatusChange(button){
       let allStatusButtons = this.get('optStatuses');
 
@@ -220,18 +230,30 @@ export default Ember.Component.extend({
       // console.log('delete opt method reached!');
     },
 
-    onCancelOptClick:function(){
-      this.get('model').rollbackAttributes();
-      console.log('cancel opt method reached!');
-    },
-
     saveDraft(){
       let opt = this.get('model');
       //failsafe
       if(opt.get('company') === '' || opt.get('company') === null || opt.get('company') === undefined) { return; }
       opt.set('draft',true);
       opt.set('newRecord', false);
-      this.doSave();
+      // this.doSave();
+
+      if (opt.get('hasDirtyAttributes')) {
+        /*the record is no longer new at this point and copying and closing the
+        detail view are allowed */
+        opt.set('newRecord', false);
+
+        /* If the userId is an object, that means someone selected
+         * a new User and it's been hacked/copied over to the userId
+         * temporarily so we need to process this */
+        if(typeof(opt.get('userId')) === "object") {
+          opt.set('user', opt.get('userId'));
+          opt.set('userId', opt.get('user.id'));
+        }
+        //let events = this.get('events');
+
+        this.sendAction('onOptSave', opt);
+      }
     },
 
     updateRecord:function() {
@@ -242,9 +264,10 @@ export default Ember.Component.extend({
   doSave:function(){
     Ember.$('.opportunity-form').form('validate');
     let opt = this.get('model');
+    opt.set('draft',false);
     let hasErrors = Ember.$('.field.error');
     //form saves if there are no missing required fields, or if it's a draft.
-    if(hasErrors.length === 0 || opt.get('draft') === true){
+    if(hasErrors.length === 0){
       // Update the opportunity
       this.set('serverErrors',[]);
       // let errs = this.get('serverErrors');

@@ -1,0 +1,13 @@
+<button class="ui small fluid button del-btn" {{action 'onCancelClick'}}>Cancel</button>
+
+{{#ui-modal name="confirm-cancel" class="modal confirm-cancel-modal" }}
+  <div class="header">{{title}}</div>
+  <div class="content">
+    <p>{{message}}</p>
+  </div>
+  <div class="actions">
+    <div class="ui positive gray right floated button" {{action 'approveCancel'}}>Ok</div>
+    <div class="ui negative gray right floated button" {{action 'cancelConfirm'}}>Cancel</div>
+  </div>
+{{/ui-modal}}
+{{yield}}

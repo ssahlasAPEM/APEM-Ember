@@ -1,22 +1,17 @@
-<div class="ui stackable menu nav-header-menu computer only row">
-  <div class="vertically fitted item">
-    {{bread-crumbs tagName="ul" outputStyle="foundation" linkable=false crumbClass="breadcrumb-item"}}
-  </div>
+{{bread-crumbs
+  tagName="ul"
+  outputStyle="foundation"
+  linkable=false
+  crumbClass="breadcrumb-item"}}
 
-  <div class="item new-nao-btn">
-    {{#link-to "opportunities.new" class="ui button green"}}<i class="plus icon"></i>New NAO{{/link-to}}
-  </div>
+{{#link-to "opportunities.new" class="ui button green new-nao-btn"}}<i class="plus icon"></i>New NAO{{/link-to}}
 
-  <div class="right item">
-    {{#ui-dropdown class="ui simple dropdown secondary-header-dropdown-item"}}
-    <!-- <div class="ui simple dropdown"> -->
-        Welcome {{identity.profile.username}}
-      <i class="ellipsis large vertical icon"></i>
-      <div class="menu full-width top-z-index">
-        {{#link-to 'opportunities' class="item"}}<i class="big home icon"></i>Home{{/link-to}}
-        <a class="item"><i class="big info circle icon"></i> Help</a>
-        <a href="/logout" class="item"><i class="big fa-sign-out icon"></i> Logout</a>
-      </div>
-    {{/ui-dropdown}}<!-- </div> -->
+{{#ui-dropdown class="right column item simple"}}
+    Welcome {{identity.profile.username}}
+  <i class="ellipsis large vertical icon"></i>
+  <div class="right menu full-width top-z-index">
+    {{#link-to 'opportunities' class="item"}}<i class="big home icon"></i>Home{{/link-to}}
+    <a class="item"><i class="big info circle icon"></i> Help</a>
+    <a href="/logout" class="item"><i class="big fa-sign-out icon"></i> Logout</a>
   </div>
-</div>
+{{/ui-dropdown}}

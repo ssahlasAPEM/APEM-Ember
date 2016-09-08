@@ -1,35 +1,25 @@
-<div class="ui content">
+<form class="ui form">
   <h3 class="subtitle">Edit User</h3>
-  <br>
-
   <div class="validation-errors">
       {{error-message errors=serverErrors}}
   </div>
 
-  <div class="details">
+  <div class="field">
+    <label>Username:</label>
+    {{input value=model.username type="text"}}
+  </div>
 
-    <label for="username">Username:</label><br/>
-    <div class="ui input">
-      {{input value=model.username}}
-    </div>
+  <div class="field">
+    <label>Password:</label>
+    {{input type="password" value=model.password}}
+  </div>
+  <div class="field">
+    <label>Verify Password:</label>
+    {{input type="password" value=model.passwordVerify}}
+  </div>
 
-    <br/><br/>
-
-    <label for="password">Password:</label><br/>
-    <div class="ui input">
-      {{input type="password" value=model.password}}
-    </div>
-
-    <br/><br/>
-
-    <label for="verify_password">Verify Password:</label><br/>
-    <div class="ui input">
-      {{input type="password" value=model.passwordVerify}}
-    </div>
-
-    <br/><br/>
-
-    <label for="user_type">User Type:</label><br/>
+  <div class="field">
+    <label for="user_type">User Type:</label>
     {{#ui-dropdown class="search selection" allowAdditions=false selected=model.type onChange=(action (mut selectUserType)) as |execute mapper|}}
       <div class="default text">Select User Type</div>
       <i class="dropdown icon"></i>
@@ -41,14 +31,12 @@
         {{/each}}
       </div>
     {{/ui-dropdown}}
-    <br/><br/>
-
-    {{#link-to 'users' tagName='div' class="ui small button" activeClass=""}}
-      Cancel
-    {{/link-to}}
-    <div class="ui small button" {{action 'updateUser'}}>
-      Edit User
-    </div>
-
   </div>
-</div>
+
+  {{#link-to 'users' tagName='div' class="ui small button" activeClass=""}}
+    Cancel
+  {{/link-to}}
+  <div class="ui small button" {{action 'updateUser'}}>
+    Edit User
+  </div>
+</form>

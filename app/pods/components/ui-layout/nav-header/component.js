@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['nav-header'],
+  classNames: ['ui','menu','nav-header-menu','nav-header'],
   identity: Ember.inject.service(),
   router: Ember.inject.service("-routing"),
 

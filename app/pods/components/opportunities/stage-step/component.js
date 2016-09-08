@@ -36,7 +36,7 @@ export default Ember.Component.extend({
   onStepClick:function(value){
 
     this.opt.set('stage', value);
-
+    
     this.markSteps();
 
     let sSteps = this.stageSteps;
@@ -108,17 +108,19 @@ export default Ember.Component.extend({
     let sSteps = this.stageSteps;
 
     sSteps.forEach((item) => {
+      let step = Ember.$('.'+item.label+'.step'),
+      stepIcon = Ember.$('.'+item.label+'-step-icn');
       // console.log(`${item}`);
       if(item.id === selectedStepId){
         // show step as active
-        Ember.$('.'+item.label+'.step').addClass('active');
-        Ember.$('.'+item.label+'-step-icn').addClass('hide-me');
+        step.addClass('active');
+        stepIcon.addClass('hide-me');
       } else if(item.id < selectedStepId){
-        Ember.$('.'+item.label+'-step-icn').removeClass('hide-me');
-        Ember.$('.'+item.label+'.step').removeClass('active');
+        stepIcon.removeClass('hide-me');
+        step.removeClass('active');
       }else{
-        Ember.$('.'+item.label+'-step-icn').addClass('hide-me');
-        Ember.$('.'+item.label+'.step').removeClass('active');
+        stepIcon.addClass('hide-me');
+        step.removeClass('active');
       }
     });
   },
