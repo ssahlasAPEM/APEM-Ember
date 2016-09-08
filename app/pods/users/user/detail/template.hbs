@@ -20,23 +20,24 @@
 
   <div class="field">
     <label for="user_type">User Type:</label>
-    {{#ui-dropdown class="search selection" allowAdditions=false selected=model.type onChange=(action (mut selectUserType)) as |execute mapper|}}
+
+    {{#ui-dropdown class="search selection"
+    allowAdditions=false selected=model.type
+    onChange=(action (mut model.type)) as |execute mapper|}}
+
       <div class="default text">Select User Type</div>
       <i class="dropdown icon"></i>
       <div class="menu">
-        {{#each userTypes as |type|}}
-          <div class="item" data-value={{type}}>
-            {{type}}
-          </div>
-        {{/each}}
+        <div class="item" data-value="Admin">
+          Admin
+        </div>
+        <div class="item" data-value="User">
+          User
+        </div>
       </div>
     {{/ui-dropdown}}
   </div>
 
-  {{#link-to 'users' tagName='div' class="ui small button" activeClass=""}}
-    Cancel
-  {{/link-to}}
-  <div class="ui small button" {{action 'updateUser'}}>
-    Edit User
-  </div>
+  {{#link-to 'users' tagName='div' class="ui small button" activeClass=""}}Cancel{{/link-to}}
+  <div class="ui small button" {{action 'editUser'}}>Edit User</div>
 </form>
