@@ -115,7 +115,7 @@ export default Ember.Component.extend({
               rules:[
                 {
                   type:'empty',
-                  prompt:'Please enter a ' + fieldName
+                  prompt: '<span class="capitalize">'+fieldName + '</span> is required.'
                 }
               ]
             };
