@@ -629,9 +629,11 @@ button.ui.small.button.del-btn {
   }
   .meta{
     padding-left: 10px;
+    font-size: 18px;
+    /*font-weight: 500;*/
   }
   .meta span{
-    font-size: 16px;
+    font-size: 20px;
   }
   .download-csv-btn{
     float:right !important;
@@ -714,7 +716,8 @@ button.ui.small.button.del-btn {
 
 @media (max-width:576px) {
   .adv-search-dropdown{
-    width: 100%;
+    width: calc(100% - 14px);
+    margin-left: 0 !important;
   }
   .download-csv-btn{
     float:none !important;

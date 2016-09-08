@@ -13,7 +13,6 @@ class="ui floating dropdown icon button adv-search-dropdown advanced-search-comp
 
   {{input type="button" value="Search" class="ui button adv-search-btn" click=(action "onSearchClick")}}
 
-
     <i id="dropTrigger" class="dropdown icon dark-gray-bg"></i>
       <div class="menu adv-search-menu">
         <div class="ui field">
@@ -129,22 +128,20 @@ class="ui floating dropdown icon button adv-search-dropdown advanced-search-comp
       </div>
 
     </div>
-
+    {{#if searchUsed}}
+      <span class="ui icon" data-position="bottom left" data-tooltip="Clear Search" {{action 'clearSearch'}} >
+        <i class="close large icon"></i>
+      </span>
+      <!-- <i class="close large icon clear-search-btn" {{action 'clearSearch'}} data-tooltip='Clear Search'></i> -->
+    {{/if}}
 {{/ui-dropdown}}
 
-  {{#if searchUsed}}
-    <span class="ui icon" data-position="bottom left" data-tooltip="Clear Search" {{action 'clearSearch'}} >
-      <i class="close large icon"></i>
-    </span>
-    <!-- <i class="close large icon clear-search-btn" {{action 'clearSearch'}} data-tooltip='Clear Search'></i> -->
-  {{/if}}
 
-
-  <div class="ui buttons right floated download-csv-btn">
-    <button id='csvBtn' class="ui button csv-btn inline block" {{action 'pullEntireCSV'}}>Download CSV</button>
-    <button id='filteredCsvBtn' disabled={{enableFilteredCSV}} class="ui icon button dark-gray-bg" {{action 'pullFilteredCSV'}}>
-      <i class="filter icon"></i>
-    </button>
-  </div>
+<div class="ui buttons right floated download-csv-btn">
+  <button id='csvBtn' class="ui button csv-btn inline block" {{action 'pullEntireCSV'}}>Download CSV</button>
+  <button id='filteredCsvBtn' disabled={{enableFilteredCSV}} class="ui icon button dark-gray-bg" {{action 'pullFilteredCSV'}}>
+    <i class="filter icon"></i>
+  </button>
+</div>
 
 <!-- </div> -->
