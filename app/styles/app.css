@@ -212,14 +212,15 @@ body{
 .sm-margin-btn{
   margin-left: 8px !important;
 }
-
+.ui.table td {
+  word-wrap: break-word;
+}
 .home-sidebar, .home-navbar{
   background-color: white !important;
 }
 .home-sidebar img{
   display:block;
   margin:0 auto;
-  //width: 100%;
 }
 .home-sidebar.ui.vertical.menu .active.item, .home-sidebar.ui.vertical.menu .active.item:hover,
 .home-sidebar.ui.vertical.menu .item:hover{
@@ -234,14 +235,14 @@ body{
   margin-bottom: 4px;
 }
 .nav-header-menu{
-  height: 50px !important;
+  /*height: 50px !important;*/
   border-radius: 0px !important;
   border-left: 0px !important;
   /*position: fixed;
   z-index: 9;
   left: 0;
   right: 0;*/
-  top: 58px;
+  /*top: 58px;*/
 }
 .nav-header-menu .item:before{
   width: 0px !important;
