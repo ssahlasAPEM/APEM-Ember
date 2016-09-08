@@ -1,4 +1,4 @@
-<button class="ui small fluid button del-btn" {{action 'onCancelClick'}}>Cancel</button>
+<button class="ui small fluid button del-btn {{if isDisabled 'disabled'}}" {{action 'onCancelClick'}}>Cancel</button>
 
 {{#ui-modal name="confirm-cancel" class="modal confirm-cancel-modal" }}
   <div class="header">{{title}}</div>
