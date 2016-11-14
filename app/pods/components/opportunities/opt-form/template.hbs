@@ -213,8 +213,13 @@
               {{/if}}
 
               {{#if (is-equal field.type 'date')}}
-                <!-- Standard Text Field for now -->
-                {{input name=field.name value=(mut (get model field.name)) type="text"}}
+                <!-- Date Picker Field -->
+                {{custom-date-picker
+                  inputClass='cust-date-field'
+                  btnLabel=''
+                  disabled=false
+                  date=(mut (get model field.name))
+                  class='adv-search-field'}}
               {{/if}}
 
               {{#if (is-equal field.type 'textarea')}}
