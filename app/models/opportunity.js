@@ -3,7 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   user: DS.belongsTo('user'),
   events: DS.hasMany('event'),
-  draft:DS.attr('boolean', { defaultValue: false }),
+  draft: DS.attr('boolean', { defaultValue: false }),
   status: DS.attr('string', { defaultValue: null }),
   stage: DS.attr('string', { defaultValue: 'quote' }),
   state: DS.attr('string', { defaultValue: 'Open' }),
@@ -26,7 +26,7 @@ export default DS.Model.extend({
   application : DS.attr('string', { defaultValue: null }),
   reasonForOpp : DS.attr('string', { defaultValue: null }),
   function : DS.attr('string', { defaultValue: null }),
-  catalogProduct : DS.attr('string', { defaultValue: null }),
+  catalogProduct : DS.attr('boolean', { defaultValue: true }),
   catalogPartNum : DS.attr('string', { defaultValue: null }),
   productType : DS.attr('string', { defaultValue: null }),
   productSeries : DS.attr('string', { defaultValue: null }),

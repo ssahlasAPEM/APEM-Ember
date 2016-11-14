@@ -164,7 +164,9 @@
         {{#if field.visible}}
           <div class="field column">
               <label>{{field.label}}{{#if field.required}}*{{/if}}</label>
+
               {{#if (is-equal field.type 'dropdown')}}
+                <!-- Drop Down Fields -->
                 {{#ui-dropdown
                     name=field.name
                     class="ui dropdown fluid selection"
@@ -181,8 +183,49 @@
                     {{/each}}
                   </div>
                 {{/ui-dropdown}}
-              {{else}}
+              {{/if}}
+
+              {{#if (is-equal field.type 'radio')}}
+                <!-- Radio Options Field -->
+                <div class="field gap1">
+                  <div class="row ui buttons">
+                    {{ui-radio
+                      name=field.name
+                      current=model.catalogProduct
+                      class="make-me-button button"
+                      label="Yes"
+                      value="true"
+                      onChange=(action (mut model.catalogProduct))}}
+                    {{ui-radio
+                      name=field.name
+                      current=model.catalogProduct
+                      class="make-me-button button"
+                      label="No"
+                      value="false"
+                      onChange=(action (mut model.catalogProduct))}}
+                  </div>
+                </div>
+              {{/if}}
+
+              {{#if (is-equal field.type 'text')}}
+                <!-- Standard Text Field -->
                 {{input name=field.name value=(mut (get model field.name)) type="text"}}
+              {{/if}}
+
+              {{#if (is-equal field.type 'date')}}
+                <!-- Standard Text Field for now -->
+                {{input name=field.name value=(mut (get model field.name)) type="text"}}
+              {{/if}}
+
+              {{#if (is-equal field.type 'textarea')}}
+                <!-- TextArea Field -->
+                {{textarea value=(mut (get model field.name)) rows=3 classNames="form-control" focusIn=(action (mut model.comments)) autofocus=autofocus}}
+              {{/if}}
+
+              {{#if (is-equal field.type 'auto')}}
+                <!-- Automated Disabled Field, Display Only based on Calculations -->
+                <em>Note: To update this calculated field, save the NAO form.</em>
+                {{input disabled=true name=field.name value=(mut (get model field.name)) type="text"}}
               {{/if}}
           </div>
         {{/if}}<!-- END if field visible-->

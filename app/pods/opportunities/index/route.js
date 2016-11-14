@@ -84,7 +84,7 @@ export default Ember.Route.extend(InfinityRoute, {
         case 'created_at':
           currColumn = Ember.$('#created_at_sort');
           break;
-        case 'contact_name':
+        case 'company':
           currColumn = Ember.$('#contact_name_sort');
           break;
         case 'apem_sales_person':

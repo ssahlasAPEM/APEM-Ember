@@ -36,7 +36,7 @@
         <tr>
           <th class="sorted" id="id_sort" {{action 'sortTable' 'id'}} style="width: 8%;">NAO #</th>
           <th class="sorted" id="created_at_sort" {{action 'sortTable' 'created_at'}}>Date Open</th>
-          <th class="sorted" id="contact_name_sort" {{action 'sortTable' 'contact_name'}}>Cust. Name</th>
+          <th class="sorted" id="contact_name_sort" {{action 'sortTable' 'company'}}>Company</th>
           <th class="sorted" id="apem_sales_person_sort" {{action 'sortTable' 'apem_sales_person'}}>Sales Person</th>
           <th class="sorted" id="potential_annual_rev_sort" {{action 'sortTable' 'potential_annual_rev'}}>Revenue</th>
           <th class="sorted" id="product_type_sort" {{action 'sortTable' 'product_type'}}>Prod Type</th>
@@ -65,7 +65,7 @@
               </td>
               <td>
                 {{#link-to "opportunities.opportunity.detail" opp class="row-link"}}
-                  {{opp.contactName}}
+                  {{opp.company}}
                 {{/link-to}}
               </td>
               <td>
