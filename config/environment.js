@@ -60,6 +60,15 @@ module.exports = function(environment) {
     ENV.contentSecurityPolicy = devContentSecurityPolicy;
   }
 
+  if (environment === 'production') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    }
+    ENV.APP.usingCors = true;
+    ENV.APP.apiUrl = 'http://nao.apem.com';
+    ENV.contentSecurityPolicy = devContentSecurityPolicy;
+  }
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
@@ -70,10 +79,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-  }
-
-  if (environment === 'production') {
-
   }
 
   return ENV;
