@@ -109,7 +109,7 @@ export default Ember.Component.extend({
         this.doTheSearch();
       }
     },
-    onDropdownBeforeShow(){
+    onDropdownBeforeShow(event){
       if(event.target.id !== 'dropTrigger'){
         return false;
       }
