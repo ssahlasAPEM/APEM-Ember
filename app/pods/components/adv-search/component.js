@@ -109,11 +109,11 @@ export default Ember.Component.extend({
         this.doTheSearch();
       }
     },
-    onDropdownBeforeShow(event){
-      if(event.target.id !== 'dropTrigger'){
+    onDropdownBeforeShow(){
+      /*if(event.target.id !== 'dropTrigger'){
         return false;
       }
-      console.log(event.target);
+      console.log(event.target);*/
     },
     pullEntireCSV(){
       this.sendAction('pullEntireCSV');
