@@ -29,7 +29,7 @@
         {{#if sampleEvent}}
           <div class="description">
             {{date-picker
-              action=(action 'updateStageDate' quoteEvent)
+              action=(action 'updateStageDate' sampleEvent)
               placeholder=sampleEvent.date
               valueFormat='MM-DD-YYYY'
               format='MM-DD-YYYY'
@@ -51,7 +51,7 @@
         {{#if approvalEvent}}
           <div class="description">
           {{date-picker
-            action=(action 'updateStageDate' quoteEvent)
+            action=(action 'updateStageDate' approvalEvent)
             placeholder=approvalEvent.date
             valueFormat='MM-DD-YYYY'
             format='MM-DD-YYYY'
@@ -73,7 +73,7 @@
         {{#if productionEvent}}
           <div class="description">
             {{date-picker
-              action=(action 'updateStageDate' quoteEvent)
+              action=(action 'updateStageDate' productionEvent)
               placeholder=productionEvent.date
               valueFormat='MM-DD-YYYY'
               format='MM-DD-YYYY'
