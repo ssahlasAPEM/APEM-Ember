@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>APEM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{content-for "head"}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/apem.css">
+
+    <style>
+    .ember-application .loading-spin.no-ember {
+      display: none;
+    }
+    .loading-spin:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 50%;
+      border-radius: 500rem;
+      border: 0.2em solid rgba(255, 255, 255, 0.15);
+    }
+    .loading-spin:after, .loading-spin:before {
+      /*width: 2.28571429rem;
+      height: 2.28571429rem;*/
+      width: 50px;
+      height: 50px;
+      left: 49.94%;
+      margin: 0 0 0 -6.342857rem;
+      margin-top: 39.80vh;
+    }
+    .loading-spin{
+      margin-left: auto;
+      margin-right: auto;
+      width:193px;
+      height:48px;
+      background-image: url(assets/images/corp-logo.png);
+      background-size: contain;
+      background-position: center;
+      min-width: 2.28571429rem;
+      padding-top: 3.07142857rem;
+      text-align: center;
+      margin-top: 40vh;
+    }
+
+    .loading-spin:after{
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 49.94%;
+      -webkit-animation: loader .6s linear;
+      animation: loader .6s linear;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      border-radius: 500rem;
+      border-color: #767676 #fffcfc transparent;
+      border-style: solid;
+      border-width: .2em;
+      box-shadow: 0 0 0 1px #0000;
+    }
+    </style>
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <div class="loading-spin no-ember"></div>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/apem.js"></script>
+
+    {{content-for "body-footer"}}
+  </body>
+</html>
